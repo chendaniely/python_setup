@@ -1,4 +1,9 @@
-# Python Setup
+---
+title: "Python Setup"
+format:
+    html: default
+    gfm: default
+---
 
 # Conda Ecosystem
 
@@ -6,7 +11,7 @@
 
 That is:
 
-``` mermaid
+```{mermaid}
 flowchart
     A[Anaconda Inc] -- makes --> B[anaconda distribution]
     A -- makes --> E[miniconda3]
@@ -29,7 +34,8 @@ flowchart
 
 ## Anaconda
 
-``` mermaid
+```{mermaid}
+%%| echo: false
 
 
 flowchart
@@ -53,7 +59,8 @@ flowchart
 
 ## conda-forge
 
-``` mermaid
+```{mermaid}
+%%| echo: false
 
 flowchart
     I["conda-forge"] -- has --> P["classic (slowler) solver"]
@@ -75,9 +82,12 @@ flowchart
     D1 -- install via --> O
 ```
 
+
+
 # Virtual Enviornments
 
-``` mermaid
+```{mermaid}
+%%| echo: false
 
 
 flowchart
