@@ -1,7 +1,11 @@
 ---
 title: "Python Setup"
 format:
-    html: default
+    html:
+        embed-resources: true
+        smooth-scroll: true
+        output-file: "index"
+        output-ext: "html"
     gfm: default
 ---
 
