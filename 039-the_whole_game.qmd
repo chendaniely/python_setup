@@ -1,0 +1,377 @@
+---
+title: "Python Project Example"
+---
+
+Let's go through an entire Python data science project example.
+
+## Install Python
+
+Install the latest Python 3.x.x version known by `pyenv`
+
+```sh
+pyenv install 3
+```
+
+## Create a new python project
+
+```sh
+cd ~/Desktop
+mkdir my_python_project
+cd ~/Desktop/my_python_project
+```
+
+We'll create a small python script
+
+```{.python, include="example_project/01-create_data.py", eval=FALSE}
+```
+
+```{.python}
+import pandas as pd
+
+# Create example data
+data = {
+    "Date": [
+        "2023-01-01",
+        "2023-01-02",
+        "2023-01-03",
+        "2023-01-04",
+        "2023-01-05",
+    ],
+    "Product": ["A", "B", "A", "C", "B"],
+    "Sales": [100, 150, 120, 80, 200],
+    "Profit": [30, 40, 25, 10, 50],
+}
+
+# Create a DataFrame
+df = pd.DataFrame(data)
+
+# Save the DataFrame to a CSV file
+df.to_csv("sales_data.csv", index=False)
+
+# Group by Product and calculate total sales and profit
+product_group = df.groupby("Product").agg(
+    {"Sales": "sum", "Profit": "sum"}
+)
+
+# Save the product group to a CSV file
+product_group.to_csv("product_group.csv", index=False)
+
+print(
+    "Data saved to 'sales_data.csv' and\n"
+    "product group data saved to 'product_group.csv'"
+)
+
+```
+
+Save this code to `01-create_data.py`
+
+```sh
+% ls
+01-create_data.py
+```
+
+## Switch to the proper python version
+
+Check all the installed versions
+
+```sh
+% pyenv versions
+  system
+  3.9.11
+  3.9.18
+  3.10.3
+  3.10.4
+  3.11.0rc1
+* 3.11.5 (set by /Users/danielchen/.pyenv/version)
+  3.12.0
+```
+
+Switch to the version of interest.
+
+```sh
+pyenv shell 3.12.0
+```
+
+```sh
+% pyenv versions
+  system
+  3.9.11
+  3.9.18
+  3.10.3
+  3.10.4
+  3.11.0rc1
+  3.11.5
+* 3.12.0 (set by PYENV_VERSION environment variable)
+```
+
+Re-confirm the python version
+
+```sh
+% pyenv which python
+/Users/danielchen/.pyenv/versions/3.12.0/bin/python
+```
+
+```sh
+% python --version
+Python 3.12.0
+```
+
+## An empty slate
+
+Currently, our python environment is the default base environment
+without any extra packages.
+
+If we try to run the script,
+it will fail because the `pandas` module is not installed.
+
+```sh
+% python 01-create_data.py 
+Traceback (most recent call last):
+  File "/Users/danielchen/Desktop/my_python_project/01-create_data.py", line 1, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+```
+
+## Create a `venv`
+
+The
+[Iron Law of Python Management](https://solutions.posit.co/write-code/minimum-viable-python/installing-packages/#the-iron-law-of-python-management)
+states that _every_ project should have their own virtual environment.
+Before we start installing packages (e.g., `pandas`),
+we need to create and activate a virtual environment first.
+
+We will use the built-in `venv` python module to create a `venv`.
+The `venv` will be saved into a folder called `venv` in the current directory.
+
+```sh
+% python -m venv venv
+```
+
+Here's the folder structure after creating a `venv`
+
+```sh
+% tree -L 4 . 
+.
+├── 01-create_data.py
+└── venv
+    ├── bin
+    │   ├── Activate.ps1
+    │   ├── activate
+    │   ├── activate.csh
+    │   ├── activate.fish
+    │   ├── pip
+    │   ├── pip3
+    │   ├── pip3.12
+    │   ├── python -> /Users/danielchen/.pyenv/versions/3.12.0/bin/python
+    │   ├── python3 -> python
+    │   └── python3.12 -> python
+    ├── include
+    │   └── python3.12
+    ├── lib
+    │   └── python3.12
+    │       └── site-packages
+    └── pyvenv.cfg
+```
+
+You can see here that the `python`, `python3`, and `python3.12` are all
+pointing to the same python we installed.
+This is why you want to keep the base version environment clean.
+
+## Activate `venv`
+
+The `venv/bin/` directory has a few `activate` scripts.
+These scripts are to activate for different operating system.
+Currently we are using a Mac/*nix environment.
+
+::: {.panel-tabset}
+
+## MacOS / *nix
+
+```sh
+source venv/bin/activate
+```
+
+## Windows
+
+```powershell
+venv/bin/Activate.ps1
+```
+
+:::
+
+
+You will notice your prompt change and the name of the `venv` will be prepended to the beginning of the prompt:
+
+Before:
+
+```sh
+my_python_project %
+```
+
+After:
+
+```sh
+(venv) my_python_project %
+```
+
+Now you are ready to install packages and run your code!
+
+## Install packages into `venv`
+
+We're finally able to install packages.
+Our current project only needs `pandas`
+
+```sh
+pip install pandas
+```
+
+## Run your code
+
+Our code now runs!
+
+```sh
+% python 01-create_data.py
+Data saved to 'sales_data.csv' and
+product group data saved to 'product_group.csv'
+```
+
+## Rinse and Repeat
+
+We'll create a new script `02-viz_pandas.py` with the following bits of code:
+
+```{.python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read product group data from CSV
+product_group = pd.read_csv('product_group.csv')
+
+# Bar chart for total sales by product
+plt.figure(figsize=(8, 6))  # Set the figure size
+product_group['Sales'].plot(kind='bar')
+plt.title('Total Sales by Product')
+plt.xlabel('Product')
+plt.ylabel('Total Sales')
+plt.savefig('sales_by_product.png')  # Save the figure as a PNG
+plt.show()
+```
+
+This code will load a dataset from our `01` script,
+create, save, and show a figure.
+
+```sh
+% ls
+01-create_data.py	product_group.csv	venv
+02-viz_pandas.py	sales_data.csv
+```
+
+Now let's run the script.
+
+```sh
+(venv) my_python_project % python 02-viz_pandas.py
+Traceback (most recent call last):
+  File "/Users/danielchen/Desktop/my_python_project/02-viz_pandas.py", line 2, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+
+```
+
+We need to install `matplotlib` in our environment.
+
+```sh
+pip install matplotlib
+```
+
+And now things work!
+
+```sh
+(venv) my_python_project % python 02-viz_pandas.py
+(venv) my_python_project % ls
+01-create_data.py	product_group.csv	sales_data.csv
+02-viz_pandas.py	sales_by_product.png	venv
+```
+
+## One more time
+
+In a new `03-viz_mpl.py` file:
+
+```{.python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Scatter plot of Sales vs. Profit
+df = pd.read_csv('sales_data.csv')
+plt.figure(figsize=(8, 6))  # Set the figure size
+plt.scatter(df['Sales'], df['Profit'])
+plt.title('Scatter Plot of Sales vs. Profit')
+plt.xlabel('Sales')
+plt.ylabel('Profit')
+plt.savefig('scatter_plot.png')  # Save the figure as a PNG
+plt.show()
+```
+
+Voilà!
+
+```sh
+(venv) my_python_project % python 03-viz_mpl.py 
+(venv) my_python_project % ls
+01-create_data.py	03-viz_mpl.py		sales_by_product.png	scatter_plot.png
+02-viz_pandas.py	product_group.csv	sales_data.csv		venv
+```
+
+## Save `requirements.txt`
+
+The `pip freeze` command will show you all the packages (and dependencies) you
+have installed in the current virtual environment.
+
+```sh
+(venv) my_python_project % pip freeze 
+contourpy==1.1.1
+cycler==0.12.0
+fonttools==4.43.0
+kiwisolver==1.4.5
+matplotlib==3.8.0
+numpy==1.26.0
+packaging==23.2
+pandas==2.1.1
+Pillow==10.0.1
+pyparsing==3.1.1
+python-dateutil==2.8.2
+pytz==2023.3.post1
+six==1.16.0
+tzdata==2023.3
+```
+
+We can save the contents of this file out to a `requirements.txt` file.
+
+```sh
+pip freeze > requirements.txt
+```
+
+Now you have full python project!
+
+```sh
+(venv) my_python_project % ls
+01-create_data.py	product_group.csv	sales_data.csv
+02-viz_pandas.py	requirements.txt	scatter_plot.png
+03-viz_mpl.py		sales_by_product.png	venv
+```
+
+You will need to manually run `pip freeze > requirements.txt` when you
+want to update your `requirements.txt` file.
+
+## Conclusion
+
+The general workflow for working with python and python projects:
+
+1. Install Python version you want
+2. Switch into Python
+3. Create new python project directory
+4. Create `venv`
+5. Activate `venv`
+6. Install packages into `venv`
+7. Run your code
+8. Rinse and repeat
+
+There are other tools that can be installed to streamline the process.
+But this should be the bare minimum python project setup you use going forward.

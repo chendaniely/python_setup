@@ -1,0 +1,40 @@
+---
+editor:
+  render-on-save: true
+---
+
+### Linux
+
+You can check to see if your current version of linux has `pyenv` in its package manager.
+Otherwise, you will install `pyenv` using the automatic installer script
+
+::: {.panel-tabset}
+
+## Ubuntu
+
+```sh
+sudo apt update
+curl https://pyenv.run | bash
+```
+
+## Arch
+
+`pyenv` exists in the Arch Extra repository:
+[https://archlinux.org/packages/extra/any/pyenv/](https://archlinux.org/packages/extra/any/pyenv/)
+
+```sh
+pacman -Syu pyenv
+```
+
+:::
+
+#### Post installtion setup
+
+```sh
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
+exec $SHELL
+pyenv --version
+```

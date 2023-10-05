@@ -1,12 +1,5 @@
 ---
-title: "Python Setup"
-format:
-    html:
-        embed-resources: true
-        smooth-scroll: true
-        output-file: "index"
-        output-ext: "html"
-    gfm: default
+title: "Python Setup Concept Maps"
 ---
 
 # Conda Ecosystem
@@ -122,6 +115,14 @@ flowchart
     H -- install into --> A
     I -- install into --> A
 ```
+
+## python
+
+## conda
+
+## pipenv
+
+## poetry
 
 # Appendix
 

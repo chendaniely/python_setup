@@ -1,0 +1,93 @@
+---
+editor:
+  render-on-save: true
+---
+
+### MacOS
+
+There are a few ways you can install `pyenv` on a mac:
+
+1. [Homebrew](https://github.com/pyenv/pyenv#homebrew-in-macos)
+2. [Automatic installer with shell script](https://github.com/pyenv/pyenv#automatic-installer)
+3. [Directly from the GitHub repository](https://github.com/pyenv/pyenv#basic-github-checkout)
+
+We recommend using Homebrew,
+if you have it
+[installed](https://brew.sh/),
+otherwise, the shell script.
+
+#### Method 1 (Recommended): MacOS Homebrew 
+
+If
+[Homebrew is installed](https://brew.sh/),
+you can run the following commands in the terminal to install `pyenv`.
+
+```sh
+brew update
+brew install pyenv
+```
+
+#### Method 2: Shell Script
+
+The
+[`pyenv-installer`](https://github.com/pyenv/pyenv-installer) project
+has provided a one line command to download and run the `pyenv` installer script.
+
+```sh
+curl https://pyenv.run | bash
+```
+
+#### Post installtion setup
+
+There are 2 main steps in the post installation setup:
+
+1. Prep your shell environment
+2. Install the dependencies for installing Python
+
+##### Prep your shell environment
+
+Macs default to `zsh` as the shell.
+Assuming this is the shell you are using,
+you can initialize `pyenv` with the following commands
+
+```sh
+# standard pyenv install
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+# pyenv rstudio settings
+echo 'PYTHON_CONFIGURE_OPTS="--enable-shared"' >> ~/.zshrc
+```
+
+Restart your shell by closing and opening a new terminal,
+or by running the following command
+
+```sh
+exec "$SHELL"
+```
+
+##### Install the dependencies for installing Python
+
+Make sure you have the Xcode Command Line Tools
+
+```sh
+xcode-select --install
+```
+
+Then install the python dependencies (recommended using `brew`)
+
+```sh
+brew install openssl readline sqlite3 xz zlib tcl-tk
+```
+
+You should be ready to install Python.
+Head over to the [Install Python](#install-python) section!
+
+#### Confirm installation
+
+You can confirm your installation with:
+
+```sh
+pyenv --version
+```

@@ -1,0 +1,83 @@
+---
+title: Python Virtual Environments
+---
+
+The
+[Iron Law of Python Management](https://solutions.posit.co/write-code/minimum-viable-python/installing-packages/#the-iron-law-of-python-management)
+says we should _always_ create a new virtual environment for each python project.
+
+At the time of writing, PyPI (Python Package Index) has over 480,000 packages listed.
+PyPI does not guarantee that all the packages listed are compatible and can be installed together.
+
+Virtual environments provide us a way to isolate different python packages from one another.
+Some reasons why you may want virtual environments:
+
+1. Install packages with conflicting dependencies
+2. Test how the code behaves with a different set of package versions
+3. Share your coding environment with someone else
+4. Different package requirements for different python projects
+
+## Built-in Python `venv` module
+
+Python has shipped the [`venv` module](https://docs.python.org/3/library/venv.html)
+since Python 3.3.
+As long as you are using a supported version of Python,
+then you do not need to install any more tools to create a virtual environment.
+
+::: {.callout-tip}
+In general, you do not want to install any packages in your base python environment.
+This can lead to confusion to where packages are installed as you switch around
+different virtual environments.
+:::
+
+## Create a `venv` Virtual Environment
+
+Because of the
+[Iron Law of Python Management](https://solutions.posit.co/write-code/minimum-viable-python/installing-packages/#the-iron-law-of-python-management),
+each project (i.e., folder) will have their own python `venv`.
+
+### Python Project Folder
+
+First we need to make sure we are in the folder our python project exists in.
+You can confirm your location with:
+
+```sh
+pwd
+```
+
+The result should give you the path to your current Python project.
+
+### Python Version
+
+`pyenv` allows us to install and use different versions of python.
+You can see all the versions you have installed with:
+
+```sh
+pyenv verisons
+```
+
+You can also see what python you are using with:
+
+```sh
+pyenv which python
+```
+
+This will list the full path to the python binary that is currently being used.
+The currently activated python version will be used to create your `venv`.
+This is why you want to make sure the environment is clean
+(i.e., no extraneous python packages installed).
+
+
+
+### Create `venv`
+
+The general command for creating a `venv` is:
+
+```sh
+python -m 
+```
+
+https://quarto.org/docs/projects/virtual-environments.html
+
+https://www.youtube.com/watch?v=-YEUFGFHWgQ
+

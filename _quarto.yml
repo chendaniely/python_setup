@@ -1,0 +1,79 @@
+project:
+  type: website
+  output-dir: docs/
+
+website:
+  title: Python Setup and Useage
+  page-navigation: true
+  reader-mode: true
+
+  repo-url: https://github.com/chendaniely/python_setup
+  repo-actions: [edit, issue]
+
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+
+      - section: "The Whole Game"
+        contents:
+          - href: 039-the_whole_game.qmd
+            text: Example Data Science Project
+
+      - section: "Install Python"
+        contents:
+          - href: 010-python_install.qmd
+            text: Pyenv
+          - text: Conda
+
+      - section: "Use Python"
+        contents:
+          - href: 039-the_whole_game.qmd
+            text: Example Data Science Project
+          - href: 020-python_virtual_environments.qmd
+            text: Virtual Environments
+          - href: 030-ide.qmd
+            text: IDE Setup
+
+      - section: "Reference"
+        contents:
+          - href: 040-pyenv_useage.qmd
+            text: pyenv
+
+      - section: "Extras"
+        contents:
+          - href: 050-pyenv_virtualenv.qmd
+            text: "pyenv-virtualenv"
+          - href: 060-pipenv.qmd
+            text: "pipenv"
+          - href: 070-pipx.qmd
+            text: "pipx"
+
+          - href: 090-concept_maps.qmd
+            text: Concept Maps
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-title: Contents
+    toc-expand: true
+
+    number-sections: true
+    number-depth: 4
+    anchor-sections: true
+    smooth-scroll: true
+
+    code-tools:
+      source: true
+      toggle: true
+      caption: none
+    #code-line-numbers: true
+    code-copy: true
+    code-link: true
+
+editor:
+  render-on-save: true
+
+filters:
+   - include-code-files

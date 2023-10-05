@@ -1,0 +1,48 @@
+---
+editor:
+  render-on-save: true
+---
+
+We'll be using `pyenv` to install Python.
+
+First, we need to know what version of Python you want to install.
+Luckily, `pyenv` can list out all the versions available to you by typing
+
+```sh
+pyenv install --list
+```
+
+Usually you know roughly some version of Python you may already want to intsall,
+but not the exact number.
+You can filter the results with a match
+
+::: {.panel-tabset}
+
+## MacOS / Linux / Git Bash
+
+```sh
+pyenv install --list | grep 3.11
+```
+
+## Windows Powershell
+
+```powershell
+ pyenv install --list | select-string 3.11
+```
+
+:::
+
+This will list all the Python 3.11 patch versions for you.
+
+If you want to install the latest Python version,
+you only need to spcify the major number, `3`.
+
+```sh
+pyenv install 3
+```
+
+You can list all the `pyenv` installed verstions with:
+
+```sh
+pyenv versions
+```
