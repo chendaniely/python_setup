@@ -74,11 +74,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 20,
   "keyboard-shortcut": [
     "f",
@@ -104,54 +104,174 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Python Setup and Useage</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../010-python_install.html"> 
-<span class="menu-text">Install</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../020-python_virtual_enviornments.html"> 
-<span class="menu-text">Virtual Environments</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../090-concept_maps.html"> 
-<span class="menu-text">Concept Maps</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Python Setup and Useage
+      </li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Python Setup and Useage</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">The Whole Game</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../039-the_whole_game.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Example Data Science Project</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Install Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../010-python_install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pyenv</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">Conda</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Use Python</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../020-python_virtual_environments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Virtual Environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../030-ide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IDE Setup</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Reference</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../040-pyenv_useage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pyenv</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Extras</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../050-pyenv_virtualenv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pyenv-virtualenv</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../060-pipenv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipenv</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../070-pipx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipx</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../090-concept_maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Concept Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#windows" id="toc-windows" class="nav-link active" data-scroll-target="#windows"><span class="header-section-number">0.1</span> Windows</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/chendaniely/python_setup/edit/main/installation/pyenv-windows.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/chendaniely/python_setup/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><div class="quarto-title-block"><div class="quarto-title-tools-only"><h1></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
@@ -169,8 +289,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Manual installation from <code>zip</code></li>
 <li>Using a windows package manager (e.g., chocolately, scoop)</li>
 </ol>
-<section id="method-1-windows-powershell" class="level4">
-<h4 class="anchored" data-anchor-id="method-1-windows-powershell">Method 1: Windows Powershell</h4>
+<section id="method-1-windows-powershell" class="level4" data-number="0.1.1">
+<h4 data-number="0.1.1" class="anchored" data-anchor-id="method-1-windows-powershell"><span class="header-section-number">0.1.1</span> Method 1: Windows Powershell</h4>
 <p>You can run the folling command in the PowerShell terminal:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>UseBasicParsing <span class="op">-</span>Uri <span class="st">"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1"</span> <span class="op">-</span>OutFile <span class="st">"./install-pyenv-win.ps1"</span><span class="op">;</span> <span class="op">&amp;</span><span class="st">"./install-pyenv-win.ps1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you see an <code>UnauthorizedAccess</code> error you need to:</p>
@@ -184,8 +304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Unblock-File</span> <span class="op">(</span><span class="fu">Join-Path</span> <span class="va">$env</span><span class="op">:</span>PYENV <span class="st">'bin/pyenv.ps1'</span><span class="op">)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="method-2-manual-installation" class="level4">
-<h4 class="anchored" data-anchor-id="method-2-manual-installation">Method 2: Manual installation</h4>
+<section id="method-2-manual-installation" class="level4" data-number="0.1.2">
+<h4 data-number="0.1.2" class="anchored" data-anchor-id="method-2-manual-installation"><span class="header-section-number">0.1.2</span> Method 2: Manual installation</h4>
 <ol type="1">
 <li><p>Download <a href="https://github.com/pyenv-win/pyenv-win/archive/master.zip">pyenv-win.zip</a></p></li>
 <li><p>Create a <code>.pyenv</code> folder in your home directory. In PowerShell or Git Bash:</p></li>
@@ -196,8 +316,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>You should have a a <code>bin/</code> directory in <code>$HOME/.pyenv/pyenv-win/bin</code></p></li>
 </ol>
 </section>
-<section id="method-3-package-managers" class="level4">
-<h4 class="anchored" data-anchor-id="method-3-package-managers">Method 3: Package Managers</h4>
+<section id="method-3-package-managers" class="level4" data-number="0.1.3">
+<h4 data-number="0.1.3" class="anchored" data-anchor-id="method-3-package-managers"><span class="header-section-number">0.1.3</span> Method 3: Package Managers</h4>
 <p>You can install <code>pyenv-win</code> using one of the Windows Package managers:</p>
 <ol type="1">
 <li>Chocolatey: <a href="https://chocolatey.org/install">https://chocolatey.org/install</a></li>
@@ -210,8 +330,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>scoop bucket add main</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>scoop install main<span class="op">/</span>pyenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="post-installtion-setup" class="level4">
-<h4 class="anchored" data-anchor-id="post-installtion-setup">Post installtion setup</h4>
+<section id="post-installtion-setup" class="level4" data-number="0.1.4">
+<h4 data-number="0.1.4" class="anchored" data-anchor-id="post-installtion-setup"><span class="header-section-number">0.1.4</span> Post installtion setup</h4>
 <p>You need to add a few variables into your Enviornment Variables. You can do this by pressing the windows key and searching for the “Edit enviornment bariables for your account”. Or you can run the commands in PowerShell to add them.</p>
 <p>In general you need to add 3 <code>pyenv</code> variables and append a directory to the <code>Path</code>. The <code>PYENV</code>, <code>PYENV_HOME</code>, and <code>PYENV_ROOT</code> user variables need to all point to your <code>pyenv-win</code> directory within your <code>.pyenv</code> folder in your home directory.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>System<span class="op">.</span><span class="fu">Environment</span><span class="op">]::</span>SetEnvironmentVariable<span class="op">(</span><span class="st">'PYENV'</span><span class="op">,</span><span class="va">$env</span><span class="op">:</span>USERPROFILE <span class="op">+</span> <span class="st">"\.pyenv\pyenv-win\"</span><span class="op">,</span><span class="st">"User"</span><span class="op">)</span></span>
@@ -220,8 +340,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>.pyenv\pyenv-win\bin\</code> directory also needs to be added to the beginning of the <code>Path</code> variable</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>System<span class="op">.</span><span class="fu">Environment</span><span class="op">]::</span>SetEnvironmentVariable<span class="op">(</span><span class="st">'path'</span><span class="op">,</span> <span class="va">$env</span><span class="op">:</span>USERPROFILE <span class="op">+</span> <span class="st">"\.pyenv\pyenv-win\bin;"</span> <span class="op">+</span> <span class="va">$env</span><span class="op">:</span>USERPROFILE <span class="op">+</span> <span class="st">"\.pyenv\pyenv-win\shims;"</span> <span class="op">+</span> <span class="op">[</span>System<span class="op">.</span><span class="fu">Environment</span><span class="op">]::</span>GetEnvironmentVariable<span class="op">(</span><span class="st">'path'</span><span class="op">,</span> <span class="st">"User"</span><span class="op">),</span><span class="st">"User"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="confirm-installation" class="level4">
-<h4 class="anchored" data-anchor-id="confirm-installation">Confirm installation</h4>
+<section id="confirm-installation" class="level4" data-number="0.1.5">
+<h4 data-number="0.1.5" class="anchored" data-anchor-id="confirm-installation"><span class="header-section-number">0.1.5</span> Confirm installation</h4>
 <p>You can confirm your installation with:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help.</p>
