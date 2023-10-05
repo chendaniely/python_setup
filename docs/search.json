@@ -40,11 +40,11 @@
     "text": "Python’s popularity has also made it one of the reasons why installation has become notoriously complex.\nThe complexity arises from 3 main issues:"
   },
   {
-    "objectID": "index.html#dsystem-python",
-    "href": "index.html#dsystem-python",
+    "objectID": "index.html#system-python",
+    "href": "index.html#system-python",
     "title": "A Python Setup Guide",
-    "section": "dSystem Python",
-    "text": "dSystem Python\nConfusion arises when new Python users see that Python is already installed on their computer and they start to install packages or update it. This python is for your operating system to perform its own tasks, not the user. If you meddle with it, you might end up breaking some component to your computer.\n\n\n\n\n\n\nWarning\n\n\n\nThe Python that already exists on your computer is for your computer’s operating system. It’s not for you. Pretend it doesn’t exist.\nTake note of where the system Python is with which python (MacOS/*nix) or get-command python (Windows), and make sure you are not using that one for your own work."
+    "section": "System Python",
+    "text": "System Python\nConfusion arises when new Python users see that Python is already installed on their computer and they start to install packages or update it. This python is for your operating system to perform its own tasks, not the user. If you meddle with it, you might end up breaking some component to your computer.\n\n\n\n\n\n\nWarning\n\n\n\nThe Python that already exists on your computer is for your computer’s operating system. It’s not for you. Pretend it doesn’t exist.\nTake note of where the system Python is with which python (MacOS/*nix) or get-command python (Windows), and make sure you are not using that one for your own work."
   },
   {
     "objectID": "index.html#multiple-pythons",
