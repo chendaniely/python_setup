@@ -11,7 +11,7 @@ The complexity arises from 3 main issues:
 4. Working on (data science) projects with conflicting package dependencies
 
 
-## dSystem Python {.unnumbered}
+## System Python {.unnumbered}
 
 Confusion arises when new Python users see that Python is already installed on their computer
 and they start to install packages or update it.
