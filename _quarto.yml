@@ -28,8 +28,6 @@ website:
 
       - section: "Use Python"
         contents:
-          - href: 039-the_whole_game.qmd
-            text: Example Data Science Project
           - href: 020-python_virtual_environments.qmd
             text: Virtual Environments
           - href: 030-ide.qmd
