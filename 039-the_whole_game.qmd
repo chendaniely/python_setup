@@ -66,7 +66,7 @@ print(
 Save this code to `01-create_data.py`
 
 ```sh
-% ls
+my_python_project % ls
 01-create_data.py
 ```
 
@@ -75,7 +75,7 @@ Save this code to `01-create_data.py`
 Check all the installed versions
 
 ```sh
-% pyenv versions
+my_python_project % pyenv versions
   system
   3.9.11
   3.9.18
@@ -93,7 +93,7 @@ pyenv shell 3.12.0
 ```
 
 ```sh
-% pyenv versions
+my_python_project % pyenv versions
   system
   3.9.11
   3.9.18
@@ -107,12 +107,12 @@ pyenv shell 3.12.0
 Re-confirm the python version
 
 ```sh
-% pyenv which python
+my_python_project % pyenv which python
 /Users/danielchen/.pyenv/versions/3.12.0/bin/python
 ```
 
 ```sh
-% python --version
+my_python_project % python --version
 Python 3.12.0
 ```
 
@@ -125,7 +125,7 @@ If we try to run the script,
 it will fail because the `pandas` module is not installed.
 
 ```sh
-% python 01-create_data.py 
+my_python_project % python 01-create_data.py 
 Traceback (most recent call last):
   File "/Users/danielchen/Desktop/my_python_project/01-create_data.py", line 1, in <module>
     import pandas as pd
@@ -144,13 +144,13 @@ We will use the built-in `venv` python module to create a `venv`.
 The `venv` will be saved into a folder called `venv` in the current directory.
 
 ```sh
-% python -m venv venv
+my_python_project % python -m venv venv
 ```
 
 Here's the folder structure after creating a `venv`
 
 ```sh
-% tree -L 4 . 
+my_python_project % tree -L 4 . 
 .
 ├── 01-create_data.py
 └── venv
@@ -185,7 +185,7 @@ Currently we are using a Mac/*nix environment.
 
 ::: {.panel-tabset}
 
-## MacOS / *nix
+## MacOS / *nix / Git Bash
 
 ```sh
 source venv/bin/activate
@@ -230,7 +230,7 @@ pip install pandas
 Our code now runs!
 
 ```sh
-% python 01-create_data.py
+my_python_project % python 01-create_data.py
 Data saved to 'sales_data.csv' and
 product group data saved to 'product_group.csv'
 ```
@@ -260,7 +260,7 @@ This code will load a dataset from our `01` script,
 create, save, and show a figure.
 
 ```sh
-% ls
+my_python_project % ls
 01-create_data.py	product_group.csv	venv
 02-viz_pandas.py	sales_data.csv
 ```
@@ -359,6 +359,66 @@ Now you have full python project!
 
 You will need to manually run `pip freeze > requirements.txt` when you
 want to update your `requirements.txt` file.
+
+## Deactivate your virtual environment
+
+When you want to leave your project environment you can run `deactivate` in the
+terminal.
+
+```sh
+deactivate
+```
+
+This will remove the `venv` name that was originall prepended to your terminal:
+
+In the `venv`:
+
+```sh
+(venv) my_python_project % deactivate
+```
+
+Deactivated:
+
+```sh
+my_python_project % 
+```
+
+And we're back to our original package environment
+
+```sh
+my_python_project % python 01-create_data.py 
+Traceback (most recent call last):
+  File "/Users/danielchen/Desktop/my_python_project/01-create_data.py", line 1, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+```
+
+## Share your environment with others
+
+You can now share your `requirements.txt` file with others to
+re-create your programming environment.
+Your collaborator will need to install the packages specified in `requirements.txt`
+into their own new `venv`.
+You can replicate this on your own machine too.
+Make sure you are no longer in an active `venv` (with `deactivate`)
+if you are going to create a new `venv`.
+
+```sh
+mkdir ~/Desktop/collaborator_env
+cd ~/Desktop/collaborator_env
+
+pyenv shell 3.12.0
+
+python -m venv venv
+source venv/bin/activate
+```
+
+We can use `pip` to install the `requirements.txt` file once we're in the new empty `venv`.
+Assuming we have the `requirments.txt` file in our current working directory:
+
+```sh
+pip install -r requirements.txt
+```
 
 ## Conclusion
 

@@ -1,0 +1,11 @@
+## Python Versions
+
+- using `pyenv versions` to check which python version you are on.
+- show `pyenv which python` too.
+
+- Installing multiple python versions.
+- Important to keep each python version "clean".
+
+- `pyenv global`, `pyenv local`, `pyenv shell` as ways to set default or override current python version.
+
+- Installing packages should always be in a separate virtual environment (next section)

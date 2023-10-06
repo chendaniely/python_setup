@@ -1,7 +1,13 @@
-# Integrated Development Enviornment Setup
+---
+title: "Integrated Development Environment Setup"
+---
 
-## RStudio
+# RStudio
 
 
 
-## VSCode
+# VSCode
+
+
+
+# PyCharm

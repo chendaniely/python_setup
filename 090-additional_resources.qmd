@@ -1,0 +1,6 @@
+---
+title: "Additional Resources"
+---
+
+- https://quarto.org/docs/projects/virtual-environments.html
+- https://www.youtube.com/watch?v=-YEUFGFHWgQ
