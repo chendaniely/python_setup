@@ -26,4 +26,4 @@ Below is a more focused guide on setting up Python using `pyenv` on your machine
 
 ## Install Packages
 
-We recommend that you try to keep your base python version as clean as possible, i.e., do not install any packages into it. Instead, please head over to the Virtual Environments page and install your packages into a virtual environment.
+We recommend that you try to keep your base python version as clean as possible, i.e., do not install any packages into it. Instead, please head over to the [Virtual Environments page](020-python_virtual_environments.qmd) and install your packages into a virtual environment.
