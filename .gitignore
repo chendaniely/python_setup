@@ -2,6 +2,6 @@
 
 /.quarto/
 .vscode
-_extensions/
 
 /.luarc.json
+docs/
