@@ -179,9 +179,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Pyenv</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
- <span class="menu-text">Conda</span>
-  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -292,9 +289,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#rstudio" id="toc-rstudio" class="nav-link active" data-scroll-target="#rstudio"><span class="header-section-number">1</span> RStudio</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link active" data-scroll-target="#rstudio"><span class="header-section-number">1</span> RStudio</a>
+  <ul class="collapse">
+  <li><a href="#project-set-up" id="toc-project-set-up" class="nav-link" data-scroll-target="#project-set-up"><span class="header-section-number">1.1</span> Project Set Up</a></li>
+  <li><a href="#package-set-up" id="toc-package-set-up" class="nav-link" data-scroll-target="#package-set-up"><span class="header-section-number">1.2</span> Package Set up</a></li>
+  <li><a href="#reticulate" id="toc-reticulate" class="nav-link" data-scroll-target="#reticulate"><span class="header-section-number">1.3</span> Reticulate</a></li>
+  </ul></li>
   <li><a href="#vscode" id="toc-vscode" class="nav-link" data-scroll-target="#vscode"><span class="header-section-number">2</span> VSCode</a></li>
-  <li><a href="#pycharm" id="toc-pycharm" class="nav-link" data-scroll-target="#pycharm"><span class="header-section-number">3</span> PyCharm</a></li>
+  <li><a href="#jupyter-lab" id="toc-jupyter-lab" class="nav-link" data-scroll-target="#jupyter-lab"><span class="header-section-number">3</span> Jupyter Lab</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/chendaniely/python_setup/edit/main/030-ide.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/chendaniely/python_setup/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -320,14 +322,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>The concept of a “project” is important when trying to point your integrated development environment (IDE) to your virtual environment. Some programs rely on special files to designate a project, others will treat an opened folder as a project. It’s important to know how to confirm what environment is being used in the IDE.</p>
 <section id="rstudio" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> RStudio</h1>
+<p>RStudio has a concept of an “RStudio Project”, This is typically a special file in a folder with the <code>.Rproj</code> extension. In general, when trying to work with Python and Python virtual environments within RStudio you should have 2 things:</p>
+<ol type="1">
+<li>An RStudio project</li>
+<li>A <code>venv</code> virtual environment in the root folder of the RStudio project</li>
+</ol>
+<section id="project-set-up" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="project-set-up"><span class="header-section-number">1.1</span> Project Set Up</h2>
+<p>If you are starting from a new Python project, the best way is to first create an RStudio project from the IDE. Once the RStudio project is created, you follow the steps in creating a <code>venv</code> virtual environment, such that the <code>venv</code> folder is also in the RStudio project.</p>
+<p>Next, within the RStudio Global Options &gt; Python tab, make sure the checkbox for “Automatically activate project-local Python environment” is checked.</p>
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div>
+<img src="imgs/rstudio-python-activate_local.png" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
+<p>This will make sure the <code>venv</code> in the current RStudio project gets picked up first when a Python interpreter is needed.</p>
+</section>
+<section id="package-set-up" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="package-set-up"><span class="header-section-number">1.2</span> Package Set up</h2>
+<ul>
+<li>Use this <code>requirements.txt</code> file</li>
+<li><code>tree</code> the example directory</li>
+<li>install <code>{reticulate}</code> the R package: <code>install.packages('reticulate')</code></li>
+</ul>
+<p>When you run Python code, you will see a call in the console for <code>reticulate::repl_python()</code>. You will see the call from R, and then the Python prompts.</p>
+<p>The R code will be displayed with a <code>&gt;</code> and the python code will have a <code>&gt;&gt;&gt;</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> reticulate<span class="sc">::</span><span class="fu">repl_python</span>()</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Python <span class="dv">3</span>.<span class="fl">10.3</span> (<span class="sc">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">/</span>bin<span class="sc">/</span>python) <span class="co"># </span><span class="al">TODO</span><span class="co">: Fix this output</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Reticulate <span class="fl">1.30</span> REPL <span class="sc">--</span> A Python interpreter <span class="cf">in</span> R.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Enter <span class="st">'exit'</span> or <span class="st">'quit'</span> to exit the REPL and return to R.</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span><span class="er">&gt;&gt;</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="reticulate" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="reticulate"><span class="header-section-number">1.3</span> Reticulate</h2>
+<p>When using Python within RStudio, you can always confirm what Python is being used with the <code>reticulate::py_config()</code> function</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> reticulate<span class="sc">::</span><span class="fu">py_config</span>()</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>python<span class="sc">:</span>         <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">/</span>bin<span class="sc">/</span>python</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>libpython<span class="sc">:</span>      <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>.pyenv<span class="sc">/</span>versions<span class="sc">/</span><span class="dv">3</span>.<span class="fl">10.3</span><span class="sc">/</span>lib<span class="sc">/</span>libpython3.<span class="fl">10.</span>dylib</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pythonhome<span class="sc">:</span>     <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">:</span><span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>version<span class="sc">:</span>        <span class="dv">3</span>.<span class="fl">10.3</span> (main, Oct  <span class="dv">5</span> <span class="dv">2022</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">06</span><span class="sc">:</span><span class="dv">56</span>) [Clang <span class="dv">14</span>.<span class="fl">0.0</span> (clang<span class="dv">-1400</span>.<span class="dv">0</span>.<span class="fl">29.102</span>)]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>numpy<span class="sc">:</span>          <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">/</span>lib<span class="sc">/</span>python3<span class="fl">.10</span><span class="sc">/</span>site<span class="sc">-</span>packages<span class="sc">/</span>numpy</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>numpy_version<span class="sc">:</span>  <span class="dv">1</span>.<span class="fl">24.1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>NOTE<span class="sc">:</span> Python version was forced by use_python <span class="cf">function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you have the wrong python loaded, you need to restart your R session first before trying to load another Python intepreter.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you need to manually specify a python interpreter, you can use the <code>reticulate::use_python()</code> or <code>reticulate::use_virtualenv()</code> functions. If you use the <code>reticulate::use_virtualenv()</code> function to load the <code>venv</code> virtual environment, and the <code>venv</code> is named <code>venv</code> in the current project directory, make sure you call the function with a trailing <code>/</code>, <code>venv/</code> so the <code>reticulate::use_virtualenv()</code> function knows to look for a directory named <code>venv/</code> and not a virtual environment named <code>venv</code> in the <code>~/.virtualenvs</code> directory. You may get an error message about not a python virtualenv otherwise,</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Directory <span class="sc">~</span><span class="er">/</span>.virtualenvs<span class="sc">/</span>venv is not a Python virtualenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
 </section>
 <section id="vscode" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> VSCode</h1>
+<p>In VSCode or other VSCode forks, “projects” are defined by a folder that is opened up in the Primary Side Bar (the one on the left).</p>
+<p>In general, you should have:</p>
+<ol type="1">
+<li>A folder opened in VScode</li>
+<li>A <code>venv</code> virtual environment in that folder</li>
+</ol>
+<p>Next, the command palliate (+Shift+P / Ctrl+Shift+P) will have a command for:</p>
+<pre><code>&gt; Python: Select Interpreter</code></pre>
+<p>This will list all the Python’s you may have on your computer, but the easiest way to identify the <code>venv</code>. If you want to use Jupyter Notebooks within VSCode, you will be prompted to also install <code>IPykernel</code> into the <code>venv</code>, along with the components to open and use jupyter notebooks.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ipykernel jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="pycharm" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> PyCharm</h1>
+<section id="jupyter-lab" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Jupyter Lab</h1>
+<p>When working in jupyter lab, it first needs to be installed in the <code>venv</code> virtual environment.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>From there you can launch jupyter lab in the terminal</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> jupyter lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The “Python 3” kernel that is listed, will be the Python that is being used in the <code>venv</code> that launched jupyter lab. You do not need to manually register every single <code>venv</code> on your computer for jupyter lab. Launching jupyter lab in the corresponding activated <code>venv</code> will give you the correct Python and virtual environment packages.</p>
+<!--
+TODO: put in pycharm notes
+# PyCharm
+-->
 
 
 <!-- -->
@@ -788,19 +872,159 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Integrated Development Environment Setup"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># RStudio</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># VSCode</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># PyCharm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Integrated Development Environment Setup"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>The concept of a "project" is important when trying to point your</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>integrated development environment (IDE) to your virtual environment.</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Some programs rely on special files to designate a project,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>others will treat an opened folder as a project.</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>It's important to know how to confirm what environment is being</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>used in the IDE.</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># RStudio</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>RStudio has a concept of an "RStudio Project",</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>This is typically a special file in a folder with the <span class="in">`.Rproj`</span> extension.</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>In general,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>when trying to work with Python and Python virtual environments</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>within RStudio you should have 2 things:</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>An RStudio project</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>A <span class="in">`venv`</span> virtual environment in the root folder of the RStudio project</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Project Set Up</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>If you are starting from a new Python project,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>the best way is to first create an RStudio project from the IDE.</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>Once the RStudio project is created,</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>you follow the steps in creating a <span class="in">`venv`</span> virtual environment,</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>such that the <span class="in">`venv`</span> folder is also in the RStudio project.</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>Next,</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>within the RStudio Global Options &gt; Python tab,</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>make sure the checkbox for</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>"Automatically activate project-local Python environment"</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>is checked.</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="al">![](imgs/rstudio-python-activate_local.png)</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>This will make sure the <span class="in">`venv`</span> in the current RStudio project</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>gets picked up first when a Python interpreter is needed.</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Package Set up</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use this <span class="in">`requirements.txt`</span> file</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tree`</span> the example directory</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>install <span class="in">`{reticulate}`</span> the R package: <span class="in">`install.packages('reticulate')`</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>When you run Python code, you will see a call in the console for</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="in">`reticulate::repl_python()`</span>.</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>You will see the call from R,</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>and then the Python prompts.</span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>The R code will be displayed with a <span class="in">`&gt;`</span> and the python code will have a <span class="in">`&gt;&gt;&gt;`</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="in">```R</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> reticulate<span class="sc">::</span><span class="fu">repl_python</span>()</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>Python <span class="dv">3</span>.<span class="fl">10.3</span> (<span class="sc">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">/</span>bin<span class="sc">/</span>python) <span class="co"># </span><span class="al">TODO</span><span class="co">: Fix this output</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>Reticulate <span class="fl">1.30</span> REPL <span class="sc">--</span> A Python interpreter <span class="cf">in</span> R.</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>Enter <span class="st">'exit'</span> or <span class="st">'quit'</span> to exit the REPL and return to R.</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span><span class="er">&gt;&gt;</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reticulate</span></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>When using Python within RStudio,</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>you can always confirm what Python is being used with the</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="in">`reticulate::py_config()`</span> function</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="in">```R</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> reticulate<span class="sc">::</span><span class="fu">py_config</span>()</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>python<span class="sc">:</span>         <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">/</span>bin<span class="sc">/</span>python</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>libpython<span class="sc">:</span>      <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>.pyenv<span class="sc">/</span>versions<span class="sc">/</span><span class="dv">3</span>.<span class="fl">10.3</span><span class="sc">/</span>lib<span class="sc">/</span>libpython3.<span class="fl">10.</span>dylib</span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>pythonhome<span class="sc">:</span>     <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">:</span><span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>version<span class="sc">:</span>        <span class="dv">3</span>.<span class="fl">10.3</span> (main, Oct  <span class="dv">5</span> <span class="dv">2022</span>, <span class="dv">14</span><span class="sc">:</span><span class="dv">06</span><span class="sc">:</span><span class="dv">56</span>) [Clang <span class="dv">14</span>.<span class="fl">0.0</span> (clang<span class="dv">-1400</span>.<span class="dv">0</span>.<span class="fl">29.102</span>)]</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>numpy<span class="sc">:</span>          <span class="er">/</span>Users<span class="sc">/</span>danielchen<span class="sc">/</span>git<span class="sc">/</span>rstudio<span class="sc">/</span>academyContent<span class="sc">/</span>.venv<span class="sc">/</span>lib<span class="sc">/</span>python3<span class="fl">.10</span><span class="sc">/</span>site<span class="sc">-</span>packages<span class="sc">/</span>numpy</span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>numpy_version<span class="sc">:</span>  <span class="dv">1</span>.<span class="fl">24.1</span></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>NOTE<span class="sc">:</span> Python version was forced by use_python <span class="cf">function</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>If you have the wrong python loaded,</span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>you need to restart your R session first before trying to load another Python intepreter.</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>If you need to manually specify a python interpreter, you can use the <span class="in">`reticulate::use_python()`</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>or <span class="in">`reticulate::use_virtualenv()`</span> functions.</span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>If you use the  <span class="in">`reticulate::use_virtualenv()`</span> function to load the <span class="in">`venv`</span> virtual environment,</span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>and the <span class="in">`venv`</span> is named <span class="in">`venv`</span> in the current project directory,</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>make sure you call the function with a trailing <span class="in">`/`</span>, <span class="in">`venv/`</span></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>so the <span class="in">`reticulate::use_virtualenv()`</span> function knows to look for a directory named <span class="in">`venv/`</span></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>and not a virtual environment named <span class="in">`venv`</span> in the <span class="in">` ~/.virtualenvs`</span> directory.</span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>You may get an error message about not a python virtualenv otherwise,</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="in">```R</span></span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>Directory <span class="sc">~</span><span class="er">/</span>.virtualenvs<span class="sc">/</span>venv is not a Python virtualenv</span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a><span class="fu"># VSCode</span></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a>In VSCode or other VSCode forks,</span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>"projects" are defined by a folder that is opened up in the</span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>Primary Side Bar (the one on the left).</span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>In general, you should have:</span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>A folder opened in VScode</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>A <span class="in">`venv`</span> virtual environment in that folder</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>Next, the command palliate (+Shift+P / Ctrl+Shift+P)</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>will have a command for:</span>
+<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a><span class="in">&gt; Python: Select Interpreter</span></span>
+<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a>This will list all the Python's you may have on your computer,</span>
+<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a>but the easiest way to identify the <span class="in">`venv`</span>.</span>
+<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a>If you want to use Jupyter Notebooks within VSCode,</span>
+<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a>you will be prompted to also install <span class="in">`IPykernel`</span> into the <span class="in">`venv`</span>,</span>
+<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a>along with the components to open and use jupyter notebooks.</span>
+<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ipykernel jupyterlab</span>
+<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a><span class="fu"># Jupyter Lab</span></span>
+<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>When working in jupyter lab, it first needs to be installed in</span>
+<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a>the <span class="in">`venv`</span> virtual environment.</span>
+<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyterlab</span>
+<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a>From there you can launch jupyter lab in the terminal</span>
+<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
+<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> jupyter lab</span>
+<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>The "Python 3" kernel that is listed,</span>
+<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a>will be the Python that is being used in the <span class="in">`venv`</span> that launched jupyter lab.</span>
+<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a>You do not need to manually register every single <span class="in">`venv`</span> on your computer for jupyter lab.</span>
+<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a>Launching jupyter lab in the corresponding activated <span class="in">`venv`</span> will give you</span>
+<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a>the correct Python and virtual environment packages.</span>
+<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--</span></span>
+<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a><span class="al">TODO</span><span class="co">: put in pycharm notes</span></span>
+<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a><span class="co"># PyCharm</span></span>
+<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a><span class="co">--&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

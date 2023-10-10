@@ -4,7 +4,40 @@
     "href": "030-ide.html",
     "title": "Integrated Development Environment Setup",
     "section": "",
-    "text": "1 RStudio\n\n\n2 VSCode\n\n\n3 PyCharm",
+    "text": "The concept of a “project” is important when trying to point your integrated development environment (IDE) to your virtual environment. Some programs rely on special files to designate a project, others will treat an opened folder as a project. It’s important to know how to confirm what environment is being used in the IDE.",
+    "crumbs": [
+      "Use Python",
+      "IDE Setup"
+    ]
+  },
+  {
+    "objectID": "030-ide.html#project-set-up",
+    "href": "030-ide.html#project-set-up",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.1 Project Set Up",
+    "text": "1.1 Project Set Up\nIf you are starting from a new Python project, the best way is to first create an RStudio project from the IDE. Once the RStudio project is created, you follow the steps in creating a venv virtual environment, such that the venv folder is also in the RStudio project.\nNext, within the RStudio Global Options &gt; Python tab, make sure the checkbox for “Automatically activate project-local Python environment” is checked.\n\n\n\n\n\n\n\nThis will make sure the venv in the current RStudio project gets picked up first when a Python interpreter is needed.",
+    "crumbs": [
+      "Use Python",
+      "IDE Setup"
+    ]
+  },
+  {
+    "objectID": "030-ide.html#package-set-up",
+    "href": "030-ide.html#package-set-up",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.2 Package Set up",
+    "text": "1.2 Package Set up\n\nUse this requirements.txt file\ntree the example directory\ninstall {reticulate} the R package: install.packages('reticulate')\n\nWhen you run Python code, you will see a call in the console for reticulate::repl_python(). You will see the call from R, and then the Python prompts.\nThe R code will be displayed with a &gt; and the python code will have a &gt;&gt;&gt;\n&gt; reticulate::repl_python()\nPython 3.10.3 (/Users/danielchen/git/rstudio/academyContent/.venv/bin/python) # TODO: Fix this output\nReticulate 1.30 REPL -- A Python interpreter in R.\nEnter 'exit' or 'quit' to exit the REPL and return to R.\n&gt;&gt;&gt; 3 + 3\n6",
+    "crumbs": [
+      "Use Python",
+      "IDE Setup"
+    ]
+  },
+  {
+    "objectID": "030-ide.html#reticulate",
+    "href": "030-ide.html#reticulate",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.3 Reticulate",
+    "text": "1.3 Reticulate\nWhen using Python within RStudio, you can always confirm what Python is being used with the reticulate::py_config() function\n&gt; reticulate::py_config()\npython:         /Users/danielchen/git/rstudio/academyContent/.venv/bin/python\nlibpython:      /Users/danielchen/.pyenv/versions/3.10.3/lib/libpython3.10.dylib\npythonhome:     /Users/danielchen/git/rstudio/academyContent/.venv:/Users/danielchen/git/rstudio/academyContent/.venv\nversion:        3.10.3 (main, Oct  5 2022, 14:06:56) [Clang 14.0.0 (clang-1400.0.29.102)]\nnumpy:          /Users/danielchen/git/rstudio/academyContent/.venv/lib/python3.10/site-packages/numpy\nnumpy_version:  1.24.1\n\nNOTE: Python version was forced by use_python function\nIf you have the wrong python loaded, you need to restart your R session first before trying to load another Python intepreter.\n\n\n\n\n\n\nImportant\n\n\n\nIf you need to manually specify a python interpreter, you can use the reticulate::use_python() or reticulate::use_virtualenv() functions. If you use the reticulate::use_virtualenv() function to load the venv virtual environment, and the venv is named venv in the current project directory, make sure you call the function with a trailing /, venv/ so the reticulate::use_virtualenv() function knows to look for a directory named venv/ and not a virtual environment named venv in the ~/.virtualenvs directory. You may get an error message about not a python virtualenv otherwise,\nDirectory ~/.virtualenvs/venv is not a Python virtualenv",
     "crumbs": [
       "Use Python",
       "IDE Setup"
@@ -95,20 +128,42 @@
   {
     "objectID": "python_versions.html",
     "href": "python_versions.html",
-    "title": "",
+    "title": "Python Versions",
     "section": "",
-    "text": "Use PythonPython Versions",
+    "text": "pyenv provides the ability to install multiple different versions of Python on our computer. It also comes with the ability to switch between them.\nHere we’ll show you how you can set up and switch between multiple Python versions.",
     "crumbs": [
       "Use Python",
       "Python Versions"
     ]
   },
   {
-    "objectID": "python_versions.html#python-versions",
-    "href": "python_versions.html#python-versions",
-    "title": "",
-    "section": "1 Python Versions",
-    "text": "1 Python Versions\n\nusing pyenv versions to check which python version you are on.\nshow pyenv which python too.\nInstalling multiple python versions.\nImportant to keep each python version “clean”.\npyenv global, pyenv local, pyenv shell as ways to set default or override current python version.\nInstalling packages should always be in a separate virtual environment (next section)",
+    "objectID": "python_versions.html#find-your-python",
+    "href": "python_versions.html#find-your-python",
+    "title": "Python Versions",
+    "section": "1 Find your Python",
+    "text": "1 Find your Python\nA quick way to get a sense of what Python you have installed and the version you are using is running the pyenv versions command:\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nIn this example, there are multiple versions of python installed, and the * is on the 3.11.5 version of python. The * designates the Python that is used when Python is called.\n\n\n\n\n\n\nNote\n\n\n\nYou can also use pyenv version (not plural) to only list the currently selected python version.\n% pyenv version\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n\n\nSince we are using pyenv that uses a concept of “shims” to pick the verison of Python for us, the typical way we would find the exact path to a binary using which will only point us to the shim.\n% which python\n/Users/danielchen/.pyenv/shims/python\nInstead we need to use the which function directly within pyenv to help resolve the actual Python that pyenv is using.\n % pyenv which python\n/Users/danielchen/.pyenv/versions/3.11.5/bin/python",
+    "crumbs": [
+      "Use Python",
+      "Python Versions"
+    ]
+  },
+  {
+    "objectID": "python_versions.html#set-defaults",
+    "href": "python_versions.html#set-defaults",
+    "title": "Python Versions",
+    "section": "2 Set defaults",
+    "text": "2 Set defaults\nAny time we have multiple versions to manage, there is an option to set a default to make things less tedious and manual. pyenv has a few settings on helping us set a default Python\n\n2.1 System\nAs we’ve mentioned in the beginning of the guide, do not use your system python for your Python projects. In general, you want to avoid having system python being used when you, the user, are trying to run python code. Typically, this system version of python is used for your computer’s operating system.\n\n\n\n\n\n\nWarning\n\n\n\nIn general you should not be setting pyenv to be using the system Python.\n\n\n\n\n2.2 Shell\nWe can manually override the Python pyenv is using anywhere in our terminal by setting the shell default. Under the hood, this modifies the pyenv $PYENV_VERSION environment variable that gets used to pick the Python pyenv uses.\npyenv shell &lt;PYTHON VERSION&gt; is the general command on manually switching to a different python version. You can find the &lt;PYTHON VERSION&gt; py running pyenv versions to list all the Python versions installed on your computer.\nBefore changing the python version\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.11.5/envs/ds\n  3.12.0\nChanging the python version with pyenv shell\n% pyenv shell 3.12.0\nConfirming the Python version change.\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n  3.11.5\n* 3.12.0 (set by PYENV_VERSION environment variable)\n\n\n2.3 Local\nDifferent python projects may run on different versions of Python. Instead of constantly remembering which Python version a project (i.e., folder) needs, pyenv has a local setting that creates a .python-version file that contains the version of python that pyenv will automatically switch to.\nLet’s create an example folder to see how pyenv local works.\nmkdir ~/Desktop/pyenv-local-example\ncd ~/Desktop\nWe have our initial Python:\ndanielchen@heartsbane ~ % pyenv version\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\nLet’s move into our newly created example folder.\ncd ~/Desktop/pyenv-local-example\nWe are currently in an empty folder and the Python version is still the same.\n% ls -al\ntotal 0\ndrwxr-xr-x   2 danielchen  staff    64 Oct 10 12:02 .\ndrwx------@ 69 danielchen  staff  2208 Oct 10 11:45 ..\n% pyenv version\n3.11.5 (set by /Users/danielchen/.pyenv/version)\nLet’s pretend this is a python project that needs to run on Python 3.12.0. We already have this version installed, and do not want to remember to pyenv shell into this version every time we cd into this folder.\nConfirm that we have the version of python we want installed.\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nSet a default local (i.e., folder) python version.\npyenv local 3.12.0\nWe now see that our python version has changed to 3.12.0.\n% pyenv version\n3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)\nIt the version has changed because it is reading the python version information from the .python-version file.\n% ls -a\n.       ..      .python-version\nThis is a special file that pyenv uses to determine the local python version. The contents of this file is just the version of python you have installed on your computer.\n% cat .python-version \n3.12.0\nNow, every time you leave this folder, pyenv will go back to its original default value.\npyenv-local-example % cd ..\nDesktop % pyenv version\n3.11.5 (set by /Users/danielchen/.pyenv/version)\nBut when you cd back into the folder, it will change into the python version you have specified in the local folder.\nDesktop % cd pyenv-local-example \npyenv-local-example % pyenv version\n3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)\nYou will combine this mechanism along with creating virtual environments to make sure your project always uses the same python version and packages from the virtual environment.\n\n\n2.4 Global\nThe final default you can set for pyenv is the global setting. If shell or local values are not set, then pyenv will default to the version specified by global.\n\n\n\n\n\n\nImportant\n\n\n\nDo not set your global version to system. You run the risk of messing up the Python your computer needs to manage the operating system.\n\n\n\n\n\n\n\n\nTip\n\n\n\nPick one of the pyenv python versions you’ve installed and set that as the global version. If you make sure to not install packages into this environment and follow the Iron Law of Python Management you can always uninstall and reinstall the python version again with pyenv install and reset the pyenv global version.",
+    "crumbs": [
+      "Use Python",
+      "Python Versions"
+    ]
+  },
+  {
+    "objectID": "python_versions.html#keep-things-empty-and-clean",
+    "href": "python_versions.html#keep-things-empty-and-clean",
+    "title": "Python Versions",
+    "section": "3 Keep Things Empty and Clean",
+    "text": "3 Keep Things Empty and Clean\nAs a final reminder, any version of python you have installed with pyenv install, remember to not install packages into that particular python version and its environment.\nYou can see all the python packages you have installed in the current environment by using pip freeze.\nUnless you are working in a virtual environment, you want to make sure pip freeze always returns nothing.\n% pip freeze\n% \nYou can either run pip uninstall &lt;PACKAGE NAME&gt; to uninstall a package you may have accidently installed, or you can run pyenv uninstall &lt;PYTHON VERSION&gt; to uninstall the python version and re-install it with pyenv install &lt;PYTHON VERSION&gt;.",
     "crumbs": [
       "Use Python",
       "Python Versions"
