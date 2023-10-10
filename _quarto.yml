@@ -17,43 +17,43 @@ website:
 
       - section: "The Whole Game"
         contents:
-          - href: 039-the_whole_game.qmd
+          - href: 110-the_whole_game.qmd
             text: Example Data Science Project
 
       - section: "Install Python"
         contents:
-          - href: 010-python_install.qmd
+          - href: 210-python_install.qmd
             text: Pyenv
 
       - section: "Use Python"
         contents:
-          - href: python_versions.qmd
+          - href: 310-python_versions.qmd
             text: Python Versions
-          - href: 020-python_virtual_environments.qmd
+          - href: 320-python_virtual_environments.qmd
             text: Virtual Environments
-          - href: 030-ide.qmd
+          - href: 330-ide.qmd
             text: IDE Setup
 
-      - section: "Reference"
-        contents:
-          - href: 040-pyenv_useage.qmd
-            text: pyenv
+      # - section: "Reference"
+      #   contents:
+      #     - href: 410-pyenv_useage.qmd
+      #       text: pyenv
 
-      - section: "Extras"
-        contents:
-          - href: 050-pyenv_virtualenv.qmd
-            text: "pyenv-virtualenv"
-          - href: 060-pipenv.qmd
-            text: "pipenv"
-          - href: 070-pipx.qmd
-            text: "pipx"
+      # - section: "Extras"
+      #   contents:
+      #     - href: 510-pyenv_virtualenv.qmd
+      #       text: "pyenv-virtualenv"
+      #     - href: 520-pipenv.qmd
+      #       text: "pipenv"
+      #     - href: 530-pipx.qmd
+      #       text: "pipx"
 
-      - section: "Appendix"
-        contents:
-          - href: 090-additional_resources.qmd
-            text: Additional Resources
-          - href: 090-concept_maps.qmd
-            text: Concept Maps
+      # - section: "Appendix"
+      #   contents:
+      #     - href: 610-additional_resources.qmd
+      #       text: Additional Resources
+      #     - href: 690-concept_maps.qmd
+      #       text: Concept Maps
 
 format:
   html:
