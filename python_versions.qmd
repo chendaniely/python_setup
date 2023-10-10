@@ -1,11 +1,285 @@
-## Python Versions
+---
+title: "Python Versions"
+---
 
-- using `pyenv versions` to check which python version you are on.
-- show `pyenv which python` too.
+`pyenv` provides the ability to install multiple different versions of Python
+on our computer.
+It also comes with the ability to switch between them.
 
-- Installing multiple python versions.
-- Important to keep each python version "clean".
+::: {.callout-important}
+It's important to make sure you do not install any packages in to the base
+Python environment,
+and follow the
+[Iron Law of Python Management](https://solutions.posit.co/write-code/minimum-viable-python/installing-packages/#the-iron-law-of-python-management)
+and always install packages into separate python virtual environments.
+:::
 
-- `pyenv global`, `pyenv local`, `pyenv shell` as ways to set default or override current python version.
+Here we'll show you how you can set up and switch between multiple Python versions.
 
-- Installing packages should always be in a separate virtual environment (next section)
+## Find your Python
+
+A quick way to get a sense of what Python you have installed and the version you are using
+is running the `pyenv versions` command:
+
+```sh
+% pyenv versions
+  system
+  3.9.11
+  3.9.18
+  3.10.3
+  3.10.4
+  3.11.0rc1
+* 3.11.5 (set by /Users/danielchen/.pyenv/version)
+  3.12.0
+```
+
+In this example,
+there are multiple versions of python installed,
+and the `*` is on the `3.11.5` version of python.
+The `*` designates the Python that is used when Python is called.
+
+::: {.callout-note}
+You can also use `pyenv version` (not plural) to only list the currently selected python version.
+
+```sh
+% pyenv version
+* 3.11.5 (set by /Users/danielchen/.pyenv/version)
+```
+:::
+
+Since we are using `pyenv` that uses a concept of "shims"
+to pick the verison of Python for us,
+the typical way we would find the exact path to a binary using `which`
+will only point us to the shim.
+
+```sh
+% which python
+/Users/danielchen/.pyenv/shims/python
+```
+
+Instead we need to use the `which` function directly within `pyenv` to help
+resolve the actual Python that `pyenv` is using.
+
+```sh
+ % pyenv which python
+/Users/danielchen/.pyenv/versions/3.11.5/bin/python
+```
+
+## Set defaults
+
+Any time we have multiple versions to manage,
+there is an option to set a default to make things less tedious and manual.
+`pyenv` has a few settings on helping us set a default Python
+
+### System
+
+As we've mentioned in the beginning of the guide,
+_do not_ use your system python for your Python projects.
+In general,
+you want to avoid having `system` python being used
+when you, the user, are trying to run python code.
+Typically, this `system` version of python is used for your
+computer's operating system.
+
+::: {.callout-warning}
+In general you should not be setting `pyenv` to be using the `system` Python.
+:::
+
+### Shell
+
+We can manually override the Python `pyenv` is using anywhere
+in our terminal by setting the `shell` default.
+Under the hood, this modifies the `pyenv` `$PYENV_VERSION` environment variable
+that gets used to pick the Python `pyenv` uses.
+
+`pyenv shell <PYTHON VERSION>` is the general command on manually switching
+to a different python version.
+You can find the `<PYTHON VERSION>` py running `pyenv versions` to list all the
+Python versions installed on your computer.
+
+Before changing the python version
+
+```sh
+% pyenv versions
+  system
+  3.9.11
+  3.9.18
+  3.10.3
+  3.10.4
+  3.11.0rc1
+* 3.11.5 (set by /Users/danielchen/.pyenv/version)
+  3.11.5/envs/ds
+  3.12.0
+```
+
+Changing the python version with `pyenv shell`
+
+```sh
+% pyenv shell 3.12.0
+```
+
+Confirming the Python version change.
+
+```sh
+% pyenv versions
+  system
+  3.9.11
+  3.9.18
+  3.10.3
+  3.10.4
+  3.11.0rc1
+  3.11.5
+* 3.12.0 (set by PYENV_VERSION environment variable)
+```
+
+### Local
+
+Different python projects may run on different versions of Python.
+Instead of constantly remembering which Python version
+a project (i.e., folder) needs,
+`pyenv` has a `local` setting that creates a `.python-version` file
+that contains the version of python that `pyenv` will automatically switch to.
+
+Let's create an example folder to see how `pyenv local` works.
+
+```sh
+mkdir ~/Desktop/pyenv-local-example
+cd ~/Desktop
+```
+
+We have our initial Python:
+
+```sh
+danielchen@heartsbane ~ % pyenv version
+* 3.11.5 (set by /Users/danielchen/.pyenv/version)
+```
+
+Let's move into our newly created example folder.
+
+```sh
+cd ~/Desktop/pyenv-local-example
+```
+
+We are currently in an empty folder and the Python version is still the same.
+
+```sh
+% ls -al
+total 0
+drwxr-xr-x   2 danielchen  staff    64 Oct 10 12:02 .
+drwx------@ 69 danielchen  staff  2208 Oct 10 11:45 ..
+```
+
+```sh
+% pyenv version
+3.11.5 (set by /Users/danielchen/.pyenv/version)
+```
+
+Let's pretend this is a python project that needs to run on Python `3.12.0`.
+We already have this version installed,
+and do not want to remember to `pyenv shell` into this version every time we `cd` into this folder.
+
+Confirm that we have the version of python we want installed.
+
+```sh
+% pyenv versions
+  system
+  3.9.11
+  3.9.18
+  3.10.3
+  3.10.4
+  3.11.0rc1
+* 3.11.5 (set by /Users/danielchen/.pyenv/version)
+  3.12.0
+```
+
+Set a default local (i.e., folder) python version.
+
+```sh
+pyenv local 3.12.0
+```
+
+We now see that our python version has changed to `3.12.0`.
+
+```sh
+% pyenv version
+3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)
+```
+
+It the version has changed because it is reading the python version information from
+the `.python-version` file.
+
+```sh
+% ls -a
+.		..		.python-version
+```
+
+This is a special file that `pyenv` uses to determine the local python version.
+The contents of this file is just the version of python you have installed on your computer.
+
+```sh
+% cat .python-version 
+3.12.0
+```
+
+Now, every time you leave this folder,
+`pyenv` will go back to its original default value.
+
+```sh
+pyenv-local-example % cd ..
+Desktop % pyenv version
+3.11.5 (set by /Users/danielchen/.pyenv/version)
+```
+
+But when you `cd` back into the folder,
+it will change into the python version you have specified in the local folder.
+
+```sh
+Desktop % cd pyenv-local-example 
+pyenv-local-example % pyenv version
+3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)
+```
+
+You will combine this mechanism along with creating virtual environments
+to make sure your project always uses the same python version
+and packages from the virtual environment.
+
+### Global
+
+The final default you can set for `pyenv` is the `global` setting.
+If `shell` or `local` values are not set,
+then `pyenv` will default to the version specified by `global`.
+
+::: {.callout-important}
+Do not set your `global` version to `system`.
+You run the risk of messing up the Python your computer needs to manage the operating system.
+:::
+
+::: {.callout-tip}
+Pick one of the `pyenv` python versions you've installed and set that as the `global` version.
+If you make sure to not install packages into this environment and
+follow the
+[Iron Law of Python Management](https://solutions.posit.co/write-code/minimum-viable-python/installing-packages/#the-iron-law-of-python-management)
+you can always uninstall and reinstall the python version again with `pyenv install`
+and reset the `pyenv global` version.
+:::
+
+## Keep Things Empty and Clean
+
+As a final reminder,
+any version of python you have installed with `pyenv install`,
+remember to not install packages into that particular python version and its environment.
+
+You can see all the python packages you have installed in the current environment
+by using `pip freeze`.
+
+Unless you are working in a virtual environment,
+you want to make sure `pip freeze` always returns nothing.
+
+```sh
+% pip freeze
+% 
+```
+
+You can either run `pip uninstall <PACKAGE NAME>` to uninstall a package you may have accidently installed,
+or you can run `pyenv uninstall <PYTHON VERSION>` to uninstall the python version
+and re-install it with `pyenv install <PYTHON VERSION>`.

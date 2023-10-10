@@ -24,7 +24,6 @@ website:
         contents:
           - href: 010-python_install.qmd
             text: Pyenv
-          - text: Conda
 
       - section: "Use Python"
         contents:
