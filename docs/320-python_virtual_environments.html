@@ -344,7 +344,7 @@ Note
 <li>Make sure the original python environment does not have anything installed in it</li>
 </ol>
 <p>The <code>venv</code> python module will install <code>pip</code> for us by default. You can also see from the <code>tree</code> diagram below, how all the different ways we can call <code>python</code> are linked together.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 . </span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 .</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> venv</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> bin</span>
@@ -394,7 +394,7 @@ Note
 <p>Before we do that, let’s prove that our environment is empty, and <code>pandas</code> is not installed.</p>
 <p>We can see that <code>pip freeze</code> returns nothing. Meaning nothing is currently installed in this environment.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> pip freeze</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If we load up the <code>python</code> interpreter, we also cannot import the <code>pandas</code> library.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> python</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.12.0 <span class="er">(</span><span class="ex">main,</span> Oct  3 2023, 15:47:53<span class="kw">)</span> <span class="ex">[Clang</span> 15.0.0 <span class="er">(</span><span class="ex">clang-1500.0.40.1</span><span class="kw">)</span><span class="ex">]</span> on darwin</span>
@@ -406,7 +406,7 @@ Note
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">ModuleNotFoundError:</span> No module named <span class="st">'pandas'</span></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="install-packages-into-environment" class="level2" data-number="5">
@@ -448,7 +448,7 @@ Note
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.12.0 <span class="er">(</span><span class="ex">main,</span> Oct  3 2023, 15:47:53<span class="kw">)</span> <span class="ex">[Clang</span> 15.0.0 <span class="er">(</span><span class="ex">clang-1500.0.40.1</span><span class="kw">)</span><span class="ex">]</span> on darwin</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> import <span class="ex">pandas</span> as pd</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="install-packages-as-you-need" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="install-packages-as-you-need"><span class="header-section-number">5.1</span> Install Packages as You Need</h3>
 <p>As long as you are in the correct <code>venv</code>, you can <code>pip install</code> any package you need from the <a href="https://pypi.org/">Python Package Index (PyPI)</a>.</p>
@@ -469,7 +469,7 @@ Note
 <p>In the <code>venv</code>:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Deactivated:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> %</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And we’re back to our original package environment</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> python</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.12.0 <span class="er">(</span><span class="ex">main,</span> Oct  3 2023, 15:47:53<span class="kw">)</span> <span class="ex">[Clang</span> 15.0.0 <span class="er">(</span><span class="ex">clang-1500.0.40.1</span><span class="kw">)</span><span class="ex">]</span> on darwin</span>
@@ -1079,7 +1079,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a>how all the different ways we can call <span class="in">`python`</span> are linked together.</span>
 <span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 . </span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 .</span>
 <span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
 <span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> venv</span>
 <span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> bin</span>
@@ -1152,7 +1152,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-201"><a href="#cb25-201" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-202"><a href="#cb25-202" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
 <span id="cb25-203"><a href="#cb25-203" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> pip freeze</span>
-<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> </span>
+<span id="cb25-204"><a href="#cb25-204" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span></span>
 <span id="cb25-205"><a href="#cb25-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-206"><a href="#cb25-206" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-207"><a href="#cb25-207" aria-hidden="true" tabindex="-1"></a>If we load up the <span class="in">`python`</span> interpreter,</span>
@@ -1169,7 +1169,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-218"><a href="#cb25-218" aria-hidden="true" tabindex="-1"></a><span class="ex">ModuleNotFoundError:</span> No module named <span class="st">'pandas'</span></span>
 <span id="cb25-219"><a href="#cb25-219" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> exit<span class="kw">()</span></span>
 <span id="cb25-220"><a href="#cb25-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-221"><a href="#cb25-221" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span> </span>
+<span id="cb25-221"><a href="#cb25-221" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">%</span></span>
 <span id="cb25-222"><a href="#cb25-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-223"><a href="#cb25-223" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-224"><a href="#cb25-224" aria-hidden="true" tabindex="-1"></a><span class="fu">## Install Packages into Environment</span></span>
@@ -1225,7 +1225,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-274"><a href="#cb25-274" aria-hidden="true" tabindex="-1"></a><span class="ex">Python</span> 3.12.0 <span class="er">(</span><span class="ex">main,</span> Oct  3 2023, 15:47:53<span class="kw">)</span> <span class="ex">[Clang</span> 15.0.0 <span class="er">(</span><span class="ex">clang-1500.0.40.1</span><span class="kw">)</span><span class="ex">]</span> on darwin</span>
 <span id="cb25-275"><a href="#cb25-275" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="st">"help"</span>, <span class="st">"copyright"</span>, <span class="st">"credits"</span> or <span class="st">"license"</span> for more information.</span>
 <span id="cb25-276"><a href="#cb25-276" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> import <span class="ex">pandas</span> as pd</span>
-<span id="cb25-277"><a href="#cb25-277" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> </span>
+<span id="cb25-277"><a href="#cb25-277" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span></span>
 <span id="cb25-278"><a href="#cb25-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-279"><a href="#cb25-279" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-280"><a href="#cb25-280" aria-hidden="true" tabindex="-1"></a><span class="fu">### Install Packages as You Need</span></span>
@@ -1275,7 +1275,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-324"><a href="#cb25-324" aria-hidden="true" tabindex="-1"></a>Deactivated:</span>
 <span id="cb25-325"><a href="#cb25-325" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-326"><a href="#cb25-326" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb25-327"><a href="#cb25-327" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % </span>
+<span id="cb25-327"><a href="#cb25-327" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> %</span>
 <span id="cb25-328"><a href="#cb25-328" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-329"><a href="#cb25-329" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-330"><a href="#cb25-330" aria-hidden="true" tabindex="-1"></a>And we're back to our original package environment</span>

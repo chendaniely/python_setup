@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#anaconda" id="toc-anaconda" class="nav-link" data-scroll-target="#anaconda"><span class="header-section-number">1.1</span> Anaconda</a></li>
   <li><a href="#conda-forge" id="toc-conda-forge" class="nav-link" data-scroll-target="#conda-forge"><span class="header-section-number">1.2</span> conda-forge</a></li>
   </ul></li>
-  <li><a href="#virtual-enviornments" id="toc-virtual-enviornments" class="nav-link" data-scroll-target="#virtual-enviornments"><span class="header-section-number">2</span> Virtual Enviornments</a>
+  <li><a href="#virtual-environments" id="toc-virtual-environments" class="nav-link" data-scroll-target="#virtual-environments"><span class="header-section-number">2</span> Virtual Environments</a>
   <ul class="collapse">
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python"><span class="header-section-number">2.1</span> python</a></li>
   <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda"><span class="header-section-number">2.2</span> conda</a></li>
@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     A[Anaconda Inc] -- makes --&gt; B[anaconda distribution]
     A -- makes --&gt; E[miniconda3]
 
-    I["conda-forge"] -- has --&gt; P["classic (slowler) solver"]
+    I["conda-forge"] -- has --&gt; P["classic (slower) solver"]
     I["conda-forge"] -- has --&gt; Q["mamba (faster) solver"]
 
     P -- used by --&gt; J[miniforge3]
@@ -331,7 +331,7 @@ flowchart
 <div>
 <div>
 <pre class="mermaid mermaid-js">flowchart
-    I["conda-forge"] -- has --&gt; P["classic (slowler) solver"]
+    I["conda-forge"] -- has --&gt; P["classic (slower) solver"]
     I["conda-forge"] -- has --&gt; Q["mamba (faster) solver"]
 
     P -- used by --&gt; J[miniforge3]
@@ -344,7 +344,7 @@ flowchart
 
     Q -- has --&gt; R["`libmamba`"]
     D1 -- can use --&gt; R
-    
+
     I -- hosts --&gt; O["conda-forge package repository (channel)"]
 
     D1 -- install via --&gt; O
@@ -355,15 +355,15 @@ flowchart
 </div>
 </section>
 </section>
-<section id="virtual-enviornments" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Virtual Enviornments</h1>
+<section id="virtual-environments" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Virtual Environments</h1>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <div>
 <pre class="mermaid mermaid-js">
 flowchart
-    A["Virtual Enviornments"] -- created by --&gt; B["`python`"]
+    A["Virtual Environments"] -- created by --&gt; B["`python`"]
     A -- created by --&gt; C["`conda`"]
     A -- created by --&gt; J["`pipenv`"]
 
@@ -373,7 +373,7 @@ flowchart
     B -- use env --&gt; D["source activate"]
     C -- use env --&gt; E["`conda activate`"]
 
-    D -- switces --&gt; A
+    D -- switches --&gt; A
     E -- switches --&gt; A
 
     B1 -- lives in --&gt; F["project directory"]
@@ -409,7 +409,7 @@ flowchart
 </section>
 <section id="appendix" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Appendix</h1>
-<p>Acronums:</p>
+<p>Acronyms:</p>
 <ul>
 <li><code>PyPI</code>: Python Package Index</li>
 </ul>
@@ -876,7 +876,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="in">    A[Anaconda Inc] -- makes --&gt; B[anaconda distribution]</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="in">    A -- makes --&gt; E[miniconda3]</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">    I["conda-forge"] -- has --&gt; P["classic (slowler) solver"]</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">    I["conda-forge"] -- has --&gt; P["classic (slower) solver"]</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="in">    I["conda-forge"] -- has --&gt; Q["mamba (faster) solver"]</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">    P -- used by --&gt; J[miniforge3]</span></span>
@@ -923,7 +923,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="in">%%| echo: false</span></span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="in">flowchart</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="in">    I["conda-forge"] -- has --&gt; P["classic (slowler) solver"]</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="in">    I["conda-forge"] -- has --&gt; P["classic (slower) solver"]</span></span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="in">    I["conda-forge"] -- has --&gt; Q["mamba (faster) solver"]</span></span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="in">    P -- used by --&gt; J[miniforge3]</span></span>
@@ -936,7 +936,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="in">    Q -- has --&gt; R["`libmamba`"]</span></span>
 <span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="in">    D1 -- can use --&gt; R</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="in">    I -- hosts --&gt; O["conda-forge package repository (channel)"]</span></span>
 <span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="in">    D1 -- install via --&gt; O</span></span>
@@ -944,14 +944,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="fu"># Virtual Enviornments</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="fu"># Virtual Environments</span></span>
 <span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
 <span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="in">%%| echo: false</span></span>
 <span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="in">flowchart</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="in">    A["Virtual Enviornments"] -- created by --&gt; B["`python`"]</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="in">    A["Virtual Environments"] -- created by --&gt; B["`python`"]</span></span>
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="in">    A -- created by --&gt; C["`conda`"]</span></span>
 <span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="in">    A -- created by --&gt; J["`pipenv`"]</span></span>
 <span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
@@ -961,7 +961,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="in">    B -- use env --&gt; D["source activate"]</span></span>
 <span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="in">    C -- use env --&gt; E["`conda activate`"]</span></span>
 <span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="in">    D -- switces --&gt; A</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="in">    D -- switches --&gt; A</span></span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="in">    E -- switches --&gt; A</span></span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="in">    B1 -- lives in --&gt; F["project directory"]</span></span>
@@ -989,7 +989,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="fu"># Appendix</span></span>
 <span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>Acronums:</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>Acronyms:</span>
 <span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`PyPI`</span>: Python Package Index</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

@@ -238,11 +238,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Using the Windows PowerShell</li>
 <li>Manual installation from <code>zip</code></li>
-<li>Using a windows package manager (e.g., chocolately, scoop)</li>
+<li>Using a windows package manager (e.g., chocolatey, scoop)</li>
 </ol>
 <section id="method-1-windows-powershell" class="level4" data-number="0.1.1">
 <h4 data-number="0.1.1" class="anchored" data-anchor-id="method-1-windows-powershell"><span class="header-section-number">0.1.1</span> Method 1: Windows Powershell</h4>
-<p>You can run the folling command in the PowerShell terminal:</p>
+<p>You can run the following command in the PowerShell terminal:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>UseBasicParsing <span class="op">-</span>Uri <span class="st">"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1"</span> <span class="op">-</span>OutFile <span class="st">"./install-pyenv-win.ps1"</span><span class="op">;</span> <span class="op">&amp;</span><span class="st">"./install-pyenv-win.ps1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you see an <code>UnauthorizedAccess</code> error you need to:</p>
 <ol type="1">
@@ -275,15 +275,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Scoop: <a href="https://scoop.sh/">https://scoop.sh/</a></li>
 </ol>
 <p>At the time of writing, <code>pyenv-win</code> is not in the <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget"><code>winget</code></a> repositories</p>
-<p>Chocolately</p>
+<p>Chocolatey</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>choco install pyenv<span class="op">-</span>win</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Scoop</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>scoop bucket add main</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>scoop install main<span class="op">/</span>pyenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="post-installtion-setup" class="level4" data-number="0.1.4">
-<h4 data-number="0.1.4" class="anchored" data-anchor-id="post-installtion-setup"><span class="header-section-number">0.1.4</span> Post installtion setup</h4>
-<p>You need to add a few variables into your Enviornment Variables. You can do this by pressing the windows key and searching for the “Edit enviornment bariables for your account”. Or you can run the commands in PowerShell to add them.</p>
+<section id="post-installation-setup" class="level4" data-number="0.1.4">
+<h4 data-number="0.1.4" class="anchored" data-anchor-id="post-installation-setup"><span class="header-section-number">0.1.4</span> Post installation setup</h4>
+<p>You need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.</p>
 <p>In general you need to add 3 <code>pyenv</code> variables and append a directory to the <code>Path</code>. The <code>PYENV</code>, <code>PYENV_HOME</code>, and <code>PYENV_ROOT</code> user variables need to all point to your <code>pyenv-win</code> directory within your <code>.pyenv</code> folder in your home directory.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>System<span class="op">.</span><span class="fu">Environment</span><span class="op">]::</span>SetEnvironmentVariable<span class="op">(</span><span class="st">'PYENV'</span><span class="op">,</span><span class="va">$env</span><span class="op">:</span>USERPROFILE <span class="op">+</span> <span class="st">"\.pyenv\pyenv-win\"</span><span class="op">,</span><span class="st">"User"</span><span class="op">)</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>System<span class="op">.</span><span class="fu">Environment</span><span class="op">]::</span>SetEnvironmentVariable<span class="op">(</span><span class="st">'PYENV_ROOT'</span><span class="op">,</span><span class="va">$env</span><span class="op">:</span>USERPROFILE <span class="op">+</span> <span class="st">"\.pyenv\pyenv-win\"</span><span class="op">,</span><span class="st">"User"</span><span class="op">)</span></span>
@@ -762,11 +762,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Using the Windows PowerShell</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Manual installation from <span class="in">`zip`</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Using a windows package manager (e.g., chocolately, scoop)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Using a windows package manager (e.g., chocolatey, scoop)</span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Method 1: Windows Powershell</span></span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>You can run the folling command in the PowerShell terminal:</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>You can run the following command in the PowerShell terminal:</span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="in">```powershell</span></span>
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="in">Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &amp;"./install-pyenv-win.ps1"</span></span>
@@ -816,7 +816,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">`winget`</span><span class="co">](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)</span></span>
 <span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>repositories</span>
 <span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>Chocolately</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>Chocolatey</span>
 <span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="in">```powershell</span></span>
 <span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="in">choco install pyenv-win</span></span>
@@ -829,10 +829,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="in">scoop install main/pyenv</span></span>
 <span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Post installtion setup</span></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Post installation setup</span></span>
 <span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>You need to add a few variables into your Enviornment Variables.</span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>You can do this by pressing the windows key and searching for the "Edit enviornment bariables for your account".</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>You need to add a few variables into your Environment Variables.</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>You can do this by pressing the windows key and searching for the "Edit environment variables for your account".</span>
 <span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>Or you can run the commands in PowerShell to add them.</span>
 <span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>In general you need to add 3 <span class="in">`pyenv`</span> variables and append a directory to the <span class="in">`Path`</span>.</span>

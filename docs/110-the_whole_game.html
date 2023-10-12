@@ -342,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4" class="anchored" data-anchor-id="an-empty-slate"><span class="header-section-number">4</span> An empty slate</h2>
 <p>Currently, our python environment is the default base environment without any extra packages.</p>
 <p>If we try to run the script, it will fail because the <code>pandas</code> module is not installed.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py </span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">File</span> <span class="st">"/Users/danielchen/Desktop/my_python_project/01-create_data.py"</span>, line 1, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">import</span> pandas as pd</span>
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will use the built-in <code>venv</code> python module to create a <code>venv</code>. The <code>venv</code> will be saved into a folder called <code>venv</code> in the current directory.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python <span class="at">-m</span> venv venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here’s the folder structure after creating a <code>venv</code></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 . </span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 .</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> 01-create_data.py</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> venv</span>
@@ -461,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'scatter_plot.png'</span>)  <span class="co"># Save the figure as a PNG</span></span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Voilà!</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % python 03-viz_mpl.py </span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % python 03-viz_mpl.py</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % ls</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">01-create_data.py</span>   03-viz_mpl.py       sales_by_product.png    scatter_plot.png</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">02-viz_pandas.py</span>    product_group.csv   sales_data.csv      venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -469,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="save-requirements.txt" class="level2" data-number="11">
 <h2 data-number="11" class="anchored" data-anchor-id="save-requirements.txt"><span class="header-section-number">11</span> Save <code>requirements.txt</code></h2>
 <p>The <code>pip freeze</code> command will show you all the packages (and dependencies) you have installed in the current virtual environment.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % pip freeze </span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % pip freeze</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="va">contourpy</span><span class="op">=</span>=1.1.1</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="va">cycler</span><span class="op">=</span>=0.12.0</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="va">fonttools</span><span class="op">=</span>=4.43.0</span>
@@ -497,13 +497,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="12" class="anchored" data-anchor-id="deactivate-your-virtual-environment"><span class="header-section-number">12</span> Deactivate your virtual environment</h2>
 <p>When you want to leave your project environment you can run <code>deactivate</code> in the terminal.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will remove the <code>venv</code> name that was originall prepended to your terminal:</p>
+<p>This will remove the <code>venv</code> name that was original prepended to your terminal:</p>
 <p>In the <code>venv</code>:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Deactivated:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> %</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And we’re back to our original package environment</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py </span>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">File</span> <span class="st">"/Users/danielchen/Desktop/my_python_project/01-create_data.py"</span>, line 1, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">import</span> pandas as pd</span>
@@ -519,7 +519,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv venv</span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We can use <code>pip</code> to install the <code>requirements.txt</code> file once we’re in the new empty <code>venv</code>. Assuming we have the <code>requirments.txt</code> file in our current working directory:</p>
+<p>We can use <code>pip</code> to install the <code>requirements.txt</code> file once we’re in the new empty <code>venv</code>. Assuming we have the <code>requirements.txt</code> file in our current working directory:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="conclusion" class="level2" data-number="14">
@@ -1120,7 +1120,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-125"><a href="#cb35-125" aria-hidden="true" tabindex="-1"></a>it will fail because the <span class="in">`pandas`</span> module is not installed.</span>
 <span id="cb35-126"><a href="#cb35-126" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-127"><a href="#cb35-127" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb35-128"><a href="#cb35-128" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py </span>
+<span id="cb35-128"><a href="#cb35-128" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py</span>
 <span id="cb35-129"><a href="#cb35-129" aria-hidden="true" tabindex="-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
 <span id="cb35-130"><a href="#cb35-130" aria-hidden="true" tabindex="-1"></a>  <span class="ex">File</span> <span class="st">"/Users/danielchen/Desktop/my_python_project/01-create_data.py"</span>, line 1, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
 <span id="cb35-131"><a href="#cb35-131" aria-hidden="true" tabindex="-1"></a>    <span class="ex">import</span> pandas as pd</span>
@@ -1145,7 +1145,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-150"><a href="#cb35-150" aria-hidden="true" tabindex="-1"></a>Here's the folder structure after creating a <span class="in">`venv`</span></span>
 <span id="cb35-151"><a href="#cb35-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-152"><a href="#cb35-152" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb35-153"><a href="#cb35-153" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 . </span>
+<span id="cb35-153"><a href="#cb35-153" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % tree <span class="at">-L</span> 4 .</span>
 <span id="cb35-154"><a href="#cb35-154" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
 <span id="cb35-155"><a href="#cb35-155" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> 01-create_data.py</span>
 <span id="cb35-156"><a href="#cb35-156" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> venv</span>
@@ -1308,7 +1308,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-313"><a href="#cb35-313" aria-hidden="true" tabindex="-1"></a>Voilà!</span>
 <span id="cb35-314"><a href="#cb35-314" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-315"><a href="#cb35-315" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb35-316"><a href="#cb35-316" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % python 03-viz_mpl.py </span>
+<span id="cb35-316"><a href="#cb35-316" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % python 03-viz_mpl.py</span>
 <span id="cb35-317"><a href="#cb35-317" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % ls</span>
 <span id="cb35-318"><a href="#cb35-318" aria-hidden="true" tabindex="-1"></a><span class="ex">01-create_data.py</span>   03-viz_mpl.py       sales_by_product.png    scatter_plot.png</span>
 <span id="cb35-319"><a href="#cb35-319" aria-hidden="true" tabindex="-1"></a><span class="ex">02-viz_pandas.py</span>    product_group.csv   sales_data.csv      venv</span>
@@ -1320,7 +1320,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-325"><a href="#cb35-325" aria-hidden="true" tabindex="-1"></a>have installed in the current virtual environment.</span>
 <span id="cb35-326"><a href="#cb35-326" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-327"><a href="#cb35-327" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb35-328"><a href="#cb35-328" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % pip freeze </span>
+<span id="cb35-328"><a href="#cb35-328" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">my_python_project</span> % pip freeze</span>
 <span id="cb35-329"><a href="#cb35-329" aria-hidden="true" tabindex="-1"></a><span class="va">contourpy</span><span class="op">=</span>=1.1.1</span>
 <span id="cb35-330"><a href="#cb35-330" aria-hidden="true" tabindex="-1"></a><span class="va">cycler</span><span class="op">=</span>=0.12.0</span>
 <span id="cb35-331"><a href="#cb35-331" aria-hidden="true" tabindex="-1"></a><span class="va">fonttools</span><span class="op">=</span>=4.43.0</span>
@@ -1364,7 +1364,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-369"><a href="#cb35-369" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span>
 <span id="cb35-370"><a href="#cb35-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb35-371"><a href="#cb35-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-372"><a href="#cb35-372" aria-hidden="true" tabindex="-1"></a>This will remove the <span class="in">`venv`</span> name that was originall prepended to your terminal:</span>
+<span id="cb35-372"><a href="#cb35-372" aria-hidden="true" tabindex="-1"></a>This will remove the <span class="in">`venv`</span> name that was original prepended to your terminal:</span>
 <span id="cb35-373"><a href="#cb35-373" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-374"><a href="#cb35-374" aria-hidden="true" tabindex="-1"></a>In the <span class="in">`venv`</span>:</span>
 <span id="cb35-375"><a href="#cb35-375" aria-hidden="true" tabindex="-1"></a></span>
@@ -1375,13 +1375,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-380"><a href="#cb35-380" aria-hidden="true" tabindex="-1"></a>Deactivated:</span>
 <span id="cb35-381"><a href="#cb35-381" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-382"><a href="#cb35-382" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb35-383"><a href="#cb35-383" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % </span>
+<span id="cb35-383"><a href="#cb35-383" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> %</span>
 <span id="cb35-384"><a href="#cb35-384" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb35-385"><a href="#cb35-385" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-386"><a href="#cb35-386" aria-hidden="true" tabindex="-1"></a>And we're back to our original package environment</span>
 <span id="cb35-387"><a href="#cb35-387" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-388"><a href="#cb35-388" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb35-389"><a href="#cb35-389" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py </span>
+<span id="cb35-389"><a href="#cb35-389" aria-hidden="true" tabindex="-1"></a><span class="ex">my_python_project</span> % python 01-create_data.py</span>
 <span id="cb35-390"><a href="#cb35-390" aria-hidden="true" tabindex="-1"></a><span class="ex">Traceback</span> <span class="er">(</span><span class="ex">most</span> recent call last<span class="kw">)</span><span class="bu">:</span></span>
 <span id="cb35-391"><a href="#cb35-391" aria-hidden="true" tabindex="-1"></a>  <span class="ex">File</span> <span class="st">"/Users/danielchen/Desktop/my_python_project/01-create_data.py"</span>, line 1, in <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
 <span id="cb35-392"><a href="#cb35-392" aria-hidden="true" tabindex="-1"></a>    <span class="ex">import</span> pandas as pd</span>
@@ -1409,7 +1409,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-414"><a href="#cb35-414" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb35-415"><a href="#cb35-415" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-416"><a href="#cb35-416" aria-hidden="true" tabindex="-1"></a>We can use <span class="in">`pip`</span> to install the <span class="in">`requirements.txt`</span> file once we're in the new empty <span class="in">`venv`</span>.</span>
-<span id="cb35-417"><a href="#cb35-417" aria-hidden="true" tabindex="-1"></a>Assuming we have the <span class="in">`requirments.txt`</span> file in our current working directory:</span>
+<span id="cb35-417"><a href="#cb35-417" aria-hidden="true" tabindex="-1"></a>Assuming we have the <span class="in">`requirements.txt`</span> file in our current working directory:</span>
 <span id="cb35-418"><a href="#cb35-418" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-419"><a href="#cb35-419" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
 <span id="cb35-420"><a href="#cb35-420" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>

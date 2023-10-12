@@ -16,7 +16,7 @@ if you have it
 [installed](https://brew.sh/),
 otherwise, the shell script.
 
-#### Method 1 (Recommended): MacOS Homebrew 
+#### Method 1 (Recommended): MacOS Homebrew
 
 If
 [Homebrew is installed](https://brew.sh/),
@@ -37,7 +37,7 @@ has provided a one line command to download and run the `pyenv` installer script
 curl https://pyenv.run | bash
 ```
 
-#### Post installtion setup
+#### Post installation setup
 
 There are 2 main steps in the post installation setup:
 

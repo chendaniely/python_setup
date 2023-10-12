@@ -15,11 +15,11 @@ There are a few methods of installing `pyenv-win` on Windows.
 
 1. Using the Windows PowerShell
 2. Manual installation from `zip`
-3. Using a windows package manager (e.g., chocolately, scoop)
+3. Using a windows package manager (e.g., chocolatey, scoop)
 
 #### Method 1: Windows Powershell
 
-You can run the folling command in the PowerShell terminal:
+You can run the following command in the PowerShell terminal:
 
 ```powershell
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
@@ -69,7 +69,7 @@ At the time of writing, `pyenv-win` is not in the
 [`winget`](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
 repositories
 
-Chocolately
+Chocolatey
 
 ```powershell
 choco install pyenv-win
@@ -82,10 +82,10 @@ scoop bucket add main
 scoop install main/pyenv
 ```
 
-#### Post installtion setup
+#### Post installation setup
 
-You need to add a few variables into your Enviornment Variables.
-You can do this by pressing the windows key and searching for the "Edit enviornment bariables for your account".
+You need to add a few variables into your Environment Variables.
+You can do this by pressing the windows key and searching for the "Edit environment variables for your account".
 Or you can run the commands in PowerShell to add them.
 
 In general you need to add 3 `pyenv` variables and append a directory to the `Path`.

@@ -125,7 +125,7 @@ If we try to run the script,
 it will fail because the `pandas` module is not installed.
 
 ```sh
-my_python_project % python 01-create_data.py 
+my_python_project % python 01-create_data.py
 Traceback (most recent call last):
   File "/Users/danielchen/Desktop/my_python_project/01-create_data.py", line 1, in <module>
     import pandas as pd
@@ -150,7 +150,7 @@ my_python_project % python -m venv venv
 Here's the folder structure after creating a `venv`
 
 ```sh
-my_python_project % tree -L 4 . 
+my_python_project % tree -L 4 .
 .
 ├── 01-create_data.py
 └── venv
@@ -313,7 +313,7 @@ plt.show()
 Voilà!
 
 ```sh
-(venv) my_python_project % python 03-viz_mpl.py 
+(venv) my_python_project % python 03-viz_mpl.py
 (venv) my_python_project % ls
 01-create_data.py	03-viz_mpl.py		sales_by_product.png	scatter_plot.png
 02-viz_pandas.py	product_group.csv	sales_data.csv		venv
@@ -325,7 +325,7 @@ The `pip freeze` command will show you all the packages (and dependencies) you
 have installed in the current virtual environment.
 
 ```sh
-(venv) my_python_project % pip freeze 
+(venv) my_python_project % pip freeze
 contourpy==1.1.1
 cycler==0.12.0
 fonttools==4.43.0
@@ -369,7 +369,7 @@ terminal.
 deactivate
 ```
 
-This will remove the `venv` name that was originall prepended to your terminal:
+This will remove the `venv` name that was original prepended to your terminal:
 
 In the `venv`:
 
@@ -380,13 +380,13 @@ In the `venv`:
 Deactivated:
 
 ```sh
-my_python_project % 
+my_python_project %
 ```
 
 And we're back to our original package environment
 
 ```sh
-my_python_project % python 01-create_data.py 
+my_python_project % python 01-create_data.py
 Traceback (most recent call last):
   File "/Users/danielchen/Desktop/my_python_project/01-create_data.py", line 1, in <module>
     import pandas as pd
@@ -414,7 +414,7 @@ source venv/bin/activate
 ```
 
 We can use `pip` to install the `requirements.txt` file once we're in the new empty `venv`.
-Assuming we have the `requirments.txt` file in our current working directory:
+Assuming we have the `requirements.txt` file in our current working directory:
 
 ```sh
 pip install -r requirements.txt

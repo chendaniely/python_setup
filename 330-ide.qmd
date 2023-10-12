@@ -118,7 +118,7 @@ will have a command for:
 This will list all the Python's you may have on your computer,
 but the easiest way to identify the `venv`.
 If you want to use Jupyter Notebooks within VSCode,
-you will be prompted to also install `IPykernel` into the `venv`,
+you will be prompted to also install the IPython kernel for Jupyter (`ipykernel`) into the `venv`,
 along with the components to open and use jupyter notebooks.
 
 ```sh

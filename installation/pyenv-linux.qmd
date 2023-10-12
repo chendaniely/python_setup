@@ -28,7 +28,7 @@ pacman -Syu pyenv
 
 :::
 
-#### Post installtion setup
+#### Post installation setup
 
 ```sh
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc

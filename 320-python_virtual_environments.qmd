@@ -128,7 +128,7 @@ You can also see from the `tree` diagram below,
 how all the different ways we can call `python` are linked together.
 
 ```sh
-my_python_project % tree -L 4 . 
+my_python_project % tree -L 4 .
 .
 └── venv
     ├── bin
@@ -201,7 +201,7 @@ Meaning nothing is currently installed in this environment.
 
 ```sh
 (venv) % pip freeze
-(venv) % 
+(venv) %
 ```
 
 If we load up the `python` interpreter,
@@ -218,7 +218,7 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'pandas'
 >>> exit()
 
-(venv) % 
+(venv) %
 ```
 
 ## Install Packages into Environment
@@ -274,7 +274,7 @@ We can now `import` pandas without the `ModuleNotFoundError`.
 Python 3.12.0 (main, Oct  3 2023, 15:47:53) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import pandas as pd
->>> 
+>>>
 ```
 
 ### Install Packages as You Need
@@ -324,7 +324,7 @@ In the `venv`:
 Deactivated:
 
 ```sh
-my_python_project % 
+my_python_project %
 ```
 
 And we're back to our original package environment
