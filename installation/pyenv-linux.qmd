@@ -6,13 +6,13 @@ editor:
 ### Linux
 
 You can check to see if your current version of linux has `pyenv` in its package manager.
-Otherwise, you will install `pyenv` using the automatic installer script
+Otherwise, you will install `pyenv` using the automatic installer script.
 
 ::: {.panel-tabset}
 
 ## Ubuntu
 
-```sh
+``` sh
 sudo apt update
 curl https://pyenv.run | bash
 ```
@@ -22,7 +22,7 @@ curl https://pyenv.run | bash
 `pyenv` exists in the Arch Extra repository:
 [https://archlinux.org/packages/extra/any/pyenv/](https://archlinux.org/packages/extra/any/pyenv/)
 
-```sh
+``` sh
 pacman -Syu pyenv
 ```
 
@@ -30,7 +30,13 @@ pacman -Syu pyenv
 
 #### Post installation setup
 
-```sh
+Edit your `~/.bashrc` as follows when running Linux - and note the special instructions for WSL.
+
+::: {.panel-tabset}
+
+## Linux Native (Bash)
+
+``` sh
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
@@ -38,3 +44,20 @@ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 exec $SHELL
 pyenv --version
 ```
+
+## Ubuntu (WSL)
+
+But note that if you run Linux using **WSL** on Windows
+([why?](https://stackoverflow.com/a/76483889)),
+you must do the following instead:
+
+``` sh
+echo 'export PYENV_ROOT="$HOME/.pyenv"'
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"'
+echo 'eval "$(pyenv init -)"'
+
+exec $SHELL
+pyenv --version
+```
+
+:::
