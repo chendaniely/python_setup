@@ -13,7 +13,7 @@ flowchart
     A[Anaconda Inc] -- makes --> B[anaconda distribution]
     A -- makes --> E[miniconda3]
 
-    I["conda-forge"] -- has --> P["classic (slowler) solver"]
+    I["conda-forge"] -- has --> P["classic (slower) solver"]
     I["conda-forge"] -- has --> Q["mamba (faster) solver"]
 
     P -- used by --> J[miniforge3]
@@ -60,7 +60,7 @@ flowchart
 %%| echo: false
 
 flowchart
-    I["conda-forge"] -- has --> P["classic (slowler) solver"]
+    I["conda-forge"] -- has --> P["classic (slower) solver"]
     I["conda-forge"] -- has --> Q["mamba (faster) solver"]
 
     P -- used by --> J[miniforge3]
@@ -73,7 +73,7 @@ flowchart
 
     Q -- has --> R["`libmamba`"]
     D1 -- can use --> R
-    
+
     I -- hosts --> O["conda-forge package repository (channel)"]
 
     D1 -- install via --> O
@@ -81,14 +81,14 @@ flowchart
 
 
 
-# Virtual Enviornments
+# Virtual Environments
 
 ```{mermaid}
 %%| echo: false
 
 
 flowchart
-    A["Virtual Enviornments"] -- created by --> B["`python`"]
+    A["Virtual Environments"] -- created by --> B["`python`"]
     A -- created by --> C["`conda`"]
     A -- created by --> J["`pipenv`"]
 
@@ -98,7 +98,7 @@ flowchart
     B -- use env --> D["source activate"]
     C -- use env --> E["`conda activate`"]
 
-    D -- switces --> A
+    D -- switches --> A
     E -- switches --> A
 
     B1 -- lives in --> F["project directory"]
@@ -126,6 +126,6 @@ flowchart
 
 # Appendix
 
-Acronums:
+Acronyms:
 
 - `PyPI`: Python Package Index

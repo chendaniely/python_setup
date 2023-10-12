@@ -48,7 +48,7 @@ You can also use `pyenv version` (not plural) to only list the currently selecte
 :::
 
 Since we are using `pyenv` that uses a concept of "shims"
-to pick the verison of Python for us,
+to pick the version of Python for us,
 the typical way we would find the exact path to a binary using `which`
 will only point us to the shim.
 
@@ -150,7 +150,7 @@ cd ~/Desktop
 We have our initial Python:
 
 ```sh
-danielchen@heartsbane ~ % pyenv version
+~ % pyenv version
 * 3.11.5 (set by /Users/danielchen/.pyenv/version)
 ```
 
@@ -217,7 +217,7 @@ This is a special file that `pyenv` uses to determine the local python version.
 The contents of this file is just the version of python you have installed on your computer.
 
 ```sh
-% cat .python-version 
+% cat .python-version
 3.12.0
 ```
 
@@ -234,7 +234,7 @@ But when you `cd` back into the folder,
 it will change into the python version you have specified in the local folder.
 
 ```sh
-Desktop % cd pyenv-local-example 
+Desktop % cd pyenv-local-example
 pyenv-local-example % pyenv version
 3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)
 ```
@@ -277,9 +277,9 @@ you want to make sure `pip freeze` always returns nothing.
 
 ```sh
 % pip freeze
-% 
+%
 ```
 
-You can either run `pip uninstall <PACKAGE NAME>` to uninstall a package you may have accidently installed,
+You can either run `pip uninstall <PACKAGE NAME>` to uninstall a package you may have accidentally installed,
 or you can run `pyenv uninstall <PYTHON VERSION>` to uninstall the python version
 and re-install it with `pyenv install <PYTHON VERSION>`.

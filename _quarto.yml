@@ -36,7 +36,7 @@ website:
 
       # - section: "Reference"
       #   contents:
-      #     - href: 410-pyenv_useage.qmd
+      #     - href: 410-pyenv_usage.qmd
       #       text: pyenv
 
       # - section: "Extras"

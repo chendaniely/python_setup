@@ -1,1 +1,1 @@
-Pyenv Cheatsheet reference
+Pyenv Cheat sheet reference

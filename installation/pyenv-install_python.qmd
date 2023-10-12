@@ -12,7 +12,7 @@ Luckily, `pyenv` can list out all the versions available to you by typing
 pyenv install --list
 ```
 
-Usually you know roughly some version of Python you may already want to intsall,
+Usually you know roughly some version of Python you may already want to install,
 but not the exact number.
 You can filter the results with a match
 
@@ -35,13 +35,13 @@ pyenv install --list | grep 3.11
 This will list all the Python 3.11 patch versions for you.
 
 If you want to install the latest Python version,
-you only need to spcify the major number, `3`.
+you only need to specify the major number, `3`.
 
 ```sh
 pyenv install 3
 ```
 
-You can list all the `pyenv` installed verstions with:
+You can list all the `pyenv` installed versions with:
 
 ```sh
 pyenv versions

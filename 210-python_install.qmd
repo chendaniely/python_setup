@@ -5,7 +5,7 @@ title: Pyenv
 The
 [Posit, PBC](https://posit.co/)
 [Solutions Engineering Team](https://solutions.posit.co/)
-recommends using `pyenv` to manage your different Python verisons.
+recommends using `pyenv` to manage your different Python versions.
 You can find their guide here:
 
 [https://solutions.posit.co/write-code/minimum-viable-python/installing-python/](https://solutions.posit.co/write-code/minimum-viable-python/installing-python/)
@@ -19,7 +19,7 @@ For Windows you can find the official instructions here:
 Below,
 is a more focused guide on setting up Python using `pyenv` on your machine.
 
-## OS Specific Insallation Notes
+## OS Specific Installation Notes
 
 {{< include installation/pyenv-mac.qmd >}}
 
