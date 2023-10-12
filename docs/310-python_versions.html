@@ -297,7 +297,7 @@ Note
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 3.11.5 <span class="er">(</span><span class="bu">set</span> by /Users/danielchen/.pyenv/version<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Since we are using <code>pyenv</code> that uses a concept of “shims” to pick the verison of Python for us, the typical way we would find the exact path to a binary using <code>which</code> will only point us to the shim.</p>
+<p>Since we are using <code>pyenv</code> that uses a concept of “shims” to pick the version of Python for us, the typical way we would find the exact path to a binary using <code>which</code> will only point us to the shim.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> which python</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/danielchen/.pyenv/shims/python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Instead we need to use the <code>which</code> function directly within <code>pyenv</code> to help resolve the actual Python that <code>pyenv</code> is using.</p>
@@ -359,7 +359,7 @@ Warning
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/Desktop/pyenv-local-example</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We have our initial Python:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">danielchen@heartsbane</span> ~ % pyenv version</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span> % pyenv version</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 3.11.5 <span class="er">(</span><span class="bu">set</span> by /Users/danielchen/.pyenv/version<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s move into our newly created example folder.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/pyenv-local-example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -390,14 +390,14 @@ Warning
 <div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> ls <span class="at">-a</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span>       ..      .python-version</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is a special file that <code>pyenv</code> uses to determine the local python version. The contents of this file is just the version of python you have installed on your computer.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cat .python-version </span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cat .python-version</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">3.12.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, every time you leave this folder, <code>pyenv</code> will go back to its original default value.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv-local-example</span> % cd ..</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> % pyenv version</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">3.11.5</span> <span class="er">(</span><span class="bu">set</span> by /Users/danielchen/.pyenv/version<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>But when you <code>cd</code> back into the folder, it will change into the python version you have specified in the local folder.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> % cd pyenv-local-example </span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> % cd pyenv-local-example</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv-local-example</span> % pyenv version</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">3.12.0</span> <span class="er">(</span><span class="bu">set</span> by /Users/danielchen/Desktop/pyenv-local-example/.python-version<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You will combine this mechanism along with creating virtual environments to make sure your project always uses the same python version and packages from the virtual environment.</p>
@@ -439,8 +439,8 @@ Tip
 <p>You can see all the python packages you have installed in the current environment by using <code>pip freeze</code>.</p>
 <p>Unless you are working in a virtual environment, you want to make sure <code>pip freeze</code> always returns nothing.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> pip freeze</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can either run <code>pip uninstall &lt;PACKAGE NAME&gt;</code> to uninstall a package you may have accidently installed, or you can run <code>pyenv uninstall &lt;PYTHON VERSION&gt;</code> to uninstall the python version and re-install it with <code>pyenv install &lt;PYTHON VERSION&gt;</code>.</p>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can either run <code>pip uninstall &lt;PACKAGE NAME&gt;</code> to uninstall a package you may have accidentally installed, or you can run <code>pyenv uninstall &lt;PYTHON VERSION&gt;</code> to uninstall the python version and re-install it with <code>pyenv install &lt;PYTHON VERSION&gt;</code>.</p>
 
 
 <!-- -->
@@ -951,7 +951,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>Since we are using <span class="in">`pyenv`</span> that uses a concept of "shims"</span>
-<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>to pick the verison of Python for us,</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>to pick the version of Python for us,</span>
 <span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>the typical way we would find the exact path to a binary using <span class="in">`which`</span></span>
 <span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>will only point us to the shim.</span>
 <span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a></span>
@@ -1053,7 +1053,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a>We have our initial Python:</span>
 <span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a><span class="ex">danielchen@heartsbane</span> ~ % pyenv version</span>
+<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a><span class="ex">~</span> % pyenv version</span>
 <span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 3.11.5 <span class="er">(</span><span class="bu">set</span> by /Users/danielchen/.pyenv/version<span class="kw">)</span></span>
 <span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a></span>
@@ -1120,7 +1120,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-217"><a href="#cb21-217" aria-hidden="true" tabindex="-1"></a>The contents of this file is just the version of python you have installed on your computer.</span>
 <span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cat .python-version </span>
+<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> cat .python-version</span>
 <span id="cb21-221"><a href="#cb21-221" aria-hidden="true" tabindex="-1"></a><span class="ex">3.12.0</span></span>
 <span id="cb21-222"><a href="#cb21-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-223"><a href="#cb21-223" aria-hidden="true" tabindex="-1"></a></span>
@@ -1137,7 +1137,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-234"><a href="#cb21-234" aria-hidden="true" tabindex="-1"></a>it will change into the python version you have specified in the local folder.</span>
 <span id="cb21-235"><a href="#cb21-235" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-236"><a href="#cb21-236" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
-<span id="cb21-237"><a href="#cb21-237" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> % cd pyenv-local-example </span>
+<span id="cb21-237"><a href="#cb21-237" aria-hidden="true" tabindex="-1"></a><span class="ex">Desktop</span> % cd pyenv-local-example</span>
 <span id="cb21-238"><a href="#cb21-238" aria-hidden="true" tabindex="-1"></a><span class="ex">pyenv-local-example</span> % pyenv version</span>
 <span id="cb21-239"><a href="#cb21-239" aria-hidden="true" tabindex="-1"></a><span class="ex">3.12.0</span> <span class="er">(</span><span class="bu">set</span> by /Users/danielchen/Desktop/pyenv-local-example/.python-version<span class="kw">)</span></span>
 <span id="cb21-240"><a href="#cb21-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1180,10 +1180,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-277"><a href="#cb21-277" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-278"><a href="#cb21-278" aria-hidden="true" tabindex="-1"></a><span class="in">```sh</span></span>
 <span id="cb21-279"><a href="#cb21-279" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> pip freeze</span>
-<span id="cb21-280"><a href="#cb21-280" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> </span>
+<span id="cb21-280"><a href="#cb21-280" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span></span>
 <span id="cb21-281"><a href="#cb21-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-282"><a href="#cb21-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-283"><a href="#cb21-283" aria-hidden="true" tabindex="-1"></a>You can either run <span class="in">`pip uninstall &lt;PACKAGE NAME&gt;`</span> to uninstall a package you may have accidently installed,</span>
+<span id="cb21-283"><a href="#cb21-283" aria-hidden="true" tabindex="-1"></a>You can either run <span class="in">`pip uninstall &lt;PACKAGE NAME&gt;`</span> to uninstall a package you may have accidentally installed,</span>
 <span id="cb21-284"><a href="#cb21-284" aria-hidden="true" tabindex="-1"></a>or you can run <span class="in">`pyenv uninstall &lt;PYTHON VERSION&gt;`</span> to uninstall the python version</span>
 <span id="cb21-285"><a href="#cb21-285" aria-hidden="true" tabindex="-1"></a>and re-install it with <span class="in">`pyenv install &lt;PYTHON VERSION&gt;`</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
