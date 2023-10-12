@@ -1,324 +1,5 @@
 [
   {
-    "objectID": "110-the_whole_game.html",
-    "href": "110-the_whole_game.html",
-    "title": "Python Project Example",
-    "section": "",
-    "text": "Let’s go through an entire Python data science project example.",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#install-python",
-    "href": "110-the_whole_game.html#install-python",
-    "title": "Python Project Example",
-    "section": "1 Install Python",
-    "text": "1 Install Python\nInstall the latest Python 3.x.x version known by pyenv\npyenv install 3",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#create-a-new-python-project",
-    "href": "110-the_whole_game.html#create-a-new-python-project",
-    "title": "Python Project Example",
-    "section": "2 Create a new python project",
-    "text": "2 Create a new python project\ncd ~/Desktop\nmkdir my_python_project\ncd ~/Desktop/my_python_project\nWe’ll create a small python script\n{.python, include=\"example_project/01-create_data.py\", eval=FALSE}\nimport pandas as pd\n\n# Create example data\ndata = {\n    \"Date\": [\n        \"2023-01-01\",\n        \"2023-01-02\",\n        \"2023-01-03\",\n        \"2023-01-04\",\n        \"2023-01-05\",\n    ],\n    \"Product\": [\"A\", \"B\", \"A\", \"C\", \"B\"],\n    \"Sales\": [100, 150, 120, 80, 200],\n    \"Profit\": [30, 40, 25, 10, 50],\n}\n\n# Create a DataFrame\ndf = pd.DataFrame(data)\n\n# Save the DataFrame to a CSV file\ndf.to_csv(\"sales_data.csv\", index=False)\n\n# Group by Product and calculate total sales and profit\nproduct_group = df.groupby(\"Product\").agg(\n    {\"Sales\": \"sum\", \"Profit\": \"sum\"}\n)\n\n# Save the product group to a CSV file\nproduct_group.to_csv(\"product_group.csv\", index=False)\n\nprint(\n    \"Data saved to 'sales_data.csv' and\\n\"\n    \"product group data saved to 'product_group.csv'\"\n)\nSave this code to 01-create_data.py\nmy_python_project % ls\n01-create_data.py",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#switch-to-the-proper-python-version",
-    "href": "110-the_whole_game.html#switch-to-the-proper-python-version",
-    "title": "Python Project Example",
-    "section": "3 Switch to the proper python version",
-    "text": "3 Switch to the proper python version\nCheck all the installed versions\nmy_python_project % pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nSwitch to the version of interest.\npyenv shell 3.12.0\nmy_python_project % pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n  3.11.5\n* 3.12.0 (set by PYENV_VERSION environment variable)\nRe-confirm the python version\nmy_python_project % pyenv which python\n/Users/danielchen/.pyenv/versions/3.12.0/bin/python\nmy_python_project % python --version\nPython 3.12.0",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#an-empty-slate",
-    "href": "110-the_whole_game.html#an-empty-slate",
-    "title": "Python Project Example",
-    "section": "4 An empty slate",
-    "text": "4 An empty slate\nCurrently, our python environment is the default base environment without any extra packages.\nIf we try to run the script, it will fail because the pandas module is not installed.\nmy_python_project % python 01-create_data.py\nTraceback (most recent call last):\n  File \"/Users/danielchen/Desktop/my_python_project/01-create_data.py\", line 1, in &lt;module&gt;\n    import pandas as pd\nModuleNotFoundError: No module named 'pandas'",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#create-a-venv",
-    "href": "110-the_whole_game.html#create-a-venv",
-    "title": "Python Project Example",
-    "section": "5 Create a venv",
-    "text": "5 Create a venv\nThe Iron Law of Python Management states that every project should have their own virtual environment. Before we start installing packages (e.g., pandas), we need to create and activate a virtual environment first.\nWe will use the built-in venv python module to create a venv. The venv will be saved into a folder called venv in the current directory.\nmy_python_project % python -m venv venv\nHere’s the folder structure after creating a venv\nmy_python_project % tree -L 4 .\n.\n├── 01-create_data.py\n└── venv\n    ├── bin\n    │   ├── Activate.ps1\n    │   ├── activate\n    │   ├── activate.csh\n    │   ├── activate.fish\n    │   ├── pip\n    │   ├── pip3\n    │   ├── pip3.12\n    │   ├── python -&gt; /Users/danielchen/.pyenv/versions/3.12.0/bin/python\n    │   ├── python3 -&gt; python\n    │   └── python3.12 -&gt; python\n    ├── include\n    │   └── python3.12\n    ├── lib\n    │   └── python3.12\n    │       └── site-packages\n    └── pyvenv.cfg\nYou can see here that the python, python3, and python3.12 are all pointing to the same python we installed. This is why you want to keep the base version environment clean.",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#activate-venv",
-    "href": "110-the_whole_game.html#activate-venv",
-    "title": "Python Project Example",
-    "section": "6 Activate venv",
-    "text": "6 Activate venv\nThe venv/bin/ directory has a few activate scripts. These scripts are to activate for different operating system. Currently we are using a Mac/*nix environment.\n\nMacOS / *nix / Git BashWindows\n\n\nsource venv/bin/activate\n\n\nvenv/bin/Activate.ps1\n\n\n\nYou will notice your prompt change and the name of the venv will be prepended to the beginning of the prompt:\nBefore:\nmy_python_project %\nAfter:\n(venv) my_python_project %\nNow you are ready to install packages and run your code!",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#install-packages-into-venv",
-    "href": "110-the_whole_game.html#install-packages-into-venv",
-    "title": "Python Project Example",
-    "section": "7 Install packages into venv",
-    "text": "7 Install packages into venv\nWe’re finally able to install packages. Our current project only needs pandas\npip install pandas",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#run-your-code",
-    "href": "110-the_whole_game.html#run-your-code",
-    "title": "Python Project Example",
-    "section": "8 Run your code",
-    "text": "8 Run your code\nOur code now runs!\nmy_python_project % python 01-create_data.py\nData saved to 'sales_data.csv' and\nproduct group data saved to 'product_group.csv'",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#rinse-and-repeat",
-    "href": "110-the_whole_game.html#rinse-and-repeat",
-    "title": "Python Project Example",
-    "section": "9 Rinse and Repeat",
-    "text": "9 Rinse and Repeat\nWe’ll create a new script 02-viz_pandas.py with the following bits of code:\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Read product group data from CSV\nproduct_group = pd.read_csv('product_group.csv')\n\n# Bar chart for total sales by product\nplt.figure(figsize=(8, 6))  # Set the figure size\nproduct_group['Sales'].plot(kind='bar')\nplt.title('Total Sales by Product')\nplt.xlabel('Product')\nplt.ylabel('Total Sales')\nplt.savefig('sales_by_product.png')  # Save the figure as a PNG\nplt.show()\nThis code will load a dataset from our 01 script, create, save, and show a figure.\nmy_python_project % ls\n01-create_data.py   product_group.csv   venv\n02-viz_pandas.py    sales_data.csv\nNow let’s run the script.\n(venv) my_python_project % python 02-viz_pandas.py\nTraceback (most recent call last):\n  File \"/Users/danielchen/Desktop/my_python_project/02-viz_pandas.py\", line 2, in &lt;module&gt;\n    import matplotlib.pyplot as plt\nModuleNotFoundError: No module named 'matplotlib'\nWe need to install matplotlib in our environment.\npip install matplotlib\nAnd now things work!\n(venv) my_python_project % python 02-viz_pandas.py\n(venv) my_python_project % ls\n01-create_data.py   product_group.csv   sales_data.csv\n02-viz_pandas.py    sales_by_product.png    venv",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#one-more-time",
-    "href": "110-the_whole_game.html#one-more-time",
-    "title": "Python Project Example",
-    "section": "10 One more time",
-    "text": "10 One more time\nIn a new 03-viz_mpl.py file:\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Scatter plot of Sales vs. Profit\ndf = pd.read_csv('sales_data.csv')\nplt.figure(figsize=(8, 6))  # Set the figure size\nplt.scatter(df['Sales'], df['Profit'])\nplt.title('Scatter Plot of Sales vs. Profit')\nplt.xlabel('Sales')\nplt.ylabel('Profit')\nplt.savefig('scatter_plot.png')  # Save the figure as a PNG\nplt.show()\nVoilà!\n(venv) my_python_project % python 03-viz_mpl.py\n(venv) my_python_project % ls\n01-create_data.py   03-viz_mpl.py       sales_by_product.png    scatter_plot.png\n02-viz_pandas.py    product_group.csv   sales_data.csv      venv",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#save-requirements.txt",
-    "href": "110-the_whole_game.html#save-requirements.txt",
-    "title": "Python Project Example",
-    "section": "11 Save requirements.txt",
-    "text": "11 Save requirements.txt\nThe pip freeze command will show you all the packages (and dependencies) you have installed in the current virtual environment.\n(venv) my_python_project % pip freeze\ncontourpy==1.1.1\ncycler==0.12.0\nfonttools==4.43.0\nkiwisolver==1.4.5\nmatplotlib==3.8.0\nnumpy==1.26.0\npackaging==23.2\npandas==2.1.1\nPillow==10.0.1\npyparsing==3.1.1\npython-dateutil==2.8.2\npytz==2023.3.post1\nsix==1.16.0\ntzdata==2023.3\nWe can save the contents of this file out to a requirements.txt file.\npip freeze &gt; requirements.txt\nNow you have full python project!\n(venv) my_python_project % ls\n01-create_data.py   product_group.csv   sales_data.csv\n02-viz_pandas.py    requirements.txt    scatter_plot.png\n03-viz_mpl.py       sales_by_product.png    venv\nYou will need to manually run pip freeze &gt; requirements.txt when you want to update your requirements.txt file.",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#deactivate-your-virtual-environment",
-    "href": "110-the_whole_game.html#deactivate-your-virtual-environment",
-    "title": "Python Project Example",
-    "section": "12 Deactivate your virtual environment",
-    "text": "12 Deactivate your virtual environment\nWhen you want to leave your project environment you can run deactivate in the terminal.\ndeactivate\nThis will remove the venv name that was original prepended to your terminal:\nIn the venv:\n(venv) my_python_project % deactivate\nDeactivated:\nmy_python_project %\nAnd we’re back to our original package environment\nmy_python_project % python 01-create_data.py\nTraceback (most recent call last):\n  File \"/Users/danielchen/Desktop/my_python_project/01-create_data.py\", line 1, in &lt;module&gt;\n    import pandas as pd\nModuleNotFoundError: No module named 'pandas'",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#share-your-environment-with-others",
-    "href": "110-the_whole_game.html#share-your-environment-with-others",
-    "title": "Python Project Example",
-    "section": "13 Share your environment with others",
-    "text": "13 Share your environment with others\nYou can now share your requirements.txt file with others to re-create your programming environment. Your collaborator will need to install the packages specified in requirements.txt into their own new venv. You can replicate this on your own machine too. Make sure you are no longer in an active venv (with deactivate) if you are going to create a new venv.\nmkdir ~/Desktop/collaborator_env\ncd ~/Desktop/collaborator_env\n\npyenv shell 3.12.0\n\npython -m venv venv\nsource venv/bin/activate\nWe can use pip to install the requirements.txt file once we’re in the new empty venv. Assuming we have the requirements.txt file in our current working directory:\npip install -r requirements.txt",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "110-the_whole_game.html#conclusion",
-    "href": "110-the_whole_game.html#conclusion",
-    "title": "Python Project Example",
-    "section": "14 Conclusion",
-    "text": "14 Conclusion\nThe general workflow for working with python and python projects:\n\nInstall Python version you want\nSwitch into Python\nCreate new python project directory\nCreate venv\nActivate venv\nInstall packages into venv\nRun your code\nRinse and repeat\n\nThere are other tools that can be installed to streamline the process. But this should be the bare minimum python project setup you use going forward.",
-    "crumbs": [
-      "The Whole Game",
-      "Example Data Science Project"
-    ]
-  },
-  {
-    "objectID": "310-python_versions.html",
-    "href": "310-python_versions.html",
-    "title": "Python Versions",
-    "section": "",
-    "text": "pyenv provides the ability to install multiple different versions of Python on our computer. It also comes with the ability to switch between them.\nHere we’ll show you how you can set up and switch between multiple Python versions.",
-    "crumbs": [
-      "Use Python",
-      "Python Versions"
-    ]
-  },
-  {
-    "objectID": "310-python_versions.html#find-your-python",
-    "href": "310-python_versions.html#find-your-python",
-    "title": "Python Versions",
-    "section": "1 Find your Python",
-    "text": "1 Find your Python\nA quick way to get a sense of what Python you have installed and the version you are using is running the pyenv versions command:\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nIn this example, there are multiple versions of python installed, and the * is on the 3.11.5 version of python. The * designates the Python that is used when Python is called.\n\n\n\n\n\n\nNote\n\n\n\nYou can also use pyenv version (not plural) to only list the currently selected python version.\n% pyenv version\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n\n\nSince we are using pyenv that uses a concept of “shims” to pick the version of Python for us, the typical way we would find the exact path to a binary using which will only point us to the shim.\n% which python\n/Users/danielchen/.pyenv/shims/python\nInstead we need to use the which function directly within pyenv to help resolve the actual Python that pyenv is using.\n % pyenv which python\n/Users/danielchen/.pyenv/versions/3.11.5/bin/python",
-    "crumbs": [
-      "Use Python",
-      "Python Versions"
-    ]
-  },
-  {
-    "objectID": "310-python_versions.html#set-defaults",
-    "href": "310-python_versions.html#set-defaults",
-    "title": "Python Versions",
-    "section": "2 Set defaults",
-    "text": "2 Set defaults\nAny time we have multiple versions to manage, there is an option to set a default to make things less tedious and manual. pyenv has a few settings on helping us set a default Python\n\n2.1 System\nAs we’ve mentioned in the beginning of the guide, do not use your system python for your Python projects. In general, you want to avoid having system python being used when you, the user, are trying to run python code. Typically, this system version of python is used for your computer’s operating system.\n\n\n\n\n\n\nWarning\n\n\n\nIn general you should not be setting pyenv to be using the system Python.\n\n\n\n\n2.2 Shell\nWe can manually override the Python pyenv is using anywhere in our terminal by setting the shell default. Under the hood, this modifies the pyenv $PYENV_VERSION environment variable that gets used to pick the Python pyenv uses.\npyenv shell &lt;PYTHON VERSION&gt; is the general command on manually switching to a different python version. You can find the &lt;PYTHON VERSION&gt; py running pyenv versions to list all the Python versions installed on your computer.\nBefore changing the python version\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.11.5/envs/ds\n  3.12.0\nChanging the python version with pyenv shell\n% pyenv shell 3.12.0\nConfirming the Python version change.\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n  3.11.5\n* 3.12.0 (set by PYENV_VERSION environment variable)\n\n\n2.3 Local\nDifferent python projects may run on different versions of Python. Instead of constantly remembering which Python version a project (i.e., folder) needs, pyenv has a local setting that creates a .python-version file that contains the version of python that pyenv will automatically switch to.\nLet’s create an example folder to see how pyenv local works.\nmkdir ~/Desktop/pyenv-local-example\ncd ~/Desktop\nWe have our initial Python:\n~ % pyenv version\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\nLet’s move into our newly created example folder.\ncd ~/Desktop/pyenv-local-example\nWe are currently in an empty folder and the Python version is still the same.\n% ls -al\ntotal 0\ndrwxr-xr-x   2 danielchen  staff    64 Oct 10 12:02 .\ndrwx------@ 69 danielchen  staff  2208 Oct 10 11:45 ..\n% pyenv version\n3.11.5 (set by /Users/danielchen/.pyenv/version)\nLet’s pretend this is a python project that needs to run on Python 3.12.0. We already have this version installed, and do not want to remember to pyenv shell into this version every time we cd into this folder.\nConfirm that we have the version of python we want installed.\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nSet a default local (i.e., folder) python version.\npyenv local 3.12.0\nWe now see that our python version has changed to 3.12.0.\n% pyenv version\n3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)\nIt the version has changed because it is reading the python version information from the .python-version file.\n% ls -a\n.       ..      .python-version\nThis is a special file that pyenv uses to determine the local python version. The contents of this file is just the version of python you have installed on your computer.\n% cat .python-version\n3.12.0\nNow, every time you leave this folder, pyenv will go back to its original default value.\npyenv-local-example % cd ..\nDesktop % pyenv version\n3.11.5 (set by /Users/danielchen/.pyenv/version)\nBut when you cd back into the folder, it will change into the python version you have specified in the local folder.\nDesktop % cd pyenv-local-example\npyenv-local-example % pyenv version\n3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)\nYou will combine this mechanism along with creating virtual environments to make sure your project always uses the same python version and packages from the virtual environment.\n\n\n2.4 Global\nThe final default you can set for pyenv is the global setting. If shell or local values are not set, then pyenv will default to the version specified by global.\n\n\n\n\n\n\nImportant\n\n\n\nDo not set your global version to system. You run the risk of messing up the Python your computer needs to manage the operating system.\n\n\n\n\n\n\n\n\nTip\n\n\n\nPick one of the pyenv python versions you’ve installed and set that as the global version. If you make sure to not install packages into this environment and follow the Iron Law of Python Management you can always uninstall and reinstall the python version again with pyenv install and reset the pyenv global version.",
-    "crumbs": [
-      "Use Python",
-      "Python Versions"
-    ]
-  },
-  {
-    "objectID": "310-python_versions.html#keep-things-empty-and-clean",
-    "href": "310-python_versions.html#keep-things-empty-and-clean",
-    "title": "Python Versions",
-    "section": "3 Keep Things Empty and Clean",
-    "text": "3 Keep Things Empty and Clean\nAs a final reminder, any version of python you have installed with pyenv install, remember to not install packages into that particular python version and its environment.\nYou can see all the python packages you have installed in the current environment by using pip freeze.\nUnless you are working in a virtual environment, you want to make sure pip freeze always returns nothing.\n% pip freeze\n%\nYou can either run pip uninstall &lt;PACKAGE NAME&gt; to uninstall a package you may have accidentally installed, or you can run pyenv uninstall &lt;PYTHON VERSION&gt; to uninstall the python version and re-install it with pyenv install &lt;PYTHON VERSION&gt;.",
-    "crumbs": [
-      "Use Python",
-      "Python Versions"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html",
-    "href": "320-python_virtual_environments.html",
-    "title": "Python Virtual Environments",
-    "section": "",
-    "text": "The Iron Law of Python Management says we should always create a new virtual environment for each python project.\nAt the time of writing, PyPI (Python Package Index) has over 480,000 packages listed. PyPI does not guarantee that all the packages listed are compatible and can be installed together.\nVirtual environments provide us a way to isolate different python packages from one another. Some reasons why you may want virtual environments:",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#built-in-python-venv-module",
-    "href": "320-python_virtual_environments.html#built-in-python-venv-module",
-    "title": "Python Virtual Environments",
-    "section": "1 Built-in Python venv module",
-    "text": "1 Built-in Python venv module\nPython has shipped the venv module since Python 3.3. As long as you are using a supported version of Python, then you do not need to install any more tools to create a virtual environment.\n\n\n\n\n\n\nTip\n\n\n\nIn general, you do not want to install any packages in your base python environment. This can lead to confusion to where packages are installed as you switch around different virtual environments.",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#create-a-venv-virtual-environment",
-    "href": "320-python_virtual_environments.html#create-a-venv-virtual-environment",
-    "title": "Python Virtual Environments",
-    "section": "2 Create a venv Virtual Environment",
-    "text": "2 Create a venv Virtual Environment\nBecause of the Iron Law of Python Management, each project (i.e., folder) will have their own python venv.\n\n2.1 Python Project Folder\nFirst we need to make sure we are in the folder our python project exists in. You can confirm your location with:\npwd\nThe result should give you the path to your current Python project.\n\n\n2.2 Python Version\npyenv allows us to install and use different versions of python. You can see all the versions you have installed with:\npyenv versions\nYou can also see what python you are using with:\npyenv which python\nThis will list the full path to the python binary that is currently being used. The currently activated python version will be used to create your venv. This is why you want to make sure the environment is clean (i.e., no extraneous python packages installed).\nIn this example, we will use Python 3.12.0.\npyenv shell 3.12.0\n\n\n2.3 Create venv\nThe general command for creating a venv is:\npython -m venv &lt;PATH TO NEW VENV&gt;\nWe will typically use .venv or venv for the venv name. So, the above command will look like this if we were to use venv as our venv name.\npython -m venv venv\nThis will create a venv folder in your current directory that will store all the packages and dependencies we will install.\n\n\n\n\n\n\nNote\n\n\n\nThere are pros and cons with how you name your venv.\n\nIf you use the .venv name with the . in the beginning, the venv folder that will be created will be hidden because of the leading . in the .venv name. Because it’s hidden, it may not always be readily apparent that the current project has a venv virtual environment.\nIf you use the venv name so the folder is not hidden, you will always see the venv folder in the project.\n\nWhether or not you use venv or .venv, these names have become standardized where many other tools will know to look for these folder names when listing virtual environments.\n\nYou can also choose to name your venv the name of your project, e.g., python -m venv my_project. This will make it explicit and clear what environment you are working in if you are jumping between project folders with a common venv environment. However, because the my_project name is not standard and fairly arbitrary, not every tool will recognize you have a python venv virtual environment in your directory.\n\n\n\nThe venv folder also contains a link to the Python version that will be used. This is why it’s important to:\n\nUse the correct python version before creating the venv\nMake sure the original python environment does not have anything installed in it\n\nThe venv python module will install pip for us by default. You can also see from the tree diagram below, how all the different ways we can call python are linked together.\nmy_python_project % tree -L 4 .\n.\n└── venv\n    ├── bin\n    │   ├── Activate.ps1\n    │   ├── activate\n    │   ├── activate.csh\n    │   ├── activate.fish\n    │   ├── pip\n    │   ├── pip3\n    │   ├── pip3.12\n    │   ├── python -&gt; /Users/danielchen/.pyenv/versions/3.12.0/bin/python\n    │   ├── python3 -&gt; python\n    │   └── python3.12 -&gt; python\n    ├── include\n    │   └── python3.12\n    ├── lib\n    │   └── python3.12\n    │       └── site-packages\n    └── pyvenv.cfg",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#activate",
-    "href": "320-python_virtual_environments.html#activate",
-    "title": "Python Virtual Environments",
-    "section": "3 Activate",
-    "text": "3 Activate\nWith our venv named venv created, we need to “activate” it.\n\nMacOS / *nix / Git BashWindows\n\n\nsource venv/bin/activate\n\n\nvenv/bin/Activate.ps1\n\n\n\nThis will typically prepend the name of the virtual environment to your terminal prompt. Since we named our venv the name venv we should see venv in the beginning of our prompt.\nBefore activate:\n%\nAfter:\n(venv) %",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#install-packages",
-    "href": "320-python_virtual_environments.html#install-packages",
-    "title": "Python Virtual Environments",
-    "section": "4 Install Packages",
-    "text": "4 Install Packages\nNow that we have our venv virtual environment activated, we are finally able to install packages. Let’s install the Python pandas library.\n\n4.1 Starting with an Empty Environment\nBefore we do that, let’s prove that our environment is empty, and pandas is not installed.\nWe can see that pip freeze returns nothing. Meaning nothing is currently installed in this environment.\n(venv) % pip freeze\n(venv) %\nIf we load up the python interpreter, we also cannot import the pandas library.\n(venv) % python\nPython 3.12.0 (main, Oct  3 2023, 15:47:53) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n\n&gt;&gt;&gt; import pandas\nTraceback (most recent call last):\n  File \"&lt;stdin&gt;\", line 1, in &lt;module&gt;\nModuleNotFoundError: No module named 'pandas'\n&gt;&gt;&gt; exit()\n\n(venv) %",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#install-packages-into-environment",
-    "href": "320-python_virtual_environments.html#install-packages-into-environment",
-    "title": "Python Virtual Environments",
-    "section": "5 Install Packages into Environment",
-    "text": "5 Install Packages into Environment\nNow we can use pip to install pandas\npip install pandas\nThis will install pandas along with any dependencies it needs.\n(venv) % pip install pandas\nCollecting pandas\n  Obtaining dependency information for pandas from https://files.pythonhosted.org/packages/38/1b/e425daceff79695e67d115230bdeb57bbdd6cfff8c46d532e4e64d3dc966/pandas-2.1.1-cp312-cp312-macosx_11_0_arm64.whl.metadata\n  Using cached pandas-2.1.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (18 kB)\nCollecting numpy&gt;=1.26.0 (from pandas)\n  Obtaining dependency information for numpy&gt;=1.26.0 from https://files.pythonhosted.org/packages/7a/72/6d1cbdf0d770016bc9485f9ef02e73d5cb4cf3c726f8e120b860a403d307/numpy-1.26.0-cp312-cp312-macosx_11_0_arm64.whl.metadata\n  Using cached numpy-1.26.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (53 kB)\nCollecting python-dateutil&gt;=2.8.2 (from pandas)\n  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)\nCollecting pytz&gt;=2020.1 (from pandas)\n  Obtaining dependency information for pytz&gt;=2020.1 from https://files.pythonhosted.org/packages/32/4d/aaf7eff5deb402fd9a24a1449a8119f00d74ae9c2efa79f8ef9994261fc2/pytz-2023.3.post1-py2.py3-none-any.whl.metadata\n  Using cached pytz-2023.3.post1-py2.py3-none-any.whl.metadata (22 kB)\nCollecting tzdata&gt;=2022.1 (from pandas)\n  Using cached tzdata-2023.3-py2.py3-none-any.whl (341 kB)\nCollecting six&gt;=1.5 (from python-dateutil&gt;=2.8.2-&gt;pandas)\n  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)\nUsing cached pandas-2.1.1-cp312-cp312-macosx_11_0_arm64.whl (10.6 MB)\nUsing cached numpy-1.26.0-cp312-cp312-macosx_11_0_arm64.whl (13.7 MB)\nUsing cached pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)\nInstalling collected packages: pytz, tzdata, six, numpy, python-dateutil, pandas\nSuccessfully installed numpy-1.26.0 pandas-2.1.1 python-dateutil-2.8.2 pytz-2023.3.post1 six-1.16.0 tzdata-2023.3\nNow if we run pip freeze you will see pandas, the version installed, and all of its installed dependencies.\n(venv) % pip freeze\nnumpy==1.26.0\npandas==2.1.1\npython-dateutil==2.8.2\npytz==2023.3.post1\nsix==1.16.0\ntzdata==2023.3\nWe can now import pandas without the ModuleNotFoundError.\n(venv) % python\nPython 3.12.0 (main, Oct  3 2023, 15:47:53) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n&gt;&gt;&gt; import pandas as pd\n&gt;&gt;&gt;\n\n5.1 Install Packages as You Need\nAs long as you are in the correct venv, you can pip install any package you need from the Python Package Index (PyPI).\npip install matplotlib plotnine seaborn",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#save-your-environment-to-requirements.txt",
-    "href": "320-python_virtual_environments.html#save-your-environment-to-requirements.txt",
-    "title": "Python Virtual Environments",
-    "section": "6 Save Your Environment to requirements.txt",
-    "text": "6 Save Your Environment to requirements.txt\nWe’ve been using pip freeze to see what packages are installed in the current environment. We can actually save the contents of this output to a requirements.txt so the installed packages and versions are documented. We can then version control and/or give this file to other people for them to replicate our venv virtual environment.\npip freeze &gt; requirements.txt\nThis will save a requirements.txt file into our current working directory.",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#deactivate",
-    "href": "320-python_virtual_environments.html#deactivate",
-    "title": "Python Virtual Environments",
-    "section": "7 Deactivate",
-    "text": "7 Deactivate\nOnce you’re done with your current python venv, make sure you run deactivate so you do not pip install packages you do not need in your project.\ndeactivate\nThis will exit out of your venv, and you should see your prompt change back.\nIn the venv:\n(venv) % deactivate\nDeactivated:\nmy_python_project %\nAnd we’re back to our original package environment\n% python\nPython 3.12.0 (main, Oct  3 2023, 15:47:53) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n&gt;&gt;&gt; import pandas\nTraceback (most recent call last):\n  File \"&lt;stdin&gt;\", line 1, in &lt;module&gt;\nModuleNotFoundError: No module named 'pandas'",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#install-packages-from-requirements.txt",
-    "href": "320-python_virtual_environments.html#install-packages-from-requirements.txt",
-    "title": "Python Virtual Environments",
-    "section": "8 Install Packages from requirements.txt",
-    "text": "8 Install Packages from requirements.txt\nIf you or someone else wants to set up a new venv with a requirements.txt file, make sure you follow the steps on this page to create a new venv first.\nThen, with the new venv activated, you can install all the packages and versions from the requirements.txt with:\npip install -r requirements.txt\nThis is one way reproducible programming environments are created in Python.",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
-    "objectID": "320-python_virtual_environments.html#conclusion",
-    "href": "320-python_virtual_environments.html#conclusion",
-    "title": "Python Virtual Environments",
-    "section": "9 Conclusion",
-    "text": "9 Conclusion\nIt’s important that every python project has its own virtual environment. Ideally it also has the environment saved into a requirements.txt file. This is the Iron Law of Python Management.",
-    "crumbs": [
-      "Use Python",
-      "Virtual Environments"
-    ]
-  },
-  {
     "objectID": "installation/pyenv-linux.html",
     "href": "installation/pyenv-linux.html",
     "title": "",
@@ -331,115 +12,6 @@
     "title": "",
     "section": "",
     "text": "We’ll be using pyenv to install Python.\nFirst, we need to know what version of Python you want to install. Luckily, pyenv can list out all the versions available to you by typing\npyenv install --list\nUsually you know roughly some version of Python you may already want to install, but not the exact number. You can filter the results with a match\n\nMacOS / Linux / Git BashWindows Powershell\n\n\npyenv install --list | grep 3.11\n\n\n pyenv install --list | select-string 3.11\n\n\n\nThis will list all the Python 3.11 patch versions for you.\nIf you want to install the latest Python version, you only need to specify the major number, 3.\npyenv install 3\nYou can list all the pyenv installed versions with:\npyenv versions"
-  },
-  {
-    "objectID": "520-pipenv.html#pipenv",
-    "href": "520-pipenv.html#pipenv",
-    "title": "",
-    "section": "1 pipenv",
-    "text": "1 pipenv"
-  },
-  {
-    "objectID": "510-pyenv_virtualenv.html#pyenv-virtualenv",
-    "href": "510-pyenv_virtualenv.html#pyenv-virtualenv",
-    "title": "",
-    "section": "1 pyenv-virtualenv",
-    "text": "1 pyenv-virtualenv"
-  },
-  {
-    "objectID": "330-ide.html",
-    "href": "330-ide.html",
-    "title": "Integrated Development Environment Setup",
-    "section": "",
-    "text": "The concept of a “project” is important when trying to point your integrated development environment (IDE) to your virtual environment. Some programs rely on special files to designate a project, others will treat an opened folder as a project. It’s important to know how to confirm what environment is being used in the IDE.",
-    "crumbs": [
-      "Use Python",
-      "IDE Setup"
-    ]
-  },
-  {
-    "objectID": "330-ide.html#project-set-up",
-    "href": "330-ide.html#project-set-up",
-    "title": "Integrated Development Environment Setup",
-    "section": "1.1 Project Set Up",
-    "text": "1.1 Project Set Up\nIf you are starting from a new Python project, the best way is to first create an RStudio project from the IDE. Once the RStudio project is created, you follow the steps in creating a venv virtual environment, such that the venv folder is also in the RStudio project.\nNext, within the RStudio Global Options &gt; Python tab, make sure the checkbox for “Automatically activate project-local Python environment” is checked.\n\n\n\n\n\n\n\nThis will make sure the venv in the current RStudio project gets picked up first when a Python interpreter is needed.",
-    "crumbs": [
-      "Use Python",
-      "IDE Setup"
-    ]
-  },
-  {
-    "objectID": "330-ide.html#package-set-up",
-    "href": "330-ide.html#package-set-up",
-    "title": "Integrated Development Environment Setup",
-    "section": "1.2 Package Set up",
-    "text": "1.2 Package Set up\n\nUse this requirements.txt file\ntree the example directory\ninstall {reticulate} the R package: install.packages('reticulate')\n\nWhen you run Python code, you will see a call in the console for reticulate::repl_python(). You will see the call from R, and then the Python prompts.\nThe R code will be displayed with a &gt; and the python code will have a &gt;&gt;&gt;\n&gt; reticulate::repl_python()\nPython 3.10.3 (/Users/danielchen/git/rstudio/academyContent/.venv/bin/python) # TODO: Fix this output\nReticulate 1.30 REPL -- A Python interpreter in R.\nEnter 'exit' or 'quit' to exit the REPL and return to R.\n&gt;&gt;&gt; 3 + 3\n6",
-    "crumbs": [
-      "Use Python",
-      "IDE Setup"
-    ]
-  },
-  {
-    "objectID": "330-ide.html#reticulate",
-    "href": "330-ide.html#reticulate",
-    "title": "Integrated Development Environment Setup",
-    "section": "1.3 Reticulate",
-    "text": "1.3 Reticulate\nWhen using Python within RStudio, you can always confirm what Python is being used with the reticulate::py_config() function\n&gt; reticulate::py_config()\npython:         /Users/danielchen/git/rstudio/academyContent/.venv/bin/python\nlibpython:      /Users/danielchen/.pyenv/versions/3.10.3/lib/libpython3.10.dylib\npythonhome:     /Users/danielchen/git/rstudio/academyContent/.venv:/Users/danielchen/git/rstudio/academyContent/.venv\nversion:        3.10.3 (main, Oct  5 2022, 14:06:56) [Clang 14.0.0 (clang-1400.0.29.102)]\nnumpy:          /Users/danielchen/git/rstudio/academyContent/.venv/lib/python3.10/site-packages/numpy\nnumpy_version:  1.24.1\n\nNOTE: Python version was forced by use_python function\nIf you have the wrong python loaded, you need to restart your R session first before trying to load another Python intepreter.\n\n\n\n\n\n\nImportant\n\n\n\nIf you need to manually specify a python interpreter, you can use the reticulate::use_python() or reticulate::use_virtualenv() functions. If you use the reticulate::use_virtualenv() function to load the venv virtual environment, and the venv is named venv in the current project directory, make sure you call the function with a trailing /, venv/ so the reticulate::use_virtualenv() function knows to look for a directory named venv/ and not a virtual environment named venv in the ~/.virtualenvs directory. You may get an error message about not a python virtualenv otherwise,\nDirectory ~/.virtualenvs/venv is not a Python virtualenv",
-    "crumbs": [
-      "Use Python",
-      "IDE Setup"
-    ]
-  },
-  {
-    "objectID": "210-python_install.html",
-    "href": "210-python_install.html",
-    "title": "Pyenv",
-    "section": "",
-    "text": "The Posit, PBC Solutions Engineering Team recommends using pyenv to manage your different Python versions. You can find their guide here:\nhttps://solutions.posit.co/write-code/minimum-viable-python/installing-python/\nFor MacOS and Linux, The official pyenv repository and installation instructions are here: https://github.com/pyenv/pyenv\nFor Windows you can find the official instructions here: https://github.com/pyenv-win/pyenv-win\nBelow, is a more focused guide on setting up Python using pyenv on your machine.",
-    "crumbs": [
-      "Install Python",
-      "Pyenv"
-    ]
-  },
-  {
-    "objectID": "210-python_install.html#os-specific-installation-notes",
-    "href": "210-python_install.html#os-specific-installation-notes",
-    "title": "Pyenv",
-    "section": "1 OS Specific Installation Notes",
-    "text": "1 OS Specific Installation Notes\n\n1.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n1.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n1.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n1.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n1.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version\n\n\n\n1.2 Windows\nWe need to look at the pyenv-win project to install pyenv for windows. You can find the link to the project here:\nhttps://github.com/pyenv-win/pyenv-win\nThere are a few methods of installing pyenv-win on Windows.\n\nUsing the Windows PowerShell\nManual installation from zip\nUsing a windows package manager (e.g., chocolatey, scoop)\n\n\n1.2.1 Method 1: Windows Powershell\nYou can run the following command in the PowerShell terminal:\nInvoke-WebRequest -UseBasicParsing -Uri \"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1\" -OutFile \"./install-pyenv-win.ps1\"; &\"./install-pyenv-win.ps1\"\nIf you see an UnauthorizedAccess error you need to:\n\nOpen Windows PowerShell with the “Run as administer” option\nRun the following command:\n\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nIf you are getting a “not digitally signed” error, you may also need to unblock the pyenv script:\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nUnblock-File (Join-Path $env:PYENV 'bin/pyenv.ps1')\n\n\n\n1.2.2 Method 2: Manual installation\n\nDownload pyenv-win.zip\nCreate a .pyenv folder in your home directory. In PowerShell or Git Bash:\n\nmkdir $HOME/.pyenv\n\nExtract the pyenv-win.zip contents into the newly created .pyenv directory you just created\nYou should have a a bin/ directory in $HOME/.pyenv/pyenv-win/bin\n\n\n\n1.2.3 Method 3: Package Managers\nYou can install pyenv-win using one of the Windows Package managers:\n\nChocolatey: https://chocolatey.org/install\nScoop: https://scoop.sh/\n\nAt the time of writing, pyenv-win is not in the winget repositories\nChocolatey\nchoco install pyenv-win\nScoop\nscoop bucket add main\nscoop install main/pyenv\n\n\n1.2.4 Post installation setup\nYou need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.\nIn general you need to add 3 pyenv variables and append a directory to the Path. The PYENV, PYENV_HOME, and PYENV_ROOT user variables need to all point to your pyenv-win directory within your .pyenv folder in your home directory.\n[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\nThe .pyenv\\pyenv-win\\bin\\ directory also needs to be added to the beginning of the Path variable\n[System.Environment]::SetEnvironmentVariable('path', $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\bin;\" + $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\shims;\" + [System.Environment]::GetEnvironmentVariable('path', \"User\"),\"User\")\n\n\n1.2.5 Confirm installation\nYou can confirm your installation with:\npyenv --version\nYou should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help.\n\n\n\n1.3 Linux\nYou can check to see if your current version of linux has pyenv in its package manager. Otherwise, you will install pyenv using the automatic installer script\n\nUbuntuArch\n\n\nsudo apt update\ncurl https://pyenv.run | bash\n\n\npyenv exists in the Arch Extra repository: https://archlinux.org/packages/extra/any/pyenv/\npacman -Syu pyenv\n\n\n\n\n1.3.1 Post installation setup\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.bashrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.bashrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.bashrc\n\nexec $SHELL\npyenv --version",
-    "crumbs": [
-      "Install Python",
-      "Pyenv"
-    ]
-  },
-  {
-    "objectID": "210-python_install.html#install-python",
-    "href": "210-python_install.html#install-python",
-    "title": "Pyenv",
-    "section": "2 Install Python",
-    "text": "2 Install Python\nWe’ll be using pyenv to install Python.\nFirst, we need to know what version of Python you want to install. Luckily, pyenv can list out all the versions available to you by typing\npyenv install --list\nUsually you know roughly some version of Python you may already want to install, but not the exact number. You can filter the results with a match\n\nMacOS / Linux / Git BashWindows Powershell\n\n\npyenv install --list | grep 3.11\n\n\n pyenv install --list | select-string 3.11\n\n\n\nThis will list all the Python 3.11 patch versions for you.\nIf you want to install the latest Python version, you only need to specify the major number, 3.\npyenv install 3\nYou can list all the pyenv installed versions with:\npyenv versions",
-    "crumbs": [
-      "Install Python",
-      "Pyenv"
-    ]
-  },
-  {
-    "objectID": "210-python_install.html#install-packages",
-    "href": "210-python_install.html#install-packages",
-    "title": "Pyenv",
-    "section": "3 Install Packages",
-    "text": "3 Install Packages\nWe recommend that you try to keep your base python version as clean as possible, i.e., do not install any packages into it. Instead, please head over to the Virtual Environments page and install your packages into a virtual environment.",
-    "crumbs": [
-      "Install Python",
-      "Pyenv"
-    ]
-  },
-  {
-    "objectID": "610-additional_resources.html",
-    "href": "610-additional_resources.html",
-    "title": "Additional Resources",
-    "section": "",
-    "text": "https://quarto.org/docs/projects/virtual-environments.html\nhttps://www.youtube.com/watch?v=-YEUFGFHWgQ"
   },
   {
     "objectID": "690-concept_maps.html",
@@ -491,20 +63,6 @@
     "text": "2.4 poetry"
   },
   {
-    "objectID": "installation/pyenv-mac.html",
-    "href": "installation/pyenv-mac.html",
-    "title": "",
-    "section": "",
-    "text": "0.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n0.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n0.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n0.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n0.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version"
-  },
-  {
-    "objectID": "installation/pyenv-windows.html",
-    "href": "installation/pyenv-windows.html",
-    "title": "",
-    "section": "",
-    "text": "0.1 Windows\nWe need to look at the pyenv-win project to install pyenv for windows. You can find the link to the project here:\nhttps://github.com/pyenv-win/pyenv-win\nThere are a few methods of installing pyenv-win on Windows.\n\nUsing the Windows PowerShell\nManual installation from zip\nUsing a windows package manager (e.g., chocolatey, scoop)\n\n\n0.1.1 Method 1: Windows Powershell\nYou can run the following command in the PowerShell terminal:\nInvoke-WebRequest -UseBasicParsing -Uri \"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1\" -OutFile \"./install-pyenv-win.ps1\"; &\"./install-pyenv-win.ps1\"\nIf you see an UnauthorizedAccess error you need to:\n\nOpen Windows PowerShell with the “Run as administer” option\nRun the following command:\n\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nIf you are getting a “not digitally signed” error, you may also need to unblock the pyenv script:\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nUnblock-File (Join-Path $env:PYENV 'bin/pyenv.ps1')\n\n\n\n0.1.2 Method 2: Manual installation\n\nDownload pyenv-win.zip\nCreate a .pyenv folder in your home directory. In PowerShell or Git Bash:\n\nmkdir $HOME/.pyenv\n\nExtract the pyenv-win.zip contents into the newly created .pyenv directory you just created\nYou should have a a bin/ directory in $HOME/.pyenv/pyenv-win/bin\n\n\n\n0.1.3 Method 3: Package Managers\nYou can install pyenv-win using one of the Windows Package managers:\n\nChocolatey: https://chocolatey.org/install\nScoop: https://scoop.sh/\n\nAt the time of writing, pyenv-win is not in the winget repositories\nChocolatey\nchoco install pyenv-win\nScoop\nscoop bucket add main\nscoop install main/pyenv\n\n\n0.1.4 Post installation setup\nYou need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.\nIn general you need to add 3 pyenv variables and append a directory to the Path. The PYENV, PYENV_HOME, and PYENV_ROOT user variables need to all point to your pyenv-win directory within your .pyenv folder in your home directory.\n[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\nThe .pyenv\\pyenv-win\\bin\\ directory also needs to be added to the beginning of the Path variable\n[System.Environment]::SetEnvironmentVariable('path', $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\bin;\" + $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\shims;\" + [System.Environment]::GetEnvironmentVariable('path', \"User\"),\"User\")\n\n\n0.1.5 Confirm installation\nYou can confirm your installation with:\npyenv --version\nYou should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "A Python Setup Guide",
@@ -540,11 +98,32 @@
     "text": "This Guide\nThis guide mainly goes through using pyenv for installing and switching Python versions, and the built-in python venv module to install python virtual environments."
   },
   {
-    "objectID": "410-pyenv_useage.html",
-    "href": "410-pyenv_useage.html",
-    "title": "",
+    "objectID": "310-python_versions.html",
+    "href": "310-python_versions.html",
+    "title": "Python Versions",
     "section": "",
-    "text": "Pyenv Cheat sheet reference"
+    "text": "pyenv provides the ability to install multiple different versions of Python on our computer. It also comes with the ability to switch between them.\nHere we’ll show you how you can set up and switch between multiple Python versions."
+  },
+  {
+    "objectID": "310-python_versions.html#find-your-python",
+    "href": "310-python_versions.html#find-your-python",
+    "title": "Python Versions",
+    "section": "1 Find your Python",
+    "text": "1 Find your Python\nA quick way to get a sense of what Python you have installed and the version you are using is running the pyenv versions command:\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nIn this example, there are multiple versions of python installed, and the * is on the 3.11.5 version of python. The * designates the Python that is used when Python is called.\n\n\n\n\n\n\nNote\n\n\n\nYou can also use pyenv version (not plural) to only list the currently selected python version.\n% pyenv version\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n\n\nSince we are using pyenv that uses a concept of “shims” to pick the version of Python for us, the typical way we would find the exact path to a binary using which will only point us to the shim.\n% which python\n/Users/danielchen/.pyenv/shims/python\nInstead we need to use the which function directly within pyenv to help resolve the actual Python that pyenv is using.\n % pyenv which python\n/Users/danielchen/.pyenv/versions/3.11.5/bin/python"
+  },
+  {
+    "objectID": "310-python_versions.html#set-defaults",
+    "href": "310-python_versions.html#set-defaults",
+    "title": "Python Versions",
+    "section": "2 Set defaults",
+    "text": "2 Set defaults\nAny time we have multiple versions to manage, there is an option to set a default to make things less tedious and manual. pyenv has a few settings on helping us set a default Python\n\n2.1 System\nAs we’ve mentioned in the beginning of the guide, do not use your system python for your Python projects. In general, you want to avoid having system python being used when you, the user, are trying to run python code. Typically, this system version of python is used for your computer’s operating system.\n\n\n\n\n\n\nWarning\n\n\n\nIn general you should not be setting pyenv to be using the system Python.\n\n\n\n\n2.2 Shell\nWe can manually override the Python pyenv is using anywhere in our terminal by setting the shell default. Under the hood, this modifies the pyenv $PYENV_VERSION environment variable that gets used to pick the Python pyenv uses.\npyenv shell &lt;PYTHON VERSION&gt; is the general command on manually switching to a different python version. You can find the &lt;PYTHON VERSION&gt; py running pyenv versions to list all the Python versions installed on your computer.\nBefore changing the python version\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.11.5/envs/ds\n  3.12.0\nChanging the python version with pyenv shell\n% pyenv shell 3.12.0\nConfirming the Python version change.\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n  3.11.5\n* 3.12.0 (set by PYENV_VERSION environment variable)\n\n\n2.3 Local\nDifferent python projects may run on different versions of Python. Instead of constantly remembering which Python version a project (i.e., folder) needs, pyenv has a local setting that creates a .python-version file that contains the version of python that pyenv will automatically switch to.\nLet’s create an example folder to see how pyenv local works.\nmkdir ~/Desktop/pyenv-local-example\ncd ~/Desktop\nWe have our initial Python:\n~ % pyenv version\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\nLet’s move into our newly created example folder.\ncd ~/Desktop/pyenv-local-example\nWe are currently in an empty folder and the Python version is still the same.\n% ls -al\ntotal 0\ndrwxr-xr-x   2 danielchen  staff    64 Oct 10 12:02 .\ndrwx------@ 69 danielchen  staff  2208 Oct 10 11:45 ..\n% pyenv version\n3.11.5 (set by /Users/danielchen/.pyenv/version)\nLet’s pretend this is a python project that needs to run on Python 3.12.0. We already have this version installed, and do not want to remember to pyenv shell into this version every time we cd into this folder.\nConfirm that we have the version of python we want installed.\n% pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nSet a default local (i.e., folder) python version.\npyenv local 3.12.0\nWe now see that our python version has changed to 3.12.0.\n% pyenv version\n3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)\nIt the version has changed because it is reading the python version information from the .python-version file.\n% ls -a\n.       ..      .python-version\nThis is a special file that pyenv uses to determine the local python version. The contents of this file is just the version of python you have installed on your computer.\n% cat .python-version\n3.12.0\nNow, every time you leave this folder, pyenv will go back to its original default value.\npyenv-local-example % cd ..\nDesktop % pyenv version\n3.11.5 (set by /Users/danielchen/.pyenv/version)\nBut when you cd back into the folder, it will change into the python version you have specified in the local folder.\nDesktop % cd pyenv-local-example\npyenv-local-example % pyenv version\n3.12.0 (set by /Users/danielchen/Desktop/pyenv-local-example/.python-version)\nYou will combine this mechanism along with creating virtual environments to make sure your project always uses the same python version and packages from the virtual environment.\n\n\n2.4 Global\nThe final default you can set for pyenv is the global setting. If shell or local values are not set, then pyenv will default to the version specified by global.\n\n\n\n\n\n\nImportant\n\n\n\nDo not set your global version to system. You run the risk of messing up the Python your computer needs to manage the operating system.\n\n\n\n\n\n\n\n\nTip\n\n\n\nPick one of the pyenv python versions you’ve installed and set that as the global version. If you make sure to not install packages into this environment and follow the Iron Law of Python Management you can always uninstall and reinstall the python version again with pyenv install and reset the pyenv global version."
+  },
+  {
+    "objectID": "310-python_versions.html#keep-things-empty-and-clean",
+    "href": "310-python_versions.html#keep-things-empty-and-clean",
+    "title": "Python Versions",
+    "section": "3 Keep Things Empty and Clean",
+    "text": "3 Keep Things Empty and Clean\nAs a final reminder, any version of python you have installed with pyenv install, remember to not install packages into that particular python version and its environment.\nYou can see all the python packages you have installed in the current environment by using pip freeze.\nUnless you are working in a virtual environment, you want to make sure pip freeze always returns nothing.\n% pip freeze\n%\nYou can either run pip uninstall &lt;PACKAGE NAME&gt; to uninstall a package you may have accidentally installed, or you can run pyenv uninstall &lt;PYTHON VERSION&gt; to uninstall the python version and re-install it with pyenv install &lt;PYTHON VERSION&gt;."
   },
   {
     "objectID": "530-pipx.html#pipx",
@@ -552,5 +131,278 @@
     "title": "",
     "section": "1 pipx",
     "text": "1 pipx"
+  },
+  {
+    "objectID": "210-python_install.html",
+    "href": "210-python_install.html",
+    "title": "Pyenv",
+    "section": "",
+    "text": "The Posit, PBC Solutions Engineering Team recommends using pyenv to manage your different Python versions. You can find their guide here:\nhttps://solutions.posit.co/write-code/minimum-viable-python/installing-python/\nFor MacOS and Linux, The official pyenv repository and installation instructions are here: https://github.com/pyenv/pyenv\nFor Windows you can find the official instructions here: https://github.com/pyenv-win/pyenv-win\nBelow, is a more focused guide on setting up Python using pyenv on your machine."
+  },
+  {
+    "objectID": "210-python_install.html#os-specific-installation-notes",
+    "href": "210-python_install.html#os-specific-installation-notes",
+    "title": "Pyenv",
+    "section": "1 OS Specific Installation Notes",
+    "text": "1 OS Specific Installation Notes\n\n1.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n1.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n1.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n1.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n1.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version\n\n\n\n1.2 Windows\nWe need to look at the pyenv-win project to install pyenv for windows. You can find the link to the project here:\nhttps://github.com/pyenv-win/pyenv-win\nThere are a few methods of installing pyenv-win on Windows.\n\nUsing the Windows PowerShell\nManual installation from zip\nUsing a windows package manager (e.g., chocolatey, scoop)\n\n\n1.2.1 Method 1: Windows Powershell\nYou can run the following command in the PowerShell terminal:\nInvoke-WebRequest -UseBasicParsing -Uri \"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1\" -OutFile \"./install-pyenv-win.ps1\"; &\"./install-pyenv-win.ps1\"\nIf you see an UnauthorizedAccess error you need to:\n\nOpen Windows PowerShell with the “Run as administer” option\nRun the following command:\n\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nIf you are getting a “not digitally signed” error, you may also need to unblock the pyenv script:\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nUnblock-File (Join-Path $env:PYENV 'bin/pyenv.ps1')\n\n\n\n1.2.2 Method 2: Manual installation\n\nDownload pyenv-win.zip\nCreate a .pyenv folder in your home directory. In PowerShell or Git Bash:\n\nmkdir $HOME/.pyenv\n\nExtract the pyenv-win.zip contents into the newly created .pyenv directory you just created\nYou should have a a bin/ directory in $HOME/.pyenv/pyenv-win/bin\n\n\n\n1.2.3 Method 3: Package Managers\nYou can install pyenv-win using one of the Windows Package managers:\n\nChocolatey: https://chocolatey.org/install\nScoop: https://scoop.sh/\n\nAt the time of writing, pyenv-win is not in the winget repositories\nChocolatey\nchoco install pyenv-win\nScoop\nscoop bucket add main\nscoop install main/pyenv\n\n\n1.2.4 Post installation setup\nYou need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.\nIn general you need to add 3 pyenv variables and append a directory to the Path. The PYENV, PYENV_HOME, and PYENV_ROOT user variables need to all point to your pyenv-win directory within your .pyenv folder in your home directory.\n[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\nThe .pyenv\\pyenv-win\\bin\\ directory also needs to be added to the beginning of the Path variable\n[System.Environment]::SetEnvironmentVariable('path', $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\bin;\" + $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\shims;\" + [System.Environment]::GetEnvironmentVariable('path', \"User\"),\"User\")\n\n\n1.2.5 Confirm installation\nYou can confirm your installation with:\npyenv --version\nYou should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help.\n\n\n\n1.3 Linux\nYou can check to see if your current version of linux has pyenv in its package manager. Otherwise, you will install pyenv using the automatic installer script\n\nUbuntuArch\n\n\nsudo apt update\ncurl https://pyenv.run | bash\n\n\npyenv exists in the Arch Extra repository: https://archlinux.org/packages/extra/any/pyenv/\npacman -Syu pyenv\n\n\n\n\n1.3.1 Post installation setup\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.bashrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.bashrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.bashrc\n\nexec $SHELL\npyenv --version"
+  },
+  {
+    "objectID": "210-python_install.html#install-python",
+    "href": "210-python_install.html#install-python",
+    "title": "Pyenv",
+    "section": "2 Install Python",
+    "text": "2 Install Python\nWe’ll be using pyenv to install Python.\nFirst, we need to know what version of Python you want to install. Luckily, pyenv can list out all the versions available to you by typing\npyenv install --list\nUsually you know roughly some version of Python you may already want to install, but not the exact number. You can filter the results with a match\n\nMacOS / Linux / Git BashWindows Powershell\n\n\npyenv install --list | grep 3.11\n\n\n pyenv install --list | select-string 3.11\n\n\n\nThis will list all the Python 3.11 patch versions for you.\nIf you want to install the latest Python version, you only need to specify the major number, 3.\npyenv install 3\nYou can list all the pyenv installed versions with:\npyenv versions"
+  },
+  {
+    "objectID": "210-python_install.html#install-packages",
+    "href": "210-python_install.html#install-packages",
+    "title": "Pyenv",
+    "section": "3 Install Packages",
+    "text": "3 Install Packages\nWe recommend that you try to keep your base python version as clean as possible, i.e., do not install any packages into it. Instead, please head over to the Virtual Environments page and install your packages into a virtual environment."
+  },
+  {
+    "objectID": "110-the_whole_game.html",
+    "href": "110-the_whole_game.html",
+    "title": "Python Project Example",
+    "section": "",
+    "text": "Let’s go through an entire Python data science project example."
+  },
+  {
+    "objectID": "110-the_whole_game.html#install-python",
+    "href": "110-the_whole_game.html#install-python",
+    "title": "Python Project Example",
+    "section": "1 Install Python",
+    "text": "1 Install Python\nInstall the latest Python 3.x.x version known by pyenv\npyenv install 3"
+  },
+  {
+    "objectID": "110-the_whole_game.html#create-a-new-python-project",
+    "href": "110-the_whole_game.html#create-a-new-python-project",
+    "title": "Python Project Example",
+    "section": "2 Create a new python project",
+    "text": "2 Create a new python project\ncd ~/Desktop\nmkdir my_python_project\ncd ~/Desktop/my_python_project\nWe’ll create a small python script\n{.python, include=\"example_project/01-create_data.py\", eval=FALSE}\nimport pandas as pd\n\n# Create example data\ndata = {\n    \"Date\": [\n        \"2023-01-01\",\n        \"2023-01-02\",\n        \"2023-01-03\",\n        \"2023-01-04\",\n        \"2023-01-05\",\n    ],\n    \"Product\": [\"A\", \"B\", \"A\", \"C\", \"B\"],\n    \"Sales\": [100, 150, 120, 80, 200],\n    \"Profit\": [30, 40, 25, 10, 50],\n}\n\n# Create a DataFrame\ndf = pd.DataFrame(data)\n\n# Save the DataFrame to a CSV file\ndf.to_csv(\"sales_data.csv\", index=False)\n\n# Group by Product and calculate total sales and profit\nproduct_group = df.groupby(\"Product\").agg(\n    {\"Sales\": \"sum\", \"Profit\": \"sum\"}\n)\n\n# Save the product group to a CSV file\nproduct_group.to_csv(\"product_group.csv\", index=False)\n\nprint(\n    \"Data saved to 'sales_data.csv' and\\n\"\n    \"product group data saved to 'product_group.csv'\"\n)\nSave this code to 01-create_data.py\nmy_python_project % ls\n01-create_data.py"
+  },
+  {
+    "objectID": "110-the_whole_game.html#switch-to-the-proper-python-version",
+    "href": "110-the_whole_game.html#switch-to-the-proper-python-version",
+    "title": "Python Project Example",
+    "section": "3 Switch to the proper python version",
+    "text": "3 Switch to the proper python version\nCheck all the installed versions\nmy_python_project % pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n* 3.11.5 (set by /Users/danielchen/.pyenv/version)\n  3.12.0\nSwitch to the version of interest.\npyenv shell 3.12.0\nmy_python_project % pyenv versions\n  system\n  3.9.11\n  3.9.18\n  3.10.3\n  3.10.4\n  3.11.0rc1\n  3.11.5\n* 3.12.0 (set by PYENV_VERSION environment variable)\nRe-confirm the python version\nmy_python_project % pyenv which python\n/Users/danielchen/.pyenv/versions/3.12.0/bin/python\nmy_python_project % python --version\nPython 3.12.0"
+  },
+  {
+    "objectID": "110-the_whole_game.html#an-empty-slate",
+    "href": "110-the_whole_game.html#an-empty-slate",
+    "title": "Python Project Example",
+    "section": "4 An empty slate",
+    "text": "4 An empty slate\nCurrently, our python environment is the default base environment without any extra packages.\nIf we try to run the script, it will fail because the pandas module is not installed.\nmy_python_project % python 01-create_data.py\nTraceback (most recent call last):\n  File \"/Users/danielchen/Desktop/my_python_project/01-create_data.py\", line 1, in &lt;module&gt;\n    import pandas as pd\nModuleNotFoundError: No module named 'pandas'"
+  },
+  {
+    "objectID": "110-the_whole_game.html#create-a-venv",
+    "href": "110-the_whole_game.html#create-a-venv",
+    "title": "Python Project Example",
+    "section": "5 Create a venv",
+    "text": "5 Create a venv\nThe Iron Law of Python Management states that every project should have their own virtual environment. Before we start installing packages (e.g., pandas), we need to create and activate a virtual environment first.\nWe will use the built-in venv python module to create a venv. The venv will be saved into a folder called venv in the current directory.\nmy_python_project % python -m venv venv\nHere’s the folder structure after creating a venv\nmy_python_project % tree -L 4 .\n.\n├── 01-create_data.py\n└── venv\n    ├── bin\n    │   ├── Activate.ps1\n    │   ├── activate\n    │   ├── activate.csh\n    │   ├── activate.fish\n    │   ├── pip\n    │   ├── pip3\n    │   ├── pip3.12\n    │   ├── python -&gt; /Users/danielchen/.pyenv/versions/3.12.0/bin/python\n    │   ├── python3 -&gt; python\n    │   └── python3.12 -&gt; python\n    ├── include\n    │   └── python3.12\n    ├── lib\n    │   └── python3.12\n    │       └── site-packages\n    └── pyvenv.cfg\nYou can see here that the python, python3, and python3.12 are all pointing to the same python we installed. This is why you want to keep the base version environment clean."
+  },
+  {
+    "objectID": "110-the_whole_game.html#activate-venv",
+    "href": "110-the_whole_game.html#activate-venv",
+    "title": "Python Project Example",
+    "section": "6 Activate venv",
+    "text": "6 Activate venv\nThe venv/bin/ directory has a few activate scripts. These scripts are to activate for different operating system. Currently we are using a Mac/*nix environment.\n\nMacOS / *nix / Git BashWindows\n\n\nsource venv/bin/activate\n\n\nvenv/bin/Activate.ps1\n\n\n\nYou will notice your prompt change and the name of the venv will be prepended to the beginning of the prompt:\nBefore:\nmy_python_project %\nAfter:\n(venv) my_python_project %\nNow you are ready to install packages and run your code!"
+  },
+  {
+    "objectID": "110-the_whole_game.html#install-packages-into-venv",
+    "href": "110-the_whole_game.html#install-packages-into-venv",
+    "title": "Python Project Example",
+    "section": "7 Install packages into venv",
+    "text": "7 Install packages into venv\nWe’re finally able to install packages. Our current project only needs pandas\npip install pandas"
+  },
+  {
+    "objectID": "110-the_whole_game.html#run-your-code",
+    "href": "110-the_whole_game.html#run-your-code",
+    "title": "Python Project Example",
+    "section": "8 Run your code",
+    "text": "8 Run your code\nOur code now runs!\nmy_python_project % python 01-create_data.py\nData saved to 'sales_data.csv' and\nproduct group data saved to 'product_group.csv'"
+  },
+  {
+    "objectID": "110-the_whole_game.html#rinse-and-repeat",
+    "href": "110-the_whole_game.html#rinse-and-repeat",
+    "title": "Python Project Example",
+    "section": "9 Rinse and Repeat",
+    "text": "9 Rinse and Repeat\nWe’ll create a new script 02-viz_pandas.py with the following bits of code:\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Read product group data from CSV\nproduct_group = pd.read_csv('product_group.csv')\n\n# Bar chart for total sales by product\nplt.figure(figsize=(8, 6))  # Set the figure size\nproduct_group['Sales'].plot(kind='bar')\nplt.title('Total Sales by Product')\nplt.xlabel('Product')\nplt.ylabel('Total Sales')\nplt.savefig('sales_by_product.png')  # Save the figure as a PNG\nplt.show()\nThis code will load a dataset from our 01 script, create, save, and show a figure.\nmy_python_project % ls\n01-create_data.py   product_group.csv   venv\n02-viz_pandas.py    sales_data.csv\nNow let’s run the script.\n(venv) my_python_project % python 02-viz_pandas.py\nTraceback (most recent call last):\n  File \"/Users/danielchen/Desktop/my_python_project/02-viz_pandas.py\", line 2, in &lt;module&gt;\n    import matplotlib.pyplot as plt\nModuleNotFoundError: No module named 'matplotlib'\nWe need to install matplotlib in our environment.\npip install matplotlib\nAnd now things work!\n(venv) my_python_project % python 02-viz_pandas.py\n(venv) my_python_project % ls\n01-create_data.py   product_group.csv   sales_data.csv\n02-viz_pandas.py    sales_by_product.png    venv"
+  },
+  {
+    "objectID": "110-the_whole_game.html#one-more-time",
+    "href": "110-the_whole_game.html#one-more-time",
+    "title": "Python Project Example",
+    "section": "10 One more time",
+    "text": "10 One more time\nIn a new 03-viz_mpl.py file:\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Scatter plot of Sales vs. Profit\ndf = pd.read_csv('sales_data.csv')\nplt.figure(figsize=(8, 6))  # Set the figure size\nplt.scatter(df['Sales'], df['Profit'])\nplt.title('Scatter Plot of Sales vs. Profit')\nplt.xlabel('Sales')\nplt.ylabel('Profit')\nplt.savefig('scatter_plot.png')  # Save the figure as a PNG\nplt.show()\nVoilà!\n(venv) my_python_project % python 03-viz_mpl.py\n(venv) my_python_project % ls\n01-create_data.py   03-viz_mpl.py       sales_by_product.png    scatter_plot.png\n02-viz_pandas.py    product_group.csv   sales_data.csv      venv"
+  },
+  {
+    "objectID": "110-the_whole_game.html#save-requirements.txt",
+    "href": "110-the_whole_game.html#save-requirements.txt",
+    "title": "Python Project Example",
+    "section": "11 Save requirements.txt",
+    "text": "11 Save requirements.txt\nThe pip freeze command will show you all the packages (and dependencies) you have installed in the current virtual environment.\n(venv) my_python_project % pip freeze\ncontourpy==1.1.1\ncycler==0.12.0\nfonttools==4.43.0\nkiwisolver==1.4.5\nmatplotlib==3.8.0\nnumpy==1.26.0\npackaging==23.2\npandas==2.1.1\nPillow==10.0.1\npyparsing==3.1.1\npython-dateutil==2.8.2\npytz==2023.3.post1\nsix==1.16.0\ntzdata==2023.3\nWe can save the contents of this file out to a requirements.txt file.\npip freeze &gt; requirements.txt\nNow you have full python project!\n(venv) my_python_project % ls\n01-create_data.py   product_group.csv   sales_data.csv\n02-viz_pandas.py    requirements.txt    scatter_plot.png\n03-viz_mpl.py       sales_by_product.png    venv\nYou will need to manually run pip freeze &gt; requirements.txt when you want to update your requirements.txt file."
+  },
+  {
+    "objectID": "110-the_whole_game.html#deactivate-your-virtual-environment",
+    "href": "110-the_whole_game.html#deactivate-your-virtual-environment",
+    "title": "Python Project Example",
+    "section": "12 Deactivate your virtual environment",
+    "text": "12 Deactivate your virtual environment\nWhen you want to leave your project environment you can run deactivate in the terminal.\ndeactivate\nThis will remove the venv name that was original prepended to your terminal:\nIn the venv:\n(venv) my_python_project % deactivate\nDeactivated:\nmy_python_project %\nAnd we’re back to our original package environment\nmy_python_project % python 01-create_data.py\nTraceback (most recent call last):\n  File \"/Users/danielchen/Desktop/my_python_project/01-create_data.py\", line 1, in &lt;module&gt;\n    import pandas as pd\nModuleNotFoundError: No module named 'pandas'"
+  },
+  {
+    "objectID": "110-the_whole_game.html#share-your-environment-with-others",
+    "href": "110-the_whole_game.html#share-your-environment-with-others",
+    "title": "Python Project Example",
+    "section": "13 Share your environment with others",
+    "text": "13 Share your environment with others\nYou can now share your requirements.txt file with others to re-create your programming environment. Your collaborator will need to install the packages specified in requirements.txt into their own new venv. You can replicate this on your own machine too. Make sure you are no longer in an active venv (with deactivate) if you are going to create a new venv.\nmkdir ~/Desktop/collaborator_env\ncd ~/Desktop/collaborator_env\n\npyenv shell 3.12.0\n\npython -m venv venv\nsource venv/bin/activate\nWe can use pip to install the requirements.txt file once we’re in the new empty venv. Assuming we have the requirements.txt file in our current working directory:\npip install -r requirements.txt"
+  },
+  {
+    "objectID": "110-the_whole_game.html#conclusion",
+    "href": "110-the_whole_game.html#conclusion",
+    "title": "Python Project Example",
+    "section": "14 Conclusion",
+    "text": "14 Conclusion\nThe general workflow for working with python and python projects:\n\nInstall Python version you want\nSwitch into Python\nCreate new python project directory\nCreate venv\nActivate venv\nInstall packages into venv\nRun your code\nRinse and repeat\n\nThere are other tools that can be installed to streamline the process. But this should be the bare minimum python project setup you use going forward."
+  },
+  {
+    "objectID": "410-pyenv_useage.html",
+    "href": "410-pyenv_useage.html",
+    "title": "",
+    "section": "",
+    "text": "Pyenv Cheat sheet reference"
+  },
+  {
+    "objectID": "330-ide.html",
+    "href": "330-ide.html",
+    "title": "Integrated Development Environment Setup",
+    "section": "",
+    "text": "The concept of a “project” is important when trying to point your integrated development environment (IDE) to your virtual environment. Some programs rely on special files to designate a project, others will treat an opened folder as a project. It’s important to know how to confirm what environment is being used in the IDE."
+  },
+  {
+    "objectID": "330-ide.html#project-set-up",
+    "href": "330-ide.html#project-set-up",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.1 Project Set Up",
+    "text": "1.1 Project Set Up\nIf you are starting from a new Python project, the best way is to first create an RStudio project from the IDE. Once the RStudio project is created, you follow the steps in creating a venv virtual environment, such that the venv folder is also in the RStudio project.\nNext, within the RStudio Global Options &gt; Python tab, make sure the checkbox for “Automatically activate project-local Python environment” is checked.\n\nThis will make sure the venv in the current RStudio project gets picked up first when a Python interpreter is needed."
+  },
+  {
+    "objectID": "330-ide.html#package-set-up",
+    "href": "330-ide.html#package-set-up",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.2 Package Set up",
+    "text": "1.2 Package Set up\n\nUse this requirements.txt file\ntree the example directory\ninstall {reticulate} the R package: install.packages('reticulate')\n\nWhen you run Python code, you will see a call in the console for reticulate::repl_python(). You will see the call from R, and then the Python prompts.\nThe R code will be displayed with a &gt; and the python code will have a &gt;&gt;&gt;\n&gt; reticulate::repl_python()\nPython 3.10.3 (/Users/danielchen/git/rstudio/academyContent/.venv/bin/python) # TODO: Fix this output\nReticulate 1.30 REPL -- A Python interpreter in R.\nEnter 'exit' or 'quit' to exit the REPL and return to R.\n&gt;&gt;&gt; 3 + 3\n6"
+  },
+  {
+    "objectID": "330-ide.html#reticulate",
+    "href": "330-ide.html#reticulate",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.3 Reticulate",
+    "text": "1.3 Reticulate\nWhen using Python within RStudio, you can always confirm what Python is being used with the reticulate::py_config() function\n&gt; reticulate::py_config()\npython:         /Users/danielchen/git/rstudio/academyContent/.venv/bin/python\nlibpython:      /Users/danielchen/.pyenv/versions/3.10.3/lib/libpython3.10.dylib\npythonhome:     /Users/danielchen/git/rstudio/academyContent/.venv:/Users/danielchen/git/rstudio/academyContent/.venv\nversion:        3.10.3 (main, Oct  5 2022, 14:06:56) [Clang 14.0.0 (clang-1400.0.29.102)]\nnumpy:          /Users/danielchen/git/rstudio/academyContent/.venv/lib/python3.10/site-packages/numpy\nnumpy_version:  1.24.1\n\nNOTE: Python version was forced by use_python function\nIf you have the wrong python loaded, you need to restart your R session first before trying to load another Python intepreter.\n\n\n\n\n\n\nImportant\n\n\n\nIf you need to manually specify a python interpreter, you can use the reticulate::use_python() or reticulate::use_virtualenv() functions. If you use the reticulate::use_virtualenv() function to load the venv virtual environment, and the venv is named venv in the current project directory, make sure you call the function with a trailing /, venv/ so the reticulate::use_virtualenv() function knows to look for a directory named venv/ and not a virtual environment named venv in the ~/.virtualenvs directory. You may get an error message about not a python virtualenv otherwise,\nDirectory ~/.virtualenvs/venv is not a Python virtualenv"
+  },
+  {
+    "objectID": "320-python_virtual_environments.html",
+    "href": "320-python_virtual_environments.html",
+    "title": "Python Virtual Environments",
+    "section": "",
+    "text": "The Iron Law of Python Management says we should always create a new virtual environment for each python project.\nAt the time of writing, PyPI (Python Package Index) has over 480,000 packages listed. PyPI does not guarantee that all the packages listed are compatible and can be installed together.\nVirtual environments provide us a way to isolate different python packages from one another. Some reasons why you may want virtual environments:"
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#built-in-python-venv-module",
+    "href": "320-python_virtual_environments.html#built-in-python-venv-module",
+    "title": "Python Virtual Environments",
+    "section": "1 Built-in Python venv module",
+    "text": "1 Built-in Python venv module\nPython has shipped the venv module since Python 3.3. As long as you are using a supported version of Python, then you do not need to install any more tools to create a virtual environment.\n\n\n\n\n\n\nTip\n\n\n\nIn general, you do not want to install any packages in your base python environment. This can lead to confusion to where packages are installed as you switch around different virtual environments."
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#create-a-venv-virtual-environment",
+    "href": "320-python_virtual_environments.html#create-a-venv-virtual-environment",
+    "title": "Python Virtual Environments",
+    "section": "2 Create a venv Virtual Environment",
+    "text": "2 Create a venv Virtual Environment\nBecause of the Iron Law of Python Management, each project (i.e., folder) will have their own python venv.\n\n2.1 Python Project Folder\nFirst we need to make sure we are in the folder our python project exists in. You can confirm your location with:\npwd\nThe result should give you the path to your current Python project.\n\n\n2.2 Python Version\npyenv allows us to install and use different versions of python. You can see all the versions you have installed with:\npyenv versions\nYou can also see what python you are using with:\npyenv which python\nThis will list the full path to the python binary that is currently being used. The currently activated python version will be used to create your venv. This is why you want to make sure the environment is clean (i.e., no extraneous python packages installed).\nIn this example, we will use Python 3.12.0.\npyenv shell 3.12.0\n\n\n2.3 Create venv\nThe general command for creating a venv is:\npython -m venv &lt;PATH TO NEW VENV&gt;\nWe will typically use .venv or venv for the venv name. So, the above command will look like this if we were to use venv as our venv name.\npython -m venv venv\nThis will create a venv folder in your current directory that will store all the packages and dependencies we will install.\n\n\n\n\n\n\nNote\n\n\n\nThere are pros and cons with how you name your venv.\n\nIf you use the .venv name with the . in the beginning, the venv folder that will be created will be hidden because of the leading . in the .venv name. Because it’s hidden, it may not always be readily apparent that the current project has a venv virtual environment.\nIf you use the venv name so the folder is not hidden, you will always see the venv folder in the project.\n\nWhether or not you use venv or .venv, these names have become standardized where many other tools will know to look for these folder names when listing virtual environments.\n\nYou can also choose to name your venv the name of your project, e.g., python -m venv my_project. This will make it explicit and clear what environment you are working in if you are jumping between project folders with a common venv environment. However, because the my_project name is not standard and fairly arbitrary, not every tool will recognize you have a python venv virtual environment in your directory.\n\n\n\nThe venv folder also contains a link to the Python version that will be used. This is why it’s important to:\n\nUse the correct python version before creating the venv\nMake sure the original python environment does not have anything installed in it\n\nThe venv python module will install pip for us by default. You can also see from the tree diagram below, how all the different ways we can call python are linked together.\nmy_python_project % tree -L 4 .\n.\n└── venv\n    ├── bin\n    │   ├── Activate.ps1\n    │   ├── activate\n    │   ├── activate.csh\n    │   ├── activate.fish\n    │   ├── pip\n    │   ├── pip3\n    │   ├── pip3.12\n    │   ├── python -&gt; /Users/danielchen/.pyenv/versions/3.12.0/bin/python\n    │   ├── python3 -&gt; python\n    │   └── python3.12 -&gt; python\n    ├── include\n    │   └── python3.12\n    ├── lib\n    │   └── python3.12\n    │       └── site-packages\n    └── pyvenv.cfg"
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#activate",
+    "href": "320-python_virtual_environments.html#activate",
+    "title": "Python Virtual Environments",
+    "section": "3 Activate",
+    "text": "3 Activate\nWith our venv named venv created, we need to “activate” it.\n\nMacOS / *nix / Git BashWindows\n\n\nsource venv/bin/activate\n\n\nvenv/bin/Activate.ps1\n\n\n\nThis will typically prepend the name of the virtual environment to your terminal prompt. Since we named our venv the name venv we should see venv in the beginning of our prompt.\nBefore activate:\n%\nAfter:\n(venv) %"
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#install-packages",
+    "href": "320-python_virtual_environments.html#install-packages",
+    "title": "Python Virtual Environments",
+    "section": "4 Install Packages",
+    "text": "4 Install Packages\nNow that we have our venv virtual environment activated, we are finally able to install packages. Let’s install the Python pandas library.\n\n4.1 Starting with an Empty Environment\nBefore we do that, let’s prove that our environment is empty, and pandas is not installed.\nWe can see that pip freeze returns nothing. Meaning nothing is currently installed in this environment.\n(venv) % pip freeze\n(venv) %\nIf we load up the python interpreter, we also cannot import the pandas library.\n(venv) % python\nPython 3.12.0 (main, Oct  3 2023, 15:47:53) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n\n&gt;&gt;&gt; import pandas\nTraceback (most recent call last):\n  File \"&lt;stdin&gt;\", line 1, in &lt;module&gt;\nModuleNotFoundError: No module named 'pandas'\n&gt;&gt;&gt; exit()\n\n(venv) %"
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#install-packages-into-environment",
+    "href": "320-python_virtual_environments.html#install-packages-into-environment",
+    "title": "Python Virtual Environments",
+    "section": "5 Install Packages into Environment",
+    "text": "5 Install Packages into Environment\nNow we can use pip to install pandas\npip install pandas\nThis will install pandas along with any dependencies it needs.\n(venv) % pip install pandas\nCollecting pandas\n  Obtaining dependency information for pandas from https://files.pythonhosted.org/packages/38/1b/e425daceff79695e67d115230bdeb57bbdd6cfff8c46d532e4e64d3dc966/pandas-2.1.1-cp312-cp312-macosx_11_0_arm64.whl.metadata\n  Using cached pandas-2.1.1-cp312-cp312-macosx_11_0_arm64.whl.metadata (18 kB)\nCollecting numpy&gt;=1.26.0 (from pandas)\n  Obtaining dependency information for numpy&gt;=1.26.0 from https://files.pythonhosted.org/packages/7a/72/6d1cbdf0d770016bc9485f9ef02e73d5cb4cf3c726f8e120b860a403d307/numpy-1.26.0-cp312-cp312-macosx_11_0_arm64.whl.metadata\n  Using cached numpy-1.26.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (53 kB)\nCollecting python-dateutil&gt;=2.8.2 (from pandas)\n  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)\nCollecting pytz&gt;=2020.1 (from pandas)\n  Obtaining dependency information for pytz&gt;=2020.1 from https://files.pythonhosted.org/packages/32/4d/aaf7eff5deb402fd9a24a1449a8119f00d74ae9c2efa79f8ef9994261fc2/pytz-2023.3.post1-py2.py3-none-any.whl.metadata\n  Using cached pytz-2023.3.post1-py2.py3-none-any.whl.metadata (22 kB)\nCollecting tzdata&gt;=2022.1 (from pandas)\n  Using cached tzdata-2023.3-py2.py3-none-any.whl (341 kB)\nCollecting six&gt;=1.5 (from python-dateutil&gt;=2.8.2-&gt;pandas)\n  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)\nUsing cached pandas-2.1.1-cp312-cp312-macosx_11_0_arm64.whl (10.6 MB)\nUsing cached numpy-1.26.0-cp312-cp312-macosx_11_0_arm64.whl (13.7 MB)\nUsing cached pytz-2023.3.post1-py2.py3-none-any.whl (502 kB)\nInstalling collected packages: pytz, tzdata, six, numpy, python-dateutil, pandas\nSuccessfully installed numpy-1.26.0 pandas-2.1.1 python-dateutil-2.8.2 pytz-2023.3.post1 six-1.16.0 tzdata-2023.3\nNow if we run pip freeze you will see pandas, the version installed, and all of its installed dependencies.\n(venv) % pip freeze\nnumpy==1.26.0\npandas==2.1.1\npython-dateutil==2.8.2\npytz==2023.3.post1\nsix==1.16.0\ntzdata==2023.3\nWe can now import pandas without the ModuleNotFoundError.\n(venv) % python\nPython 3.12.0 (main, Oct  3 2023, 15:47:53) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n&gt;&gt;&gt; import pandas as pd\n&gt;&gt;&gt;\n\n5.1 Install Packages as You Need\nAs long as you are in the correct venv, you can pip install any package you need from the Python Package Index (PyPI).\npip install matplotlib plotnine seaborn"
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#save-your-environment-to-requirements.txt",
+    "href": "320-python_virtual_environments.html#save-your-environment-to-requirements.txt",
+    "title": "Python Virtual Environments",
+    "section": "6 Save Your Environment to requirements.txt",
+    "text": "6 Save Your Environment to requirements.txt\nWe’ve been using pip freeze to see what packages are installed in the current environment. We can actually save the contents of this output to a requirements.txt so the installed packages and versions are documented. We can then version control and/or give this file to other people for them to replicate our venv virtual environment.\npip freeze &gt; requirements.txt\nThis will save a requirements.txt file into our current working directory."
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#deactivate",
+    "href": "320-python_virtual_environments.html#deactivate",
+    "title": "Python Virtual Environments",
+    "section": "7 Deactivate",
+    "text": "7 Deactivate\nOnce you’re done with your current python venv, make sure you run deactivate so you do not pip install packages you do not need in your project.\ndeactivate\nThis will exit out of your venv, and you should see your prompt change back.\nIn the venv:\n(venv) % deactivate\nDeactivated:\nmy_python_project %\nAnd we’re back to our original package environment\n% python\nPython 3.12.0 (main, Oct  3 2023, 15:47:53) [Clang 15.0.0 (clang-1500.0.40.1)] on darwin\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n&gt;&gt;&gt; import pandas\nTraceback (most recent call last):\n  File \"&lt;stdin&gt;\", line 1, in &lt;module&gt;\nModuleNotFoundError: No module named 'pandas'"
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#install-packages-from-requirements.txt",
+    "href": "320-python_virtual_environments.html#install-packages-from-requirements.txt",
+    "title": "Python Virtual Environments",
+    "section": "8 Install Packages from requirements.txt",
+    "text": "8 Install Packages from requirements.txt\nIf you or someone else wants to set up a new venv with a requirements.txt file, make sure you follow the steps on this page to create a new venv first.\nThen, with the new venv activated, you can install all the packages and versions from the requirements.txt with:\npip install -r requirements.txt\nThis is one way reproducible programming environments are created in Python."
+  },
+  {
+    "objectID": "320-python_virtual_environments.html#conclusion",
+    "href": "320-python_virtual_environments.html#conclusion",
+    "title": "Python Virtual Environments",
+    "section": "9 Conclusion",
+    "text": "9 Conclusion\nIt’s important that every python project has its own virtual environment. Ideally it also has the environment saved into a requirements.txt file. This is the Iron Law of Python Management."
+  },
+  {
+    "objectID": "520-pipenv.html#pipenv",
+    "href": "520-pipenv.html#pipenv",
+    "title": "",
+    "section": "1 pipenv",
+    "text": "1 pipenv"
+  },
+  {
+    "objectID": "510-pyenv_virtualenv.html#pyenv-virtualenv",
+    "href": "510-pyenv_virtualenv.html#pyenv-virtualenv",
+    "title": "",
+    "section": "1 pyenv-virtualenv",
+    "text": "1 pyenv-virtualenv"
+  },
+  {
+    "objectID": "610-additional_resources.html",
+    "href": "610-additional_resources.html",
+    "title": "Additional Resources",
+    "section": "",
+    "text": "https://quarto.org/docs/projects/virtual-environments.html\nhttps://www.youtube.com/watch?v=-YEUFGFHWgQ"
+  },
+  {
+    "objectID": "installation/pyenv-windows.html",
+    "href": "installation/pyenv-windows.html",
+    "title": "",
+    "section": "",
+    "text": "0.1 Windows\nWe need to look at the pyenv-win project to install pyenv for windows. You can find the link to the project here:\nhttps://github.com/pyenv-win/pyenv-win\nThere are a few methods of installing pyenv-win on Windows.\n\nUsing the Windows PowerShell\nManual installation from zip\nUsing a windows package manager (e.g., chocolatey, scoop)\n\n\n0.1.1 Method 1: Windows Powershell\nYou can run the following command in the PowerShell terminal:\nInvoke-WebRequest -UseBasicParsing -Uri \"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1\" -OutFile \"./install-pyenv-win.ps1\"; &\"./install-pyenv-win.ps1\"\nIf you see an UnauthorizedAccess error you need to:\n\nOpen Windows PowerShell with the “Run as administer” option\nRun the following command:\n\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nIf you are getting a “not digitally signed” error, you may also need to unblock the pyenv script:\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nUnblock-File (Join-Path $env:PYENV 'bin/pyenv.ps1')\n\n\n\n0.1.2 Method 2: Manual installation\n\nDownload pyenv-win.zip\nCreate a .pyenv folder in your home directory. In PowerShell or Git Bash:\n\nmkdir $HOME/.pyenv\n\nExtract the pyenv-win.zip contents into the newly created .pyenv directory you just created\nYou should have a a bin/ directory in $HOME/.pyenv/pyenv-win/bin\n\n\n\n0.1.3 Method 3: Package Managers\nYou can install pyenv-win using one of the Windows Package managers:\n\nChocolatey: https://chocolatey.org/install\nScoop: https://scoop.sh/\n\nAt the time of writing, pyenv-win is not in the winget repositories\nChocolatey\nchoco install pyenv-win\nScoop\nscoop bucket add main\nscoop install main/pyenv\n\n\n0.1.4 Post installation setup\nYou need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.\nIn general you need to add 3 pyenv variables and append a directory to the Path. The PYENV, PYENV_HOME, and PYENV_ROOT user variables need to all point to your pyenv-win directory within your .pyenv folder in your home directory.\n[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\nThe .pyenv\\pyenv-win\\bin\\ directory also needs to be added to the beginning of the Path variable\n[System.Environment]::SetEnvironmentVariable('path', $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\bin;\" + $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\shims;\" + [System.Environment]::GetEnvironmentVariable('path', \"User\"),\"User\")\n\n\n0.1.5 Confirm installation\nYou can confirm your installation with:\npyenv --version\nYou should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help."
+  },
+  {
+    "objectID": "installation/pyenv-mac.html",
+    "href": "installation/pyenv-mac.html",
+    "title": "",
+    "section": "",
+    "text": "0.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n0.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n0.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n0.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n0.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version"
   }
 ]

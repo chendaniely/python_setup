@@ -1,1 +1,1 @@
-Sitemap: https://chendaniely.github.io/python_setup/sitemap.xml
+Sitemap: https://github.com/chendaniely/python_setup/sitemap.xml

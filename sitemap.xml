@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://chendaniely.github.io/python_setup/110-the_whole_game.html</loc>
-    <lastmod>2023-10-12T23:00:41.921Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/installation/pyenv-linux.html</loc>
+    <lastmod>2023-10-12T23:06:00.705Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/310-python_versions.html</loc>
-    <lastmod>2023-10-12T23:00:41.921Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/installation/pyenv-install_python.html</loc>
+    <lastmod>2023-10-12T23:05:59.277Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/320-python_virtual_environments.html</loc>
-    <lastmod>2023-10-12T23:00:41.922Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/690-concept_maps.html</loc>
+    <lastmod>2023-10-12T23:05:57.797Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/installation/pyenv-linux.html</loc>
-    <lastmod>2023-10-12T23:00:41.929Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/index.html</loc>
+    <lastmod>2023-10-12T23:05:56.905Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/installation/pyenv-install_python.html</loc>
-    <lastmod>2023-10-12T23:00:41.929Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/310-python_versions.html</loc>
+    <lastmod>2023-10-12T23:05:56.081Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/520-pipenv.html</loc>
-    <lastmod>2023-10-12T23:00:41.923Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/530-pipx.html</loc>
+    <lastmod>2023-10-12T23:05:54.653Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/510-pyenv_virtualenv.html</loc>
-    <lastmod>2023-10-12T23:00:41.923Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/210-python_install.html</loc>
+    <lastmod>2023-10-12T23:05:52.965Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/330-ide.html</loc>
-    <lastmod>2023-10-12T23:00:41.922Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/110-the_whole_game.html</loc>
+    <lastmod>2023-10-12T23:05:51.105Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/210-python_install.html</loc>
-    <lastmod>2023-10-12T23:00:41.921Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/410-pyenv_useage.html</loc>
+    <lastmod>2023-10-12T23:05:49.549Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/610-additional_resources.html</loc>
-    <lastmod>2023-10-12T23:00:41.924Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/330-ide.html</loc>
+    <lastmod>2023-10-12T23:05:52.053Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/690-concept_maps.html</loc>
-    <lastmod>2023-10-12T23:00:41.924Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/320-python_virtual_environments.html</loc>
+    <lastmod>2023-10-12T23:05:54.321Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/installation/pyenv-mac.html</loc>
-    <lastmod>2023-10-12T23:00:41.929Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/520-pipenv.html</loc>
+    <lastmod>2023-10-12T23:05:54.965Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/installation/pyenv-windows.html</loc>
-    <lastmod>2023-10-12T23:00:41.930Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/510-pyenv_virtualenv.html</loc>
+    <lastmod>2023-10-12T23:05:56.409Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/index.html</loc>
-    <lastmod>2023-10-12T23:00:41.928Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/610-additional_resources.html</loc>
+    <lastmod>2023-10-12T23:05:57.237Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/410-pyenv_useage.html</loc>
-    <lastmod>2023-10-12T23:00:41.922Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/installation/pyenv-windows.html</loc>
+    <lastmod>2023-10-12T23:05:58.605Z</lastmod>
   </url>
   <url>
-    <loc>https://chendaniely.github.io/python_setup/530-pipx.html</loc>
-    <lastmod>2023-10-12T23:00:41.923Z</lastmod>
+    <loc>https://github.com/chendaniely/python_setup/installation/pyenv-mac.html</loc>
+    <lastmod>2023-10-12T23:06:00.025Z</lastmod>
   </url>
 </urlset>
