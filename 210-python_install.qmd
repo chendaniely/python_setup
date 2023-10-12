@@ -8,13 +8,13 @@ The
 recommends using `pyenv` to manage your different Python versions.
 You can find their guide here:
 
-[https://solutions.posit.co/write-code/minimum-viable-python/installing-python/](https://solutions.posit.co/write-code/minimum-viable-python/installing-python/)
+<https://solutions.posit.co/write-code/minimum-viable-python/installing-python/>
 
 For MacOS and Linux, The official pyenv repository and installation instructions are here:
-[https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+<https://github.com/pyenv/pyenv>
 
 For Windows you can find the official instructions here:
-[https://github.com/pyenv-win/pyenv-win](https://github.com/pyenv-win/pyenv-win)
+<https://github.com/pyenv-win/pyenv-win>
 
 Below,
 is a more focused guide on setting up Python using `pyenv` on your machine.
@@ -35,5 +35,6 @@ is a more focused guide on setting up Python using `pyenv` on your machine.
 
 We recommend that you try to keep your base python version as clean as possible,
 i.e., do not install any packages into it.
-Instead, please head over to the Virtual Environments page
-and install your packages into a virtual environment.
+Instead, please head over to the
+[Virtual Environments page](320-python_virtual_environments.qmd)
+page and install your packages into a virtual environment.
