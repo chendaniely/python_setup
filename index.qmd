@@ -45,7 +45,20 @@ you need a mechanism to isolate package installs and their dependencies.
 You may have different dependencies that clash with one another and need separate package installation
 environments.
 Or maybe you want to test a different set of package versions before you formally update them in your existing project.
-Virtual environments help with this issue.
+Virtual environments help with this issue,
+by creating a separate "environments" that all your packages in one project installs into.
+This way the packages from one project do not clash with packages in another.
+
+It may seem like a good idea to install all the packages you use into a single environment,
+but as projects get larger,
+you may not want to always be installing and updating packages,
+potentially breaking your existing code.
+
+::: {.callout-note}
+If this is the first time you're learning about virtual environments,
+you can see the [Virtual Environments](320-python_virtual_environments.qmd)
+section.
+:::
 
 ## This Guide {.unnumbered}
 
