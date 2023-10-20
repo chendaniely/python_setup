@@ -12,7 +12,7 @@ you may need to both `jupyter` and `ipykernel` into your `venv` virtual environm
 ::: {.callout-important}
 It's important that you understand how virtual environments work in this context:
 
-The `python`, `jupyter,`, `ipykernel`, etc that you use within a virtual environment,
+The `python`, `jupyter`, `ipykernel`, etc that you use within a virtual environment,
 __is__ the version that was installed in that environment.
 When we call `python` or `python3` in the context of a virtual environment (e.g., `venv`),
 _only_ the packages installed in that virtual environment will be detected.
@@ -22,6 +22,13 @@ when using other tools.
 If you have packages you need from another environment,
 you have to install them again in the environment you want to use them in as well.
 :::
+
+You can install these dependencies with `pip`
+(remember to do this within a virtual environment).
+
+```
+pip install jupyter ipykernel
+```
 
 ## IDEs
 
@@ -47,6 +54,32 @@ there is a
 [Using Python](https://quarto.org/docs/computations/python.html)
 guide in the
 [Quarto guide](https://quarto.org/docs/guide/).
+
+### Quarto Check
+
+You can make sure your current quarto environment has all required Python and Jupyter components
+by running `quarto check jupyter`.
+You want to confirm that the section on `Checking Python 3 installation` and
+`Checking Jupyter engine render` do not tell you that jupyter is missing.
+
+```bash
+% quarto check jupyter
+Quarto 1.4.383
+[✓] Checking Python 3 installation....OK
+      Version: 3.12.0
+      Path: /Users/danielchen/Desktop/my_python_project/venv/bin/python3
+      Jupyter: 5.4.0
+      Kernels: pfe_book, ds, ir, dsci100, python3
+
+[✓] Checking Jupyter engine render....OK
+```
+
+::: {.callout-note}
+You can also run `quarto check` without any other parameters
+if you want to check all the components of your Quarto setup.
+:::
+
+### Quarto YAML
 
 Quarto documents have a YAML header that specifies various option keys
 of the current document.
