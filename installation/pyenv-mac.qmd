@@ -56,9 +56,19 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
-# pyenv rstudio settings
+# pyenv rstudio and reticulate settings
 echo 'PYTHON_CONFIGURE_OPTS="--enable-shared"' >> ~/.zshrc
 ```
+
+::: {.callout-important}
+It's important that you set `PYTHON_CONFIGURE_OPTS="--enable-shared"`
+if you are planning to use `pyenv` Python installations with the
+R `{reticulate}` package.
+You will get a message within RStudio too if you try to load up
+python that does not have the `PYTHON_CONFIGURE_OPTS` variable set.
+We are putting the setting into the `~/.zshrc` so this behavior is a default.
+Otherwise you will need to `export` the variable before installing python with `pyenv install`.
+:::
 
 Restart your shell by closing and opening a new terminal,
 or by running the following command
