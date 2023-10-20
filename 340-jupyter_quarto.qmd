@@ -12,7 +12,7 @@ you may need to both `jupyter` and `ipykernel` into your `venv` virtual environm
 ::: {.callout-important}
 It's important that you understand how virtual environments work in this context:
 
-The `python`, `jupyter,`, `ipykernel`, etc that you use within a virtual environment,
+The `python`, `jupyter`, `ipykernel`, etc that you use within a virtual environment,
 __is__ the version that was installed in that environment.
 When we call `python` or `python3` in the context of a virtual environment (e.g., `venv`),
 _only_ the packages installed in that virtual environment will be detected.
