@@ -202,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">IDE Setup</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./340-jupyter_quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jupyter + Quarto</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -272,7 +278,21 @@ Warning
 </section>
 <section id="virtual-environments" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="virtual-environments">Virtual Environments</h2>
-<p>Finally, you need a mechanism to isolate package installs and their dependencies. You may have different dependencies that clash with one another and need separate package installation environments. Or maybe you want to test a different set of package versions before you formally update them in your existing project. Virtual environments help with this issue.</p>
+<p>Finally, you need a mechanism to isolate package installs and their dependencies. You may have different dependencies that clash with one another and need separate package installation environments. Or maybe you want to test a different set of package versions before you formally update them in your existing project. Virtual environments help with this issue, by creating a separate “environments” that all your packages in one project installs into. This way the packages from one project do not clash with packages in another.</p>
+<p>It may seem like a good idea to install all the packages you use into a single environment, but as projects get larger, you may not want to always be installing and updating packages, potentially breaking your existing code.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If this is the first time you’re learning about virtual environments, you can see the <a href="./320-python_virtual_environments.html">Virtual Environments</a> section.</p>
+</div>
+</div>
 </section>
 <section id="this-guide" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="this-guide">This Guide</h2>
@@ -615,12 +635,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>You may have different dependencies that clash with one another and need separate package installation</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>environments.</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Or maybe you want to test a different set of package versions before you formally update them in your existing project.</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>Virtual environments help with this issue.</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## This Guide {.unnumbered}</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>Virtual environments help with this issue,</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>by creating a separate "environments" that all your packages in one project installs into.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>This way the packages from one project do not clash with packages in another.</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>This guide mainly goes through using <span class="in">`pyenv`</span> for installing and switching Python versions,</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>and the built-in python <span class="in">`venv`</span> module to install python virtual environments.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>It may seem like a good idea to install all the packages you use into a single environment,</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>but as projects get larger,</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>you may not want to always be installing and updating packages,</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>potentially breaking your existing code.</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>If this is the first time you're learning about virtual environments,</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>you can see the <span class="co">[</span><span class="ot">Virtual Environments</span><span class="co">](320-python_virtual_environments.qmd)</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>section.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## This Guide {.unnumbered}</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>This guide mainly goes through using <span class="in">`pyenv`</span> for installing and switching Python versions,</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>and the built-in python <span class="in">`venv`</span> module to install python virtual environments.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

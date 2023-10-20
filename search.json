@@ -1,10 +1,45 @@
 [
   {
-    "objectID": "installation/pyenv-linux.html",
-    "href": "installation/pyenv-linux.html",
+    "objectID": "520-pipenv.html#pipenv",
+    "href": "520-pipenv.html#pipenv",
     "title": "",
+    "section": "1 pipenv",
+    "text": "1 pipenv"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "A Python Setup Guide",
     "section": "",
-    "text": "0.1 Linux\nYou can check to see if your current version of linux has pyenv in its package manager. Otherwise, you will install pyenv using the automatic installer script.\n\nUbuntuArch\n\n\nsudo apt update\ncurl https://pyenv.run | bash\n\n\npyenv exists in the Arch Extra repository: https://archlinux.org/packages/extra/any/pyenv/\npacman -Syu pyenv\n\n\n\n\n0.1.1 Post installation setup\nEdit your ~/.bashrc as follows when running Linux - and note the special instructions for WSL.\n\nLinux Native (Bash)Ubuntu (WSL)\n\n\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.bashrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.bashrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.bashrc\n\nexec $SHELL\npyenv --version\n\n\nBut note that if you run Linux using WSL on Windows (why?), you must do the following instead:\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"'\necho 'export PATH=\"$PYENV_ROOT/bin:$PATH\"'\necho 'eval \"$(pyenv init -)\"'\n\nexec $SHELL\npyenv --version"
+    "text": "Python’s popularity has also made it one of the reasons why installation has become notoriously complex.\nThe complexity arises from 3 main issues:"
+  },
+  {
+    "objectID": "index.html#system-python",
+    "href": "index.html#system-python",
+    "title": "A Python Setup Guide",
+    "section": "System Python",
+    "text": "System Python\nConfusion arises when new Python users see that Python is already installed on their computer and they start to install packages or update it. This python is for your operating system to perform its own tasks, not the user. If you meddle with it, you might end up breaking some component to your computer.\n\n\n\n\n\n\nWarning\n\n\n\nThe Python that already exists on your computer is for your computer’s operating system. It’s not for you. Pretend it doesn’t exist.\nTake note of where the system Python is with which python (MacOS/*nix) or get-command python (Windows), and make sure you are not using that one for your own work."
+  },
+  {
+    "objectID": "index.html#multiple-pythons",
+    "href": "index.html#multiple-pythons",
+    "title": "A Python Setup Guide",
+    "section": "Multiple Pythons",
+    "text": "Multiple Pythons\nIf you do manage to install Python on your computer that is separate from your operating system, you still have the issue of sometimes needing to work with multiple python versions (e.g., 3.9.17, 3.12.0). Maybe you want to test the code base in a new version of python without “testing in production”. You now need a mechanism that lets you install different python versions and switch between them."
+  },
+  {
+    "objectID": "index.html#virtual-environments",
+    "href": "index.html#virtual-environments",
+    "title": "A Python Setup Guide",
+    "section": "Virtual Environments",
+    "text": "Virtual Environments\nFinally, you need a mechanism to isolate package installs and their dependencies. You may have different dependencies that clash with one another and need separate package installation environments. Or maybe you want to test a different set of package versions before you formally update them in your existing project. Virtual environments help with this issue, by creating a separate “environments” that all your packages in one project installs into. This way the packages from one project do not clash with packages in another.\nIt may seem like a good idea to install all the packages you use into a single environment, but as projects get larger, you may not want to always be installing and updating packages, potentially breaking your existing code.\n\n\n\n\n\n\nNote\n\n\n\nIf this is the first time you’re learning about virtual environments, you can see the Virtual Environments section."
+  },
+  {
+    "objectID": "index.html#this-guide",
+    "href": "index.html#this-guide",
+    "title": "A Python Setup Guide",
+    "section": "This Guide",
+    "text": "This Guide\nThis guide mainly goes through using pyenv for installing and switching Python versions, and the built-in python venv module to install python virtual environments."
   },
   {
     "objectID": "installation/pyenv-install_python.html",
@@ -12,6 +47,13 @@
     "title": "",
     "section": "",
     "text": "We’ll be using pyenv to install Python.\nFirst, we need to know what version of Python you want to install. Luckily, pyenv can list out all the versions available to you by typing\npyenv install --list\nUsually you know roughly some version of Python you may already want to install, but not the exact number. You can filter the results with a match\n\nMacOS / Linux / Git BashWindows Powershell\n\n\npyenv install --list | grep 3.11\n\n\n pyenv install --list | select-string 3.11\n\n\n\nThis will list all the Python 3.11 patch versions for you.\nIf you want to install the latest Python version, you only need to specify the major number, 3.\npyenv install 3\nYou can list all the pyenv installed versions with:\npyenv versions"
+  },
+  {
+    "objectID": "installation/pyenv-linux.html",
+    "href": "installation/pyenv-linux.html",
+    "title": "",
+    "section": "",
+    "text": "0.1 Linux\nYou can check to see if your current version of linux has pyenv in its package manager. Otherwise, you will install pyenv using the automatic installer script.\n\nUbuntuArch\n\n\nsudo apt update\ncurl https://pyenv.run | bash\n\n\npyenv exists in the Arch Extra repository: https://archlinux.org/packages/extra/any/pyenv/\npacman -Syu pyenv\n\n\n\n\n0.1.1 Post installation setup\nEdit your ~/.bashrc as follows when running Linux - and note the special instructions for WSL.\n\nLinux Native (Bash)Ubuntu (WSL)\n\n\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.bashrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.bashrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.bashrc\n\nexec $SHELL\npyenv --version\n\n\nBut note that if you run Linux using WSL on Windows (why?), you must do the following instead:\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"'\necho 'export PATH=\"$PYENV_ROOT/bin:$PATH\"'\necho 'eval \"$(pyenv init -)\"'\n\nexec $SHELL\npyenv --version"
   },
   {
     "objectID": "690-concept_maps.html",
@@ -63,39 +105,53 @@
     "text": "2.4 poetry"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "A Python Setup Guide",
+    "objectID": "330-ide.html",
+    "href": "330-ide.html",
+    "title": "Integrated Development Environment Setup",
     "section": "",
-    "text": "Python’s popularity has also made it one of the reasons why installation has become notoriously complex.\nThe complexity arises from 3 main issues:"
+    "text": "The concept of a “project” is important when trying to point your integrated development environment (IDE) to your virtual environment. Some programs rely on special files to designate a project, others will treat an opened folder as a project. It’s important to know how to confirm what environment is being used in the IDE."
   },
   {
-    "objectID": "index.html#system-python",
-    "href": "index.html#system-python",
-    "title": "A Python Setup Guide",
-    "section": "System Python",
-    "text": "System Python\nConfusion arises when new Python users see that Python is already installed on their computer and they start to install packages or update it. This python is for your operating system to perform its own tasks, not the user. If you meddle with it, you might end up breaking some component to your computer.\n\n\n\n\n\n\nWarning\n\n\n\nThe Python that already exists on your computer is for your computer’s operating system. It’s not for you. Pretend it doesn’t exist.\nTake note of where the system Python is with which python (MacOS/*nix) or get-command python (Windows), and make sure you are not using that one for your own work."
+    "objectID": "330-ide.html#project-set-up",
+    "href": "330-ide.html#project-set-up",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.1 Project Set Up",
+    "text": "1.1 Project Set Up\nIf you are starting from a new Python project, the best way is to first create an RStudio project from the IDE. Once the RStudio project is created, you follow the steps in creating a venv virtual environment, such that the venv folder is also in the RStudio project.\nNext, within the RStudio Global Options &gt; Python tab, make sure the checkbox for “Automatically activate project-local Python environment” is checked.\n\nThis will make sure the venv in the current RStudio project gets picked up first when a Python interpreter is needed."
   },
   {
-    "objectID": "index.html#multiple-pythons",
-    "href": "index.html#multiple-pythons",
-    "title": "A Python Setup Guide",
-    "section": "Multiple Pythons",
-    "text": "Multiple Pythons\nIf you do manage to install Python on your computer that is separate from your operating system, you still have the issue of sometimes needing to work with multiple python versions (e.g., 3.9.17, 3.12.0). Maybe you want to test the code base in a new version of python without “testing in production”. You now need a mechanism that lets you install different python versions and switch between them."
+    "objectID": "330-ide.html#package-set-up",
+    "href": "330-ide.html#package-set-up",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.2 Package Set up",
+    "text": "1.2 Package Set up\n\nUse this requirements.txt file\ntree the example directory\ninstall {reticulate} the R package: install.packages('reticulate')\n\nWhen you run Python code, you will see a call in the console for reticulate::repl_python(). You will see the call from R, and then the Python prompts.\nThe R code will be displayed with a &gt; and the python code will have a &gt;&gt;&gt;\n&gt; reticulate::repl_python()\nPython 3.10.3 (/Users/danielchen/git/rstudio/academyContent/.venv/bin/python) # TODO: Fix this output\nReticulate 1.30 REPL -- A Python interpreter in R.\nEnter 'exit' or 'quit' to exit the REPL and return to R.\n&gt;&gt;&gt; 3 + 3\n6"
   },
   {
-    "objectID": "index.html#virtual-environments",
-    "href": "index.html#virtual-environments",
-    "title": "A Python Setup Guide",
-    "section": "Virtual Environments",
-    "text": "Virtual Environments\nFinally, you need a mechanism to isolate package installs and their dependencies. You may have different dependencies that clash with one another and need separate package installation environments. Or maybe you want to test a different set of package versions before you formally update them in your existing project. Virtual environments help with this issue."
+    "objectID": "330-ide.html#reticulate",
+    "href": "330-ide.html#reticulate",
+    "title": "Integrated Development Environment Setup",
+    "section": "1.3 Reticulate",
+    "text": "1.3 Reticulate\nWhen using Python within RStudio, you can always confirm what Python is being used with the reticulate::py_config() function\n&gt; reticulate::py_config()\npython:         /Users/danielchen/git/rstudio/academyContent/.venv/bin/python\nlibpython:      /Users/danielchen/.pyenv/versions/3.10.3/lib/libpython3.10.dylib\npythonhome:     /Users/danielchen/git/rstudio/academyContent/.venv:/Users/danielchen/git/rstudio/academyContent/.venv\nversion:        3.10.3 (main, Oct  5 2022, 14:06:56) [Clang 14.0.0 (clang-1400.0.29.102)]\nnumpy:          /Users/danielchen/git/rstudio/academyContent/.venv/lib/python3.10/site-packages/numpy\nnumpy_version:  1.24.1\n\nNOTE: Python version was forced by use_python function\nIf you have the wrong python loaded, you need to restart your R session first before trying to load another Python intepreter.\n\n\n\n\n\n\nImportant\n\n\n\nIf you need to manually specify a python interpreter, you can use the reticulate::use_python() or reticulate::use_virtualenv() functions. If you use the reticulate::use_virtualenv() function to load the venv virtual environment, and the venv is named venv in the current project directory, make sure you call the function with a trailing /, venv/ so the reticulate::use_virtualenv() function knows to look for a directory named venv/ and not a virtual environment named venv in the ~/.virtualenvs directory. You may get an error message about not a python virtualenv otherwise,\nDirectory ~/.virtualenvs/venv is not a Python virtualenv"
   },
   {
-    "objectID": "index.html#this-guide",
-    "href": "index.html#this-guide",
-    "title": "A Python Setup Guide",
-    "section": "This Guide",
-    "text": "This Guide\nThis guide mainly goes through using pyenv for installing and switching Python versions, and the built-in python venv module to install python virtual environments."
+    "objectID": "340-jupyter_quarto.html",
+    "href": "340-jupyter_quarto.html",
+    "title": "Jupyter + Quarto",
+    "section": "",
+    "text": "Many external Python IDEs will require jupyter and/or the ipykernel. If you are working in a Virtual Environment, you may need to both jupyter and ipykernel into your venv virtual environment."
+  },
+  {
+    "objectID": "340-jupyter_quarto.html#ides",
+    "href": "340-jupyter_quarto.html#ides",
+    "title": "Jupyter + Quarto",
+    "section": "1 IDEs",
+    "text": "1 IDEs\nThe IDE section covered how to make sure you are using the correct python interpreter or environment so it can properly use IPython Kernel for Jupyter to run your Python code with the packages you have installed in a particular environment."
+  },
+  {
+    "objectID": "340-jupyter_quarto.html#quarto",
+    "href": "340-jupyter_quarto.html#quarto",
+    "title": "Jupyter + Quarto",
+    "section": "2 Quarto",
+    "text": "2 Quarto\nJupyter is one of the execution backend engines that Quarto uses to execute code and capture its output. You can get started with Quarto by installing it here: https://quarto.org/docs/get-started/.\nQuarto has a series of Guides as well to help with different outputs. Specifically, there is a Using Python guide in the Quarto guide.\nQuarto documents have a YAML header that specifies various option keys of the current document. One of the more important options when working with Python + Quarto is to set the jupyter as a top-level key to the python3 value.\n---\ntitle: \"Example Quarto Document\"\nformat: html\njupyter: python3\n---\nThe jupyter: python3 option tells Quarto that when it uses python3 to run the python code, it is the current python3 in the environment Quarto was called in.\n\n\n\n\n\n\nNote\n\n\n\nWhen rendering a quarto document, it’s important to check which environment python3 will be running in. You should be running quarto (e.g., quarto render or quarto preview) in the same virtual environment as your project."
   },
   {
     "objectID": "310-python_versions.html",
@@ -124,41 +180,6 @@
     "title": "Python Versions",
     "section": "3 Keep Things Empty and Clean",
     "text": "3 Keep Things Empty and Clean\nAs a final reminder, any version of python you have installed with pyenv install, remember to not install packages into that particular python version and its environment.\nYou can see all the python packages you have installed in the current environment by using pip freeze.\nUnless you are working in a virtual environment, you want to make sure pip freeze always returns nothing.\n% pip freeze\n%\nYou can either run pip uninstall &lt;PACKAGE NAME&gt; to uninstall a package you may have accidentally installed, or you can run pyenv uninstall &lt;PYTHON VERSION&gt; to uninstall the python version and re-install it with pyenv install &lt;PYTHON VERSION&gt;."
-  },
-  {
-    "objectID": "530-pipx.html#pipx",
-    "href": "530-pipx.html#pipx",
-    "title": "",
-    "section": "1 pipx",
-    "text": "1 pipx"
-  },
-  {
-    "objectID": "210-python_install.html",
-    "href": "210-python_install.html",
-    "title": "Pyenv",
-    "section": "",
-    "text": "The Posit, PBC Solutions Engineering Team recommends using pyenv to manage your different Python versions. You can find their guide here:\nhttps://solutions.posit.co/write-code/minimum-viable-python/installing-python/\nFor MacOS and Linux, The official pyenv repository and installation instructions are here: https://github.com/pyenv/pyenv\nFor Windows you can find the official instructions here: https://github.com/pyenv-win/pyenv-win\nBelow, is a more focused guide on setting up Python using pyenv on your machine."
-  },
-  {
-    "objectID": "210-python_install.html#os-specific-installation-notes",
-    "href": "210-python_install.html#os-specific-installation-notes",
-    "title": "Pyenv",
-    "section": "1 OS Specific Installation Notes",
-    "text": "1 OS Specific Installation Notes\n\n1.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n1.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n1.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n1.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n1.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version\n\n\n\n1.2 Windows\nWe need to look at the pyenv-win project to install pyenv for windows. You can find the link to the project here:\nhttps://github.com/pyenv-win/pyenv-win\nThere are a few methods of installing pyenv-win on Windows.\n\nUsing the Windows PowerShell\nManual installation from zip\nUsing a windows package manager (e.g., chocolatey, scoop)\n\n\n1.2.1 Method 1: Windows Powershell\nYou can run the following command in the PowerShell terminal:\nInvoke-WebRequest -UseBasicParsing -Uri \"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1\" -OutFile \"./install-pyenv-win.ps1\"; &\"./install-pyenv-win.ps1\"\nIf you see an UnauthorizedAccess error you need to:\n\nOpen Windows PowerShell with the “Run as administer” option\nRun the following command:\n\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nIf you are getting a “not digitally signed” error, you may also need to unblock the pyenv script:\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nUnblock-File (Join-Path $env:PYENV 'bin/pyenv.ps1')\n\n\n\n1.2.2 Method 2: Manual installation\n\nDownload pyenv-win.zip\nCreate a .pyenv folder in your home directory. In PowerShell or Git Bash:\n\nmkdir $HOME/.pyenv\n\nExtract the pyenv-win.zip contents into the newly created .pyenv directory you just created\nYou should have a a bin/ directory in $HOME/.pyenv/pyenv-win/bin\n\n\n\n1.2.3 Method 3: Package Managers\nYou can install pyenv-win using one of the Windows Package managers:\n\nChocolatey: https://chocolatey.org/install\nScoop: https://scoop.sh/\n\nAt the time of writing, pyenv-win is not in the winget repositories\nChocolatey\nchoco install pyenv-win\nScoop\nscoop bucket add main\nscoop install main/pyenv\n\n\n1.2.4 Post installation setup\nYou need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.\nIn general you need to add 3 pyenv variables and append a directory to the Path. The PYENV, PYENV_HOME, and PYENV_ROOT user variables need to all point to your pyenv-win directory within your .pyenv folder in your home directory.\n[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\nThe .pyenv\\pyenv-win\\bin\\ directory also needs to be added to the beginning of the Path variable\n[System.Environment]::SetEnvironmentVariable('path', $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\bin;\" + $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\shims;\" + [System.Environment]::GetEnvironmentVariable('path', \"User\"),\"User\")\n\n\n1.2.5 Confirm installation\nYou can confirm your installation with:\npyenv --version\nYou should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help.\n\n\n\n1.3 Linux\nYou can check to see if your current version of linux has pyenv in its package manager. Otherwise, you will install pyenv using the automatic installer script.\n\nUbuntuArch\n\n\nsudo apt update\ncurl https://pyenv.run | bash\n\n\npyenv exists in the Arch Extra repository: https://archlinux.org/packages/extra/any/pyenv/\npacman -Syu pyenv\n\n\n\n\n1.3.1 Post installation setup\nEdit your ~/.bashrc as follows when running Linux - and note the special instructions for WSL.\n\nLinux Native (Bash)Ubuntu (WSL)\n\n\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.bashrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.bashrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.bashrc\n\nexec $SHELL\npyenv --version\n\n\nBut note that if you run Linux using WSL on Windows (why?), you must do the following instead:\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"'\necho 'export PATH=\"$PYENV_ROOT/bin:$PATH\"'\necho 'eval \"$(pyenv init -)\"'\n\nexec $SHELL\npyenv --version"
-  },
-  {
-    "objectID": "210-python_install.html#install-python",
-    "href": "210-python_install.html#install-python",
-    "title": "Pyenv",
-    "section": "2 Install Python",
-    "text": "2 Install Python\nWe’ll be using pyenv to install Python.\nFirst, we need to know what version of Python you want to install. Luckily, pyenv can list out all the versions available to you by typing\npyenv install --list\nUsually you know roughly some version of Python you may already want to install, but not the exact number. You can filter the results with a match\n\nMacOS / Linux / Git BashWindows Powershell\n\n\npyenv install --list | grep 3.11\n\n\n pyenv install --list | select-string 3.11\n\n\n\nThis will list all the Python 3.11 patch versions for you.\nIf you want to install the latest Python version, you only need to specify the major number, 3.\npyenv install 3\nYou can list all the pyenv installed versions with:\npyenv versions"
-  },
-  {
-    "objectID": "210-python_install.html#install-packages",
-    "href": "210-python_install.html#install-packages",
-    "title": "Pyenv",
-    "section": "3 Install Packages",
-    "text": "3 Install Packages\nWe recommend that you try to keep your base python version as clean as possible, i.e., do not install any packages into it. Instead, please head over to the Virtual Environments page page and install your packages into a virtual environment."
   },
   {
     "objectID": "110-the_whole_game.html",
@@ -266,41 +287,6 @@
     "text": "14 Conclusion\nThe general workflow for working with python and python projects:\n\nInstall Python version you want\nSwitch into Python\nCreate new python project directory\nCreate venv\nActivate venv\nInstall packages into venv\nRun your code\nRinse and repeat\n\nThere are other tools that can be installed to streamline the process. But this should be the bare minimum python project setup you use going forward."
   },
   {
-    "objectID": "410-pyenv_useage.html",
-    "href": "410-pyenv_useage.html",
-    "title": "",
-    "section": "",
-    "text": "Pyenv Cheat sheet reference"
-  },
-  {
-    "objectID": "330-ide.html",
-    "href": "330-ide.html",
-    "title": "Integrated Development Environment Setup",
-    "section": "",
-    "text": "The concept of a “project” is important when trying to point your integrated development environment (IDE) to your virtual environment. Some programs rely on special files to designate a project, others will treat an opened folder as a project. It’s important to know how to confirm what environment is being used in the IDE."
-  },
-  {
-    "objectID": "330-ide.html#project-set-up",
-    "href": "330-ide.html#project-set-up",
-    "title": "Integrated Development Environment Setup",
-    "section": "1.1 Project Set Up",
-    "text": "1.1 Project Set Up\nIf you are starting from a new Python project, the best way is to first create an RStudio project from the IDE. Once the RStudio project is created, you follow the steps in creating a venv virtual environment, such that the venv folder is also in the RStudio project.\nNext, within the RStudio Global Options &gt; Python tab, make sure the checkbox for “Automatically activate project-local Python environment” is checked.\n\nThis will make sure the venv in the current RStudio project gets picked up first when a Python interpreter is needed."
-  },
-  {
-    "objectID": "330-ide.html#package-set-up",
-    "href": "330-ide.html#package-set-up",
-    "title": "Integrated Development Environment Setup",
-    "section": "1.2 Package Set up",
-    "text": "1.2 Package Set up\n\nUse this requirements.txt file\ntree the example directory\ninstall {reticulate} the R package: install.packages('reticulate')\n\nWhen you run Python code, you will see a call in the console for reticulate::repl_python(). You will see the call from R, and then the Python prompts.\nThe R code will be displayed with a &gt; and the python code will have a &gt;&gt;&gt;\n&gt; reticulate::repl_python()\nPython 3.10.3 (/Users/danielchen/git/rstudio/academyContent/.venv/bin/python) # TODO: Fix this output\nReticulate 1.30 REPL -- A Python interpreter in R.\nEnter 'exit' or 'quit' to exit the REPL and return to R.\n&gt;&gt;&gt; 3 + 3\n6"
-  },
-  {
-    "objectID": "330-ide.html#reticulate",
-    "href": "330-ide.html#reticulate",
-    "title": "Integrated Development Environment Setup",
-    "section": "1.3 Reticulate",
-    "text": "1.3 Reticulate\nWhen using Python within RStudio, you can always confirm what Python is being used with the reticulate::py_config() function\n&gt; reticulate::py_config()\npython:         /Users/danielchen/git/rstudio/academyContent/.venv/bin/python\nlibpython:      /Users/danielchen/.pyenv/versions/3.10.3/lib/libpython3.10.dylib\npythonhome:     /Users/danielchen/git/rstudio/academyContent/.venv:/Users/danielchen/git/rstudio/academyContent/.venv\nversion:        3.10.3 (main, Oct  5 2022, 14:06:56) [Clang 14.0.0 (clang-1400.0.29.102)]\nnumpy:          /Users/danielchen/git/rstudio/academyContent/.venv/lib/python3.10/site-packages/numpy\nnumpy_version:  1.24.1\n\nNOTE: Python version was forced by use_python function\nIf you have the wrong python loaded, you need to restart your R session first before trying to load another Python intepreter.\n\n\n\n\n\n\nImportant\n\n\n\nIf you need to manually specify a python interpreter, you can use the reticulate::use_python() or reticulate::use_virtualenv() functions. If you use the reticulate::use_virtualenv() function to load the venv virtual environment, and the venv is named venv in the current project directory, make sure you call the function with a trailing /, venv/ so the reticulate::use_virtualenv() function knows to look for a directory named venv/ and not a virtual environment named venv in the ~/.virtualenvs directory. You may get an error message about not a python virtualenv otherwise,\nDirectory ~/.virtualenvs/venv is not a Python virtualenv"
-  },
-  {
     "objectID": "320-python_virtual_environments.html",
     "href": "320-python_virtual_environments.html",
     "title": "Python Virtual Environments",
@@ -371,18 +357,32 @@
     "text": "9 Conclusion\nIt’s important that every python project has its own virtual environment. Ideally it also has the environment saved into a requirements.txt file. This is the Iron Law of Python Management."
   },
   {
-    "objectID": "520-pipenv.html#pipenv",
-    "href": "520-pipenv.html#pipenv",
-    "title": "",
-    "section": "1 pipenv",
-    "text": "1 pipenv"
+    "objectID": "210-python_install.html",
+    "href": "210-python_install.html",
+    "title": "Pyenv",
+    "section": "",
+    "text": "The Posit, PBC Solutions Engineering Team recommends using pyenv to manage your different Python versions. You can find their guide here:\nhttps://solutions.posit.co/write-code/minimum-viable-python/installing-python/\nFor MacOS and Linux, The official pyenv repository and installation instructions are here: https://github.com/pyenv/pyenv\nFor Windows you can find the official instructions here: https://github.com/pyenv-win/pyenv-win\nBelow, is a more focused guide on setting up Python using pyenv on your machine."
   },
   {
-    "objectID": "510-pyenv_virtualenv.html#pyenv-virtualenv",
-    "href": "510-pyenv_virtualenv.html#pyenv-virtualenv",
-    "title": "",
-    "section": "1 pyenv-virtualenv",
-    "text": "1 pyenv-virtualenv"
+    "objectID": "210-python_install.html#os-specific-installation-notes",
+    "href": "210-python_install.html#os-specific-installation-notes",
+    "title": "Pyenv",
+    "section": "1 OS Specific Installation Notes",
+    "text": "1 OS Specific Installation Notes\n\n1.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n1.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n1.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n1.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio and reticulate settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\n\n\n\n\n\n\nImportant\n\n\n\nIt’s important that you set PYTHON_CONFIGURE_OPTS=\"--enable-shared\" if you are planning to use pyenv Python installations with the R {reticulate} package. You will get a message within RStudio too if you try to load up python that does not have the PYTHON_CONFIGURE_OPTS variable set. We are putting the setting into the ~/.zshrc so this behavior is a default. Otherwise you will need to export the variable before installing python with pyenv install.\n\n\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n1.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version\n\n\n\n1.2 Windows\nWe need to look at the pyenv-win project to install pyenv for windows. You can find the link to the project here:\nhttps://github.com/pyenv-win/pyenv-win\nThere are a few methods of installing pyenv-win on Windows.\n\nUsing the Windows PowerShell\nManual installation from zip\nUsing a windows package manager (e.g., chocolatey, scoop)\n\n\n1.2.1 Method 1: Windows Powershell\nYou can run the following command in the PowerShell terminal:\nInvoke-WebRequest -UseBasicParsing -Uri \"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1\" -OutFile \"./install-pyenv-win.ps1\"; &\"./install-pyenv-win.ps1\"\nIf you see an UnauthorizedAccess error you need to:\n\nOpen Windows PowerShell with the “Run as administer” option\nRun the following command:\n\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nIf you are getting a “not digitally signed” error, you may also need to unblock the pyenv script:\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nUnblock-File (Join-Path $env:PYENV 'bin/pyenv.ps1')\n\n\n\n1.2.2 Method 2: Manual installation\n\nDownload pyenv-win.zip\nCreate a .pyenv folder in your home directory. In PowerShell or Git Bash:\n\nmkdir $HOME/.pyenv\n\nExtract the pyenv-win.zip contents into the newly created .pyenv directory you just created\nYou should have a a bin/ directory in $HOME/.pyenv/pyenv-win/bin\n\n\n\n1.2.3 Method 3: Package Managers\nYou can install pyenv-win using one of the Windows Package managers:\n\nChocolatey: https://chocolatey.org/install\nScoop: https://scoop.sh/\n\nAt the time of writing, pyenv-win is not in the winget repositories\nChocolatey\nchoco install pyenv-win\nScoop\nscoop bucket add main\nscoop install main/pyenv\n\n\n1.2.4 Post installation setup\nYou need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.\nIn general you need to add 3 pyenv variables and append a directory to the Path. The PYENV, PYENV_HOME, and PYENV_ROOT user variables need to all point to your pyenv-win directory within your .pyenv folder in your home directory.\n[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\nThe .pyenv\\pyenv-win\\bin\\ directory also needs to be added to the beginning of the Path variable\n[System.Environment]::SetEnvironmentVariable('path', $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\bin;\" + $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\shims;\" + [System.Environment]::GetEnvironmentVariable('path', \"User\"),\"User\")\n\n\n1.2.5 Confirm installation\nYou can confirm your installation with:\npyenv --version\nYou should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help.\n\n\n\n1.3 Linux\nYou can check to see if your current version of linux has pyenv in its package manager. Otherwise, you will install pyenv using the automatic installer script.\n\nUbuntuArch\n\n\nsudo apt update\ncurl https://pyenv.run | bash\n\n\npyenv exists in the Arch Extra repository: https://archlinux.org/packages/extra/any/pyenv/\npacman -Syu pyenv\n\n\n\n\n1.3.1 Post installation setup\nEdit your ~/.bashrc as follows when running Linux - and note the special instructions for WSL.\n\nLinux Native (Bash)Ubuntu (WSL)\n\n\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.bashrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.bashrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.bashrc\n\nexec $SHELL\npyenv --version\n\n\nBut note that if you run Linux using WSL on Windows (why?), you must do the following instead:\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"'\necho 'export PATH=\"$PYENV_ROOT/bin:$PATH\"'\necho 'eval \"$(pyenv init -)\"'\n\nexec $SHELL\npyenv --version"
+  },
+  {
+    "objectID": "210-python_install.html#install-python",
+    "href": "210-python_install.html#install-python",
+    "title": "Pyenv",
+    "section": "2 Install Python",
+    "text": "2 Install Python\nWe’ll be using pyenv to install Python.\nFirst, we need to know what version of Python you want to install. Luckily, pyenv can list out all the versions available to you by typing\npyenv install --list\nUsually you know roughly some version of Python you may already want to install, but not the exact number. You can filter the results with a match\n\nMacOS / Linux / Git BashWindows Powershell\n\n\npyenv install --list | grep 3.11\n\n\n pyenv install --list | select-string 3.11\n\n\n\nThis will list all the Python 3.11 patch versions for you.\nIf you want to install the latest Python version, you only need to specify the major number, 3.\npyenv install 3\nYou can list all the pyenv installed versions with:\npyenv versions"
+  },
+  {
+    "objectID": "210-python_install.html#install-packages",
+    "href": "210-python_install.html#install-packages",
+    "title": "Pyenv",
+    "section": "3 Install Packages",
+    "text": "3 Install Packages\nWe recommend that you try to keep your base python version as clean as possible, i.e., do not install any packages into it. Instead, please head over to the Virtual Environments page page and install your packages into a virtual environment."
   },
   {
     "objectID": "610-additional_resources.html",
@@ -392,6 +392,27 @@
     "text": "https://quarto.org/docs/projects/virtual-environments.html\nhttps://www.youtube.com/watch?v=-YEUFGFHWgQ"
   },
   {
+    "objectID": "510-pyenv_virtualenv.html#pyenv-virtualenv",
+    "href": "510-pyenv_virtualenv.html#pyenv-virtualenv",
+    "title": "",
+    "section": "1 pyenv-virtualenv",
+    "text": "1 pyenv-virtualenv"
+  },
+  {
+    "objectID": "530-pipx.html#pipx",
+    "href": "530-pipx.html#pipx",
+    "title": "",
+    "section": "1 pipx",
+    "text": "1 pipx"
+  },
+  {
+    "objectID": "installation/pyenv-mac.html",
+    "href": "installation/pyenv-mac.html",
+    "title": "",
+    "section": "",
+    "text": "0.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n0.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n0.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n0.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio and reticulate settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\n\n\n\n\n\n\nImportant\n\n\n\nIt’s important that you set PYTHON_CONFIGURE_OPTS=\"--enable-shared\" if you are planning to use pyenv Python installations with the R {reticulate} package. You will get a message within RStudio too if you try to load up python that does not have the PYTHON_CONFIGURE_OPTS variable set. We are putting the setting into the ~/.zshrc so this behavior is a default. Otherwise you will need to export the variable before installing python with pyenv install.\n\n\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n0.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version"
+  },
+  {
     "objectID": "installation/pyenv-windows.html",
     "href": "installation/pyenv-windows.html",
     "title": "",
@@ -399,10 +420,10 @@
     "text": "0.1 Windows\nWe need to look at the pyenv-win project to install pyenv for windows. You can find the link to the project here:\nhttps://github.com/pyenv-win/pyenv-win\nThere are a few methods of installing pyenv-win on Windows.\n\nUsing the Windows PowerShell\nManual installation from zip\nUsing a windows package manager (e.g., chocolatey, scoop)\n\n\n0.1.1 Method 1: Windows Powershell\nYou can run the following command in the PowerShell terminal:\nInvoke-WebRequest -UseBasicParsing -Uri \"https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1\" -OutFile \"./install-pyenv-win.ps1\"; &\"./install-pyenv-win.ps1\"\nIf you see an UnauthorizedAccess error you need to:\n\nOpen Windows PowerShell with the “Run as administer” option\nRun the following command:\n\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nIf you are getting a “not digitally signed” error, you may also need to unblock the pyenv script:\nSet-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine\nUnblock-File (Join-Path $env:PYENV 'bin/pyenv.ps1')\n\n\n\n0.1.2 Method 2: Manual installation\n\nDownload pyenv-win.zip\nCreate a .pyenv folder in your home directory. In PowerShell or Git Bash:\n\nmkdir $HOME/.pyenv\n\nExtract the pyenv-win.zip contents into the newly created .pyenv directory you just created\nYou should have a a bin/ directory in $HOME/.pyenv/pyenv-win/bin\n\n\n\n0.1.3 Method 3: Package Managers\nYou can install pyenv-win using one of the Windows Package managers:\n\nChocolatey: https://chocolatey.org/install\nScoop: https://scoop.sh/\n\nAt the time of writing, pyenv-win is not in the winget repositories\nChocolatey\nchoco install pyenv-win\nScoop\nscoop bucket add main\nscoop install main/pyenv\n\n\n0.1.4 Post installation setup\nYou need to add a few variables into your Environment Variables. You can do this by pressing the windows key and searching for the “Edit environment variables for your account”. Or you can run the commands in PowerShell to add them.\nIn general you need to add 3 pyenv variables and append a directory to the Path. The PYENV, PYENV_HOME, and PYENV_ROOT user variables need to all point to your pyenv-win directory within your .pyenv folder in your home directory.\n[System.Environment]::SetEnvironmentVariable('PYENV',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_ROOT',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\n[System.Environment]::SetEnvironmentVariable('PYENV_HOME',$env:USERPROFILE + \"\\.pyenv\\pyenv-win\\\",\"User\")\nThe .pyenv\\pyenv-win\\bin\\ directory also needs to be added to the beginning of the Path variable\n[System.Environment]::SetEnvironmentVariable('path', $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\bin;\" + $env:USERPROFILE + \"\\.pyenv\\pyenv-win\\shims;\" + [System.Environment]::GetEnvironmentVariable('path', \"User\"),\"User\")\n\n\n0.1.5 Confirm installation\nYou can confirm your installation with:\npyenv --version\nYou should not be seeing any “command not found” errors. Opening things in a new terminal or restarting applications may help."
   },
   {
-    "objectID": "installation/pyenv-mac.html",
-    "href": "installation/pyenv-mac.html",
+    "objectID": "410-pyenv_useage.html",
+    "href": "410-pyenv_useage.html",
     "title": "",
     "section": "",
-    "text": "0.1 MacOS\nThere are a few ways you can install pyenv on a mac:\n\nHomebrew\nAutomatic installer with shell script\nDirectly from the GitHub repository\n\nWe recommend using Homebrew, if you have it installed, otherwise, the shell script.\n\n0.1.1 Method 1 (Recommended): MacOS Homebrew\nIf Homebrew is installed, you can run the following commands in the terminal to install pyenv.\nbrew update\nbrew install pyenv\n\n\n0.1.2 Method 2: Shell Script\nThe pyenv-installer project has provided a one line command to download and run the pyenv installer script.\ncurl https://pyenv.run | bash\n\n\n0.1.3 Post installation setup\nThere are 2 main steps in the post installation setup:\n\nPrep your shell environment\nInstall the dependencies for installing Python\n\n\nPrep your shell environment\nMacs default to zsh as the shell. Assuming this is the shell you are using, you can initialize pyenv with the following commands\n# standard pyenv install\necho 'export PYENV_ROOT=\"$HOME/.pyenv\"' &gt;&gt; ~/.zshrc\necho 'command -v pyenv &gt;/dev/null || export PATH=\"$PYENV_ROOT/bin:$PATH\"' &gt;&gt; ~/.zshrc\necho 'eval \"$(pyenv init -)\"' &gt;&gt; ~/.zshrc\n\n# pyenv rstudio settings\necho 'PYTHON_CONFIGURE_OPTS=\"--enable-shared\"' &gt;&gt; ~/.zshrc\nRestart your shell by closing and opening a new terminal, or by running the following command\nexec \"$SHELL\"\n\n\nInstall the dependencies for installing Python\nMake sure you have the Xcode Command Line Tools\nxcode-select --install\nThen install the python dependencies (recommended using brew)\nbrew install openssl readline sqlite3 xz zlib tcl-tk\nYou should be ready to install Python. Head over to the Install Python section!\n\n\n\n0.1.4 Confirm installation\nYou can confirm your installation with:\npyenv --version"
+    "text": "Pyenv Cheat sheet reference"
   }
 ]

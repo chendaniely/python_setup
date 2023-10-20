@@ -202,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">IDE Setup</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./340-jupyter_quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jupyter + Quarto</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -287,8 +293,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'command -v pyenv &gt;/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"'</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'eval "$(pyenv init -)"'</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pyenv rstudio settings</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pyenv rstudio and reticulate settings</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'PYTHON_CONFIGURE_OPTS="--enable-shared"'</span> <span class="op">&gt;&gt;</span> ~/.zshrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s important that you set <code>PYTHON_CONFIGURE_OPTS="--enable-shared"</code> if you are planning to use <code>pyenv</code> Python installations with the R <code>{reticulate}</code> package. You will get a message within RStudio too if you try to load up python that does not have the <code>PYTHON_CONFIGURE_OPTS</code> variable set. We are putting the setting into the <code>~/.zshrc</code> so this behavior is a default. Otherwise you will need to <code>export</code> the variable before installing python with <code>pyenv install</code>.</p>
+</div>
+</div>
 <p>Restart your shell by closing and opening a new terminal, or by running the following command</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exec</span> <span class="st">"</span><span class="va">$SHELL</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
