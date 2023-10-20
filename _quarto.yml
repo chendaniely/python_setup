@@ -33,6 +33,8 @@ website:
             text: Virtual Environments
           - href: 330-ide.qmd
             text: IDE Setup
+          - href: 340-jupyter_quarto.qmd
+            text: Jupyter + Quarto
 
       # - section: "Reference"
       #   contents:

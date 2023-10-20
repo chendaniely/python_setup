@@ -1,0 +1,76 @@
+---
+title: Jupyter + Quarto
+---
+
+Many external Python
+[IDEs](330-ide.qmd)
+will require `jupyter` and/or the `ipykernel`.
+If you are working in a
+[Virtual Environment](320-python_virtual_environments.qmd),
+you may need to both `jupyter` and `ipykernel` into your `venv` virtual environment.
+
+::: {.callout-important}
+It's important that you understand how virtual environments work in this context:
+
+The `python`, `jupyter,`, `ipykernel`, etc that you use within a virtual environment,
+__is__ the version that was installed in that environment.
+When we call `python` or `python3` in the context of a virtual environment (e.g., `venv`),
+_only_ the packages installed in that virtual environment will be detected.
+This is a common issue to check if you end up with a `ModuleNotFoundError`,
+when using other tools.
+
+If you have packages you need from another environment,
+you have to install them again in the environment you want to use them in as well.
+:::
+
+## IDEs
+
+The
+[IDE](330-ide.qmd)
+section covered how to make sure you are using the correct python interpreter or environment
+so it can properly use IPython Kernel for Jupyter to run your Python code
+with the packages you have installed in a particular environment.
+
+## Quarto
+
+Jupyter is one of the execution backend engines that
+[Quarto](https://quarto.org/)
+uses to execute code and capture its output.
+You can get started with Quarto by installing it here:
+<https://quarto.org/docs/get-started/>.
+
+Quarto has a series of
+[Guides](https://quarto.org/docs/guide/) as well to help with
+different outputs.
+Specifically,
+there is a
+[Using Python](https://quarto.org/docs/computations/python.html)
+guide in the
+[Quarto guide](https://quarto.org/docs/guide/).
+
+Quarto documents have a YAML header that specifies various option keys
+of the current document.
+One of the more important options when working with Python + Quarto
+is to set the `jupyter` as a top-level key to the `python3` value.
+
+```{.yaml}
+---
+title: "Example Quarto Document"
+format: html
+jupyter: python3
+---
+```
+
+The `jupyter: python3` option tells Quarto that when it uses `python3`
+to run the python code,
+it is the current `python3` in the environment Quarto was called in.
+
+::: {.callout-note}
+When rendering a quarto document,
+it's important to check which environment `python3` will be running in.
+You should be running `quarto`
+(e.g., `quarto render` or `quarto preview`)
+in the same
+[virtual environment](320-python_virtual_environments.qmd)
+as your project.
+:::
